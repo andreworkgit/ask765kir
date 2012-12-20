@@ -130,10 +130,54 @@ return array(
                     'route' => '/reminder',
                     'defaults' => array(
                       'controller' => 'Login\Controller\Reminder',
-                        'action'  => 'index'
+                      'action'  => 'index'
                         
                     )
                 )
+            ),
+            'register' => array(
+                'type'    => 'literal',
+                'options' => array(
+                    'route'    => '/register',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Login\Controller',
+                        'controller'    => 'Login\Controller\Register',
+                        'action'        => 'index',
+                    ),
+                ),
+                'may_terminate' => true,
+                'child_routes' => array(
+                    // Segment route for viewing one blog post
+                    'post' => array(
+                        'type' => 'segment',
+                        'options' => array(
+                            'route' => '/[:action][/:id]',
+                            'defaults' => array(
+                                'action' => 'generation'
+                            )
+                        )
+                    ),
+                    'step2' => array(
+                        'type' => 'segment',
+                        'options' => array(
+                            'route' => '/step2[/:token]',
+                            'defaults' => array(
+                              'action' => 'step2'
+                            )
+                        )
+                    ),
+                )
+                
+            ),
+            'changepassword' => array(
+                'type'    => 'segment',
+                'options' => array(
+                    'route'    => '/changepassword[/:email][/:token]',
+                    'defaults' => array(
+                        'controller' => 'Login\Controller\ChangePassword',
+                        'action'     => 'index',
+                    ),
+                ),
             ),
             
         ),    
@@ -146,7 +190,8 @@ return array(
             'Application\Controller\QuemSomos' 	 => 'Application\Controller\QuemSomosController',
             'Application\Controller\Faq' 	 	 => 'Application\Controller\FaqController',
             'Login\Controller\Login' 			 => 'Login\Controller\LoginController',
-            'Login\Controller\Reminder' 			 => 'Login\Controller\ReminderController',
+            'Login\Controller\Reminder' 		 => 'Login\Controller\ReminderController',
+            'Login\Controller\Register' 		 => 'Login\Controller\RegisterController',
             
         ),
     ),

@@ -1,6 +1,6 @@
 <?php
 
-namespace Login\Entity;
+namespace Application\Entity;
 
 use Doctrine\ORM\EntityRepository;
 

@@ -27,7 +27,7 @@ class ReminderForm extends Form
                 'label' => 'Email',
             ),
         ));
-        
+    
         $dirdata = './data';
 
         //pass captcha image options
@@ -56,6 +56,7 @@ class ReminderForm extends Form
                 'id' => 'submitbutton',
             ),
         ));
+		
 
     }
 }

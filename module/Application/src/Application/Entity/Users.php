@@ -1,6 +1,6 @@
 <?php
 
-namespace Login\Entity;
+namespace Application\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -8,8 +8,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  *
  * @ORM\Entity
- * @ORM\Table(name="cliente")
- * @ORM\Entity(repositoryClass="Login\Entity\UsersRepository")
+ * @ORM\Table(name="user")
+ * @ORM\Entity(repositoryClass="Application\Entity\UsersRepository")
  * 
  * @property string $email
  * @property string $nome

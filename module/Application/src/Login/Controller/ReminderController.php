@@ -38,7 +38,7 @@ class ReminderController extends AbstractActionController {
               //convert to array
               $obj_post_array = $obj_post->toArray();
                             
-              $repository = $this->getEm()->getRepository("Login\Entity\Users");
+              $repository = $this->getEm()->getRepository("Application\Entity\Users");
               $obj_records_users = $repository->findByEmail($obj_post_array['email']);
               $records = $obj_records_users->getArrayCopy();
               if(empty($records['senha'])){

@@ -14,7 +14,7 @@
 return array(
     'db' => array(
         'driver' => 'Pdo',
-        'dsn'            => 'mysql:dbname=zf2-tutorial;hostname=localhost',
+        'dsn'            => 'mysql:dbname=zf2-tutorial;hostname=127.0.0.1',
         'username'       => 'root',
         'password'       => '',
         'driver_options' => array(
@@ -32,8 +32,8 @@ return array(
             'orm_default' => array(
                 'driverClass' => 'Doctrine\DBAL\Driver\PDOMySql\Driver',
                 'params' => array(
-                    'host'     => 'localhost',
-                    'port'     => '3306',
+                    'host'     => '127.0.0.1',
+                    //'port'     => '3306',
                     'user'     => 'root',
                     'password' => '',
                     'dbname'   => 'zf2-tutorial', //sua base de dados

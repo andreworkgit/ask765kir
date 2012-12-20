@@ -81,7 +81,7 @@ class Module {
                     $em = $service->get('Doctrine\ORM\EntityManager');
                     $repository = $em->getRepository('Livraria\Entity\Categoria');
                     $categorias = $repository->fetchPairs();
-                    return new LivroFrm(null, $categorias);
+					return new LivroFrm(null, $categorias);
                 },
                 'Livraria\Auth\Adapter' => function($service) {
                     return new AuthAdapter($service->get('Doctrine\ORM\EntityManager'));

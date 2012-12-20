@@ -22,16 +22,16 @@ abstract class AbstractService {
     protected $entity;
     protected $emailRenderer;
     
-    protected $mail_username='urelby2@gmail.com';
-    protected $mail_password='a331b331';
+    protected $mail_username='report.af@gmail.com';
+    protected $mail_password='raf123abc';
     
-    protected $mail_form_email = 'urelby2@gmail.com';
+    protected $mail_form_email = 'report.af@gmail.com';
     protected $mail_form_name = 'Nome da Empresa';
     
     protected $mail_to_email = 'andrework@gmail.com';
     protected $mail_to_name = '';
     
-    protected $mail_subject = '1ª Etapa do cadastro realizada com sucesso';
+    protected $mail_subject = '1Â° Etapa do cadastro realizada com sucesso';
     protected $mail_template = 'login/register/confirmation-email';
     
     public function __construct(EntityManager $em) {
@@ -96,7 +96,7 @@ abstract class AbstractService {
         $mail->addTo($emailTo, $emailNameTo);
         //$mail->addCC( 'ao@gmail.com' );
         
-        $mail->setSubject($this->mail_subject);
+        $mail->setSubject(utf8_decode($this->mail_subject));
         
         //$tpl = $this->getTemplateRenderer('login/register/confirmation-email',$dadosBody);
         $new_model = new ViewModel(array('dados'=>$records));

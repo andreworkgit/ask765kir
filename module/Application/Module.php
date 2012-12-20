@@ -10,7 +10,8 @@ use Zend\Authentication\AuthenticationService,
 	
 use DoctrineModule\Validator\NoObjectExists as NoObjectExistsValidator;
 use DoctrineModule\Validator\ObjectExists as ObjectExistsValidator;
-    
+   
+//use Login\Form\ReminderForm as ReminderForm;    
 
 class Module {
 
@@ -22,7 +23,7 @@ class Module {
         return array(
             'Zend\Loader\StandardAutoloader' => array(
                 'namespaces' => array(
-                    'Login' => __DIR__ . '/src/' . "Login",
+                    'Login' 	  => __DIR__ . '/src/' . "Login",
                     __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
                 ),
             ),
@@ -101,7 +102,7 @@ class Module {
                     $emailInput = $form->getInputFilter()->get('email');
                     
                     $NoObjectExistsValidator = new \DoctrineModule\Validator\NoObjectExists(array(
-                        'object_repository' => $service->get('Doctrine\ORM\EntityManager')->getRepository('Login\Entity\Users'),
+                        'object_repository' => $service->get('Doctrine\ORM\EntityManager')->getRepository('Application\Entity\Users'),
                         'fields'            => 'email',
                         'messages' =>
                             array(
@@ -119,15 +120,15 @@ class Module {
                     $form = new \Login\Form\ReminderForm($baseUrl);
                     
                     $emailInput = $form->getInputFilter()->get('email');
-                    
-                    $ObjectExistsValidator = new \DoctrineModule\Validator\ObjectExists(array(
-                        'object_repository' => $service->get('Doctrine\ORM\EntityManager')->getRepository('Login\Entity\Users'),
+                    $ObjectExistsValidator = new ObjectExistsValidator(array(
+                        'object_repository' => $service->get('Doctrine\ORM\EntityManager')->getRepository('Application\Entity\Users'),
                         'fields'            => 'email',
                         'messages' =>
                             array(
                                 'noObjectFound' => 'Sorry, this email %value% not exists !'
                             )
                     ));
+					
                      //var_dump($ObjectExistsValidator->isValid('tess3@gmail.com'));
                     $emailInput->getValidatorChain()->addValidator($ObjectExistsValidator);
                     
