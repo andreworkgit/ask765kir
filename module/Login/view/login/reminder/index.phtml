@@ -1,0 +1,40 @@
+<?php 
+$title = 'Password Reminder';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<?php
+switch($this->msg):
+
+  case 1:
+    ?> <h5>Foi enviado um email para sua conta confirmando a alteração da senha! </h5><?php
+    break;
+  
+  
+  case 2:
+    ?> <h5>Você não confirmou seu email, reenviamos novamente um email para confirmação.</h5><?php
+    break;
+  
+endswitch;
+?>
+
+
+<?php
+
+$form = $this->form;
+//$form->setAttribute('action', $this->url('album', array('action' => 'add')));
+$form->prepare();
+
+echo $this->form()->openTag($form) . PHP_EOL;
+echo $this->formRow($form->get('email')) . PHP_EOL;
+//echo $this->formRow($form->get('artist')) . PHP_EOL;
+//echo $recaptcha->getHTML();
+//echo $captcha->getFiglet()->render($captcha->getWord());
+echo $this->formRow($form->get('captcha'));
+
+echo $this->formInput($form->get('submit')) . PHP_EOL;
+echo $this->form()->closeTag($form) . PHP_EOL;
+
+
+//echo $this->partial('login/register/confirmationEmail.phtml',array());

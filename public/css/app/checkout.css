@@ -1,0 +1,322 @@
+@charset "utf-8";
+/* CSS Document */
+
+.checkout_content {
+	float:none;
+	margin-bottom: 20px;
+	padding-bottom:20px;
+	font-size:13px;
+}
+table.checkout {
+	border:1px solid #CCC;
+	width:100%;
+}
+thead th {
+	padding:6px 10px;
+}
+tfoot {
+	background-color:#e2e2e2;
+}
+tfoot td {
+	padding:5px 10px;
+}
+tbody td {
+	padding:5px 10px;
+	font-weight:bold;
+}
+
+.checkout_deal {
+	color:#000;
+	font-size:16px;
+	font-weight:bold;
+}
+.chackout_qtd {
+	width:20px;
+}
+
+.total_value {
+	font-weight:bold;
+	color:#000;
+	font-size:16px;
+	padding:5px 0 0 0;
+}
+.valor_total_full_new {
+    color: #000;
+    float: right;
+    font-size: 20px;
+    font-weight: bold;
+    height: 34px;
+    padding: 12px 0 0;
+    text-align: center;
+    width: 184px;
+}
+h2 {
+	font-size:18px;
+}
+h3 {
+	font-weight:normal;
+	margin-bottom:0;
+}
+h4 {
+	font-size:18px;
+	font-weight:bold;
+}
+.tooltip {
+	display:inline-block;
+	background:url(../images/ltooltip.png) no-repeat;
+	width:20px;
+	height:20px;
+}
+
+.ship {
+	font-size:12px;
+	border-top:1px dotted #ccc;
+}
+.address_table {
+	font-size:12px;
+	border-top:1px dotted #ccc;
+}
+.ship td {
+	padding:5px;
+}
+.address_table td {padding:5px;}
+.address_table ul li {
+	margin:5px 0 0 0;
+	float:left;
+}
+.ship_zip {
+	width:100px;
+}
+.padding10 {
+	padding:10px !important;
+}
+.checkout_add {
+	padding:10px;
+	float:left;
+}
+/*
+Serve para esconder o prazo do frete
+*/
+.ship_display_none{
+	display:none;
+}
+.tooltip:hover .tooltip_msg {
+	display:inline;
+}
+.tooltip:hover {
+	cursor:help;
+}
+.tooltip_msg {
+	display:none;
+	position:absolute;
+	z-index:1;
+	width:675px;
+	font-size:14px;
+	height:156px;
+	margin:-60px 0 0 23px;
+	text-decoration:none !important;
+
+	background:url(../images/tooltip_msg.png) no-repeat;
+	padding:15px 15px 0 20px;
+	color:#FFF;
+}
+.logo_pd {
+	display:block;
+	background:url(../images/logo-pagamentodigital.png) no-repeat;
+	width:163px;
+	height:58px;
+	margin:10px auto;
+}
+.logo_pd_small {
+	background:url(../images/logo-pagamentodigital-small.png) no-repeat;
+	width:70px;
+	height:25px;
+	float:left;
+	position:relative;
+	margin-left:20px;
+}
+.confirm_pd{
+	float:left;
+	position:relative;
+	width:435px;
+	text-align:left;
+	margin-left:5px;
+}
+.confirm_pd input{
+	height:30px;
+	position:relative;
+	float:left;
+	top:-10px;
+	margin-right:5px;
+}
+
+.logo_moip_small {
+	background:url(../images/logo-moip-small.png) no-repeat;
+	width:70px;
+	height:25px;
+	float:left;
+	position:relative;
+	margin-left:20px;
+}
+
+.checkout_finish_msg {
+	float:left;
+	width:900px;
+	margin:20px 0 20px 0;
+}
+.checkout_finish_action {
+	clear:both;
+	width:530px;
+	padding:20px;
+	margin:0 auto;
+	text-align:center;
+	background:#F3F3F3;
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+}
+.checkout_finish_action_button {
+	width:520px;
+	margin:0 auto;
+}
+.finished_checkout {
+	text-align:center;
+	border:1px solid #e2e2e2;
+	padding:120px 0 20px 0;
+	width:800px;
+	margin:80px auto 100px auto;
+	font-size:20px;
+	font-weight:bold;
+	background:url(../images/finished.png) no-repeat top #f5f5f5;
+	
+	border-radius:10px;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+}
+.finished_checkout_link {
+	font-size:14px;
+	color:#666;
+	margin:10px 0 0 0;
+	display:block;
+}
+.add_adress_link {
+	background:url(../images/cheackout/icon-Add.gif) no-repeat;
+	padding:0 0 0 20px;
+	color: #009AD4;
+	display:block;
+	height:19px;
+	width:113px;
+	margin-top:2px;
+	float:right;
+	cursor: pointer;
+}
+.edit_adress_link {
+	background:url(../images/icon/icon-Edit.gif) no-repeat;
+	padding:0 0 0 20px;
+	color: #009AD4;
+	display:block;
+	margin-top:5px;
+	cursor:pointer;
+}
+
+
+
+.loading_span {
+	display:block;
+	background:url(../images/loading.gif) no-repeat;
+	width:46px;
+	height:46px;
+}
+
+/* Forma pagamento */
+.radios_Payment label { background:#f00; width:250px; float:left; position:relative; height:50px; }
+
+/* Novo Carrinho */
+.title-Table        { margin-bottom:20px; z-index:100; }
+.title-Table thead  { background:#f2f2f2; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px; }
+.valor_produto_novo { font-size: 18px; font-weight: bold; color:#ff9600; }
+
+.sub-Title-Checkout   { z-index:100; border-top:1px dashed #cccccc; background:url(../images/cheackout/arror-Subtitle-Checkout.gif) no-repeat 0 12px; padding:10px; font-size:12px; }
+.sub-Title-Checkout p { font-size:14px; font-weight:bold; }
+
+.sub-Title-Checkout ul.Address li                    { padding:15px; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px; margin:10px 0; position:relative}
+.sub-Title-Checkout ul.Address li.height-no-edit     { height:20px; }
+.sub-Title-Checkout ul.Address li.height-edit        { *height:280px; }
+.sub-Title-Checkout ul.Address li img                { top:-15px; position:relative; float:left; }
+.sub-Title-Checkout ul.Address li div                { position:relative; float:left; }
+.sub-Title-Checkout ul.Address li label.desc-Address { display:block; width:600px; }
+
+.sub-Title-Checkout .unchecked { background:#f7f7f7; }
+.sub-Title-Checkout .checked   { background:url(../images/cheackout/bkg-checked.jpg) repeat-x #fff3e1; border:1px solid #e6d7c2; }
+
+.sub-Title-Checkout .new-Address     { background:#f7f7f7; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px; padding: 20px; margin-top:25px; }
+.sub-Title-Checkout .new-Address img { position:absolute; top:-18px; right:40px; }
+.sub-Title-Checkout .new-Address a   { cursor: pointer; }
+.sub-Title-Checkout a.close-Form     { background:url(../images/cheackout/icon-Close-Form.gif) no-repeat 0 3px ; color: #009AD4; padding:0 0 0 10px; right:20px; cursor:pointer; }
+
+.sub-Title-Checkout .calc-Freight          { margin-top:20px; }
+.sub-Title-Checkout .calc-Freight li       { display:inline; float:left; float:left; width:219px; text-align:center; height:60px; }
+.sub-Title-Checkout .calc-Freight li.cep   { border-right:1px dashed #cccccc; }
+.sub-Title-Checkout .total                 { background:#f2f2f2; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px; padding-top:15px; height:45px;  width:219px; float:right; text-align:center; }
+
+.sub-Title-Checkout .calc-Freight li .valeu-Freight { color: #FF9600; }
+.sub-Title-Checkout .calc-Freight li .type-Freight  { font-size:14px; padding:5px; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px; margin:5px 0;  font-weight:bold; }
+
+.sub-Title-Checkout .calc-Freight li .checked-Freight   { background:#f7f7f7; }
+.sub-Title-Checkout .calc-Freight li .unchecked-Freight { background:url(../images/cheackout/bkg-checked.jpg) repeat-x #fff3e1; border:1px solid #e6d7c2; }
+
+.div_gift          { width:500px; background:#f7f7f7; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px; padding: 20px; position:absolute; right:100px; top:150px; border:1px solid #cccccc; z-index:200; }
+.div_gift img      { position:absolute; top:-18px; right:40px; }
+.div_gift textarea { height:50px; width:490px; }
+
+.price-Total                  { background:#f2f2f2; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px; padding:10px 20px 10px 20px; text-align:right; font-size:16px; margin-top:20px; height:45px; }
+.price-Total div              { position:relative; float:right; margin-left:30px; }
+.price-Total div.Total        { background:#ffffff; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px; padding:5px; width:200px; text-align:center; font-size:15px; height:35px; line-height:35px; }
+.price-Total div.Cupom        { font-size:12px; margin-top:4px; position:relative; }
+.price-Total div.Cupom input  { position:relative; top:2px; }
+.price-Total div.Cupom img    { position:absolute; top:-6px; left:-30px; }
+.price-Total div.Cupom strong { color:#FF9600; font-weight:bold; font-size:14px; }
+.desc-Cupom                   { font-size:11px; color:#333333; margin:5px 0 10px 0; width:350px; }
+.desc-Cupom-Form              { margin:0 75px 0 0; }
+
+.form-Edit-Address               { width:760px; margin-left:100px; }
+.form-Edit-Address input, select { border-radius:3px; -moz-border-radius:3px; -webkit-border-radius:3px; }
+
+.form-New-Address               { width:760px; margin:0 auto; }
+.form-New-Address input, select { border-radius:3px; -moz-border-radius:3px; -webkit-border-radius:3px; }
+
+.address-Zipcode       { font-size:12px; width:350px; float:left; margin-right:20px; }
+.address-Zipcode input { font-size:14px; width:350px; height:16px; margin-top:10px; border:1px solid #cccccc; }
+
+.address-Identification       { font-size:12px; width:350px; float:left; margin-right:20px;  }
+.address-Identification input { font-size:12px; width:350px; height:18px; margin-top:10px; border:1px solid #cccccc; background:#FFF; }	
+
+.address-Desc       { font-size:12px; float:left; width:350px; margin-right:20px;  }
+.address-Desc input { font-size:12px; width:350px; height:18px; margin-top:10px; border:1px solid #cccccc;  }
+
+.address-Number       { font-size:12px; float:left; width:175px; margin-right:20px;  }
+.address-Number input { font-size:12px; width:175px; height:18px; margin-top:10px; border:1px solid #cccccc;  }
+
+.address-Complement       { font-size:12px; float:left; width:155px; margin-right:20px;  }
+.address-Complement input { font-size:12px; width:155px; height:18px; margin-top:10px; border:1px solid #cccccc;  }
+
+.address-Neighborhood       { font-size:12px; float:left;  width:290px; margin-right:20px; }
+.address-Neighborhood input { font-size:12px; width:290px; height:18px; margin-top:10px; border:1px solid #cccccc;  }
+
+.address-State        { font-size:12px; float:left; width:195px; margin-right:20px;  }
+.address-State select { font-size:12px; width:195px; height:24px; margin-top:10px; border:1px solid #cccccc;  }
+
+.address-City        { font-size:12px; float:left; width:195px; margin-right:20px;  }
+.address-City select { font-size:12px; width:195px; height:24px; margin-top:10px; border:1px solid #cccccc;  }
+
+ul.Address li .errors li { margin:10px 0 0 0; padding:0px; border:none; }
+
+a.edit-Form { display:block; width:880px; clear:both; text-align:right; color: #009AD4; text-decoration:none; }
+a:hover.edit-Form { text-decoration:underline; }
+
+.check-Promotion-Dots { width:100%; padding:10px 0; border-top:1px dashed #cccccc; text-align:center; }
+
+/* Detalha Checkout */
+.checkout-Detail strong { font-weight:normal; font-size:12px; }
+.checkout-Detail span   { float:left; padding:5px; background:#f4f4f4; border:1px solid #e1e1e1; font-size:12px; font-weight:normal; color:#666666; margin-top:10px; margin-right:5px; }
+.checkout-Detail p      { color:#333333; display:inline; font-weight:bold; }

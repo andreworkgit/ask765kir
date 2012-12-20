@@ -1,0 +1,572 @@
+@charset "utf-8";
+
+
+/* Geral */
+
+.header {
+    padding:10px 0 0 0;
+}
+.rounded {
+    border-radius:5px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+}
+.shadow {-moz-box-shadow:0 1px 2px rgba(0,0,0,0.3); box-shadow:0 1px 2px rgba(0,0,0,0.3);}
+.clear {clear:both;}
+.center {width:1000px; margin:0 auto; position:relative;}
+.div_modos {width:1150px; text-align: right; position:relative;}
+a {text-decoration: none;}
+a:hover, .link {text-decoration: underline;}
+a:focus, .link:hover {text-decoration: none;}
+.campotxt {
+    background: url(../../images/app/bg-campotxt.png) repeat-x scroll left top #FFFFFF;
+    border: 1px solid #B6C7CB;
+    border-radius:3px;
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    height: 21px;
+    padding: 3px 5px;
+    margin:3px 0 0 0;
+    color:#999;
+    font-size:14px;
+}
+
+select.campotxt{
+    height: 28px;
+}
+
+.login_campotxt {
+    width:150px;
+}
+.bt { /*botaozinho cinza*/
+    border-radius:5px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    cursor: pointer;
+    font-weight: bold;
+    text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.4), 0 1px 1px rgba(255, 255, 255, 0.4);
+    background: url(../../images/app/bt-topo-saveme.png) repeat-x scroll 0 0 transparent;
+    height: 22px;
+    border:none;
+    text-align:center;
+    font-size:12px;
+    font-weight:normal;
+}
+h1, h2, h3 {
+    font-weight: bold;
+    letter-spacing: -0.04em;
+    margin: 5px 0 10px 0;
+}
+strong {
+    font-weight:bold;
+}
+/*estes sao o logo e links sociais*/
+.social_saveme li { /*define que a lista de botoes sera float*/
+    float: left;
+}
+.social_saveme li a { /*define que os links sao blos e define o sprite*/
+    background: url(../../images/app/saveme-redes.png) no-repeat scroll 0 0 transparent;
+    box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.45), 0 1px 2px rgba(255, 255, 255, 0.45);
+    display: block;
+    height: 17px;
+    margin: 6px 10px 0 0;
+    text-indent: -9999px;
+    width: 17px;
+}
+.social_saveme li a.saveme_twitter { /*aqui ele modifica background position do sprite*/
+    background-position: 0 0;
+}
+.social_saveme li a.saveme_twitter:hover, .social_saveme li a.saveme_twitter:focus {
+    background-position: 0 -17px;
+}
+.social_saveme li a.saveme_facebook {
+    background-position: -17px 0;
+}
+.social_saveme li a.saveme_facebook:hover, .social_saveme li a.saveme_facebook:focus {
+    background-position: -17px -17px;
+}
+/*fim do logo e icones sociais*/
+
+
+.other_deals {
+    margin:0 0 20px 0;
+}
+.facebook_fp {
+    padding:10px 0 10px 0 !important;
+    width:300px !important;
+}
+.other_deal_detail .timer {
+    width:280px;
+    margin-bottom:5px;
+}
+.other_deal_image {
+    float:left;
+}
+.past_other_deal_image {
+    float:left;
+    width:180px;
+    height:100px;
+}
+.past_other_deal_image img {
+    height:100px;
+}
+.other_deal_info {
+    float:left;
+    padding:0 15px 0 15px;
+    width:420px;
+    position:relative;
+    height:100px;
+}
+.other_deal_detail {
+    float:right;
+}
+.other_deal li {
+    border-bottom: 1px dotted #666666;
+    margin:0 0 10px 0;
+    padding:0 0 10px 0;
+}
+.other_deal li:last-child {
+    border:none;
+}
+
+.image_deal {
+    margin:0 0 0 0;
+}
+.location_list {
+    margin:10px 0 0 0;
+}
+.location_list strong {
+    font-size:16px;
+}
+.location_list li {
+    margin:5px 0 5px 0;
+    font-weight:bold;
+}
+.more_information {
+    border-top: 1px dotted #666666;
+    clear: both;
+    font-size: 16px;
+    padding-top: 10px;
+    margin:10px 0 0 0;
+    cursor:pointer;
+    text-align: right;
+    width: 100%;
+}
+
+.image_over {
+    position:absolute;
+    width:620px;
+    height:230px;
+    background:url(../../images/app/bg_over.png);
+    color:#fff;
+    font-size:30px;
+    padding:180px 0 0 0;
+    text-align:center;
+    letter-spacing:-0.04em;
+    font-weight:bold;
+    z-index:900;
+}
+/*imagem de oferta esgotada*/
+.image_over div {
+    background:-moz-linear-gradient(bottom, #900 0, #DC2C18 100%); /* Firefox 3.5+ */
+    background:-o-linear-gradient(bottom, #900 0, #DC2C18 100%); /* Opera 10.1+ */
+    background:-webkit-gradient(linear, left bottom, left top, color-stop(0,#900), color-stop(1,#DC2C18)); /* Chrome & Safari */
+    filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#DC2C18', endColorstr='#900'); /* IE6 & IE7 */
+    -ms-filter:"progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#DC2C18', endColorstr='#900')"; /* IE8 */
+    
+    border: medium none;
+    
+    padding:3px 0;
+    display:block;
+    width:80%;
+    margin:0 auto;
+    border-radius:5px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+}
+
+.border_previous {
+    border-bottom: 1px dotted #CCC;
+    padding: 10px 0 10px 0;
+    margin: 10px 0 10px 0;  
+}
+
+.box_search_results { background:#EFEFEF; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px; padding:10px; text-align:center; margin-bottom:20px; }
+
+@charset "utf-8";
+/* CSS Document */
+
+.title {
+    font-weight: bold;
+    margin: -10px 0 10px -10px;
+    text-transform: uppercase;
+    width: 660px;
+    height: 22px;
+    padding: 10px 15px;
+}
+.title_other {
+    margin: -10px 0 10px -10px;
+    height: 22px;
+    width:100%;
+    *width:98%;
+    padding: 10px 5px 10px 15px;
+}
+.location {
+    margin:15px 0 20px 0;
+}
+.location p {
+    margin:0 0 15px 0;
+}
+.deal_price {
+    text-align:center;
+}
+.deal_price span {
+    display:block;
+    font-weight:bold;
+    font-size: 10px;
+    padding:10px 0 5px 12px;
+    text-align:left;
+}
+.deal_price {
+    margin: 0 0 10px 0;
+}
+
+.deal_discount_price span {
+    display: block;
+    margin: 9px 0 3px;
+}
+.deal_discount_price strong {
+    font-size: 21px;
+    font-weight: normal;
+    position: relative;
+}
+.deal_discount_price strong span {
+    background: url(../../images/app/risco.png) no-repeat scroll 0 0 transparent;
+    height: 19px;
+    left: 50%;
+    margin: -9px 0 0 -60px;
+    position: absolute;
+    top: 50%;
+    width: 121px;
+    display: block;
+}
+
+
+.detail_other_deal_info .deal_buyers {
+    display:inherit;
+    margin:5px 0 5px 0;
+}
+
+
+.rules {
+    width:48%;
+    float:right;
+}
+.highlights {
+    width:48%;
+    float:left;
+}
+
+.location img {
+    float:right;
+    border:5px solid #f6f6f6;
+    margin:0 0 10px 10px;
+}
+
+
+/*este arquivo define o sidebar para direita*/
+.content {
+    float:left;
+    margin-bottom: 20px;
+   /* min-height: 650px;*/
+    width: 600px;
+}
+.sidebar_content {
+    float:right;
+    width:300px;
+}
+
+
+.mycoupons {
+    float:none;
+}
+table.mycoupons {
+    border:1px solid #CCC;
+    width:100%;
+    margin:0 0 20px 0;
+}
+.mycoupons_wait {
+    float:none;
+}
+table.mycoupons_wait {
+    border:1px solid #CCC;
+    width:100%;
+}
+thead th {
+    padding:5px 10px;
+}
+tbody td {
+    padding:20px 10px;
+}
+tbody tr:hover {
+}
+.imgmycoupons {
+    width:100px;
+}
+.mycoupons_border {
+    border-bottom:1px dotted #ccc;
+}
+.mycoupons thead {
+    background-color:#999;
+    
+    text-shadow:0 1px 2px rgba(0,0,0,0.4);
+    color:#FFF;
+    font-size:14px;
+    font-weight:bold;
+}
+.mycoupons_wait thead {
+    background-color:#CCC;
+    
+    text-shadow:0 1px 2px rgba(0,0,0,0.4);
+    color:#FFF;
+    font-size:14px;
+    font-weight:bold;
+}
+
+/*
+ * jQuery Nivo Slider v2.6
+ * http://nivo.dev7studios.com
+ *
+ * Copyright 2011, Gilbert Pellegrom
+ * Free to use and abuse under the MIT license.
+ * http://www.opensource.org/licenses/mit-license.php
+ * 
+ * March 2010
+ */
+ 
+ 
+/* The Nivo Slider styles */
+.nivoSlider {
+    position:relative;
+}
+.nivoSlider img {
+    position:absolute;
+    top:0px;
+    left:0px;
+}
+/* If an image is wrapped in a link */
+.nivoSlider a.nivo-imageLink {
+    position:absolute;
+    top:0px;
+    left:0px;
+    width:100%;
+    height:100%;
+    border:0;
+    padding:0;
+    margin:0;
+    z-index:6;
+    display:none;
+}
+/* The slices and boxes in the Slider */
+.nivo-slice {
+    display:block;
+    position:absolute;
+    z-index:5;
+    height:100%;
+}
+.nivo-box {
+    display:block;
+    position:absolute;
+    z-index:5;
+}
+/* Caption styles */
+.nivo-caption {
+    position:absolute;
+    left:0px;
+    top:0px;
+    background:url(../../images/app/bg-caption.png);
+    color:#fff;
+    padding:5px;
+    opacity:1 !important; /* Overridden by captionOpacity setting */
+    width:590px;
+    z-index:8;
+}
+.nivo-caption p {
+    padding:5px;
+    margin:0;
+}
+.nivo-caption a {
+    display:inline !important;
+    font-size:12px;
+}
+.nivo-caption h4 {
+    padding:0 0 5px 0 !important;
+    font-size:20px !important;
+}
+.nivo-caption h4 a {
+    
+    font-size:20px !important;
+    text-decoration:none !important;
+}
+.nivo-html-caption {
+    display:none;
+}
+/* Direction nav styles (e.g. Next & Prev) */
+.nivo-directionNav a {
+    position:absolute;
+    top:50%;
+    z-index:9;
+    cursor:pointer;
+}
+.nivo-prevNav {
+    left:0px;
+}
+.nivo-nextNav {
+    right:0px;
+}
+/* Control nav styles (e.g. 1,2,3...) */
+.nivo-controlNav a {
+    position:relative;
+    z-index:9;
+    cursor:pointer;
+}
+.nivo-controlNav a.active {
+    font-weight:bold;
+}
+
+.theme-default #slider {
+    width:600px;
+    height:400px;
+}
+
+/*************************************
+barrinha cinza de baixo. é padrão para tudo
+**************************************/
+
+.saveme_cupons_bar {
+    height:41px;
+    width:100%;
+    background-color:#F0F0F0;
+    font-size:11px;
+    color:#333;
+}
+.saveme_cupons_logo {
+    display:block;
+    float:right;
+    background:url(../../images/app/logo-saveme-cupons.gif) no-repeat;
+    margin:3px 0 0 0;
+    width:71px;
+    height:33px;
+}
+.saveme_cupons_links {
+    float:right;
+}
+.saveme_cupons_links li {
+    float:left;
+    padding:15px 0 0 0;
+    margin:0 15px 0 0;
+}
+.saveme_cupons_links li a {text-decoration:underline;color:#333;}
+.saveme_cupons_copy {
+    float:left;
+    padding:15px 0 0 0;
+}
+.saveme_cupons_copy a {text-decoration:underline;color:#0099cc;}
+.saveme_cupons_copy a:hover, .saveme_cupons_links li a:hover {text-decoration:none;}
+
+
+/***********************************
+footer
+************************************/
+
+.footer_links {
+    float:left;
+    margin:20px 35px 0 0;
+}
+.footer_links li {
+    margin:5px 0 0 0;
+}
+
+/**/
+
+.city_selected {
+    float:left;
+    width:400px;
+}
+
+.city_selected td {
+    font-size: 14px;
+    color: #fff;
+}
+
+.city_selected td.td_sub_title{
+    font-weight: normal;
+}
+
+.email_register {
+    float:right;
+    height:100px;
+}
+
+.email_register label {
+    display:block;
+}
+
+.email_register .campotxt {
+    float:left;
+    margin:0 5px 0 0;
+    width:190px;
+  _width:170px;
+}
+.email_register_form {
+    margin:0 0 0 0;
+    float:right;
+}
+.email_register_form table{
+
+}
+.email_register_form td{
+    text-align: center;
+    margin: 2px;
+    padding: 2px;
+}
+  html, body {height:100%; margin:0; padding:0;}
+  #page-background {position:fixed; top:0; left:0; width:100%; height:100%;}
+  #content_full {position:relative; z-index:1;}
+  
+/* Radius */
+.box-Radius-Border { border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px; }
+  
+/* Promotion */
+.box_Award     { float:left; margin-left:20px; width:300px; padding:10px; background:#F3F3F3; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px; }
+.box_Award img { border:1px solid #E1E1E1; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px; }  
+.box_Award h2  { font-size: 20px; color:#006600; border-bottom:1px dotted #cccccc; padding-bottom:10px; }
+
+/* Area Logada */
+.padding_Internal { padding:0px 25px 25px 25px; height:310px; }
+.margin-Right     { margin-right:20px; }
+.margin-Top       { margin-top:20px; }
+
+.box-Internal                 { float:left; text-align:left;  }
+.box-Internal a               { width:433px; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px; height:130px; display:block; text-decoration:none; color:#333; border:1px solid #e1e1e1; cursor:pointer; }
+.box-Internal a:hover         { background:#f7f7f7; }
+.box-Internal strong          { font-weight:bold; }
+.box-Internal span            { font-size:12px; width:320px; display:block; margin:10px 0 10px 0; }
+.box-Internal ul li           { float:left; padding:15px; height:100px;  }
+.box-Internal ul li.side-Icon { background:url(../../images/app/site/login-bkg.gif) #f2f2f2 repeat-x; border-radius:5px 0px 0px 5px; -moz-border-radius:5px 0px 0px 5px; -webkit-border-radius:5px 0px 0px 5px; border-right:1px dotted #cfcfcf; width:50px; padding-top:40px; height:75px; }
+
+/* Aviso do valor a pagar */
+.value-Desc     { background:#f1fff1; border:1px solid #b1ddb1; clear:both; padding:10px 10px 10px 45px; margin:10px 0; font-size:14px; color:#177717; height:28px; line-height:28px; position:relative; }
+.value-Desc img { position:absolute; left:10px; }
+
+/* Box Moda */
+.title-Fashion-Box-Variable        { background:#f9f9f9; border:1px solid #d9d9d9; padding:10px 0; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px; font-size:12px; float:left; width:47%; }
+.margin-Left                       { margin:5px 0 5px 5px; }
+.margin-right                      { margin:5px 5px 5px 0; }
+.title-Fashion-Box-Variable select { margin-top:5px; margin:0 10px; width:85%; }
+.title-Fashion-Box-Variable-out    { margin:0 13px 5px 13px; }
+.title-Fashion-Box-Variable-out strong { margin:0 0 5px 0; font-size:14px; width:350px; display:block; }
+.title-Fashion-Box-Variable span   { margin:0 10px; display:block; }
+
+.content_container{
+    margin: 0 0 20px 0;

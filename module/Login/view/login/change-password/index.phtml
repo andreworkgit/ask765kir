@@ -1,0 +1,38 @@
+<?php 
+$title = 'Change Password';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<?php
+
+switch($this->msg):
+
+  case 1:
+    ?> <h5>Usuário não encontrado</h5>     <?php
+    break;
+  
+  
+  case 2:
+    ?> <h5>Senha alterada com sucesso</h5>     <?php
+    
+    break;
+  
+endswitch;
+?>
+<?php
+
+$form = $this->form;
+//$form->setAttribute('action', $this->url('album', array('action' => 'add')));
+$form->prepare();
+
+echo $this->form()->openTag($form) . PHP_EOL;
+echo $this->formHidden($form->get('id')) . PHP_EOL;
+echo $this->formRow($form->get('senha')) . PHP_EOL;
+echo $this->formRow($form->get('contra_senha')) . PHP_EOL;
+
+echo $this->formInput($form->get('submit')) . PHP_EOL;
+echo $this->form()->closeTag($form) . PHP_EOL;
+
+
+//echo $this->partial('login/register/confirmationEmail.phtml',array());

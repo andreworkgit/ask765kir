@@ -1,0 +1,111 @@
+@charset "utf-8";
+/* CSS Document */
+
+#form_login_site {width:650px;}
+#form_register {width:650px;}
+#form_change_password {width:400px;margin:10px 0 80px 0; float:left}
+
+#form_contact-us {width:550px;}
+#form_contact-us textarea {width:515px;}
+#form_contact-us .decorator_big {width:500px;}
+#form_contact-us select {width:515px;}
+
+#form_advertiser {width:600px;}
+#form_advertiser textarea {width:560px;}
+
+
+/*formulario grande*/
+.decorator_big {float:left;	width:270px; padding:0 20px 0 0; margin:20px 0 0 0;}
+.decorator_100 {float:left;	width:100%; padding:0 20px 0 0; margin:20px 0 0 0;}
+.decorator_big label {padding:0; font-weight:bold;}
+.decorator_big input {width:100%; padding:5px;}
+.decorator_big input[type=radio] {width:100%; padding:5px; vertical-align: bottom;}
+.decorator_big select {width:105%; padding:6px; margin:3px 0 0 0; background: url(../images/bg-campotxt.png) repeat-x scroll left top #FFFFFF; border: 1px solid #B6C7CB; border-radius:3px; -moz-border-radius:3px; -webkit-border-radius:3px; }
+.decorator_big br {display:none;}
+
+
+
+/*formulario medio*/
+.decorator_medium {float:left; width:230px; padding:0 20px 0 0; margin:20px 0 0 0;}
+.decorator_medium label {padding:0; font-weight:bold;}
+.decorator_medium input {width:100%; padding:5px}
+.decorator_medium select {width:105%; padding:6px; margin:3px 0 0 0; background: url(../images/bg-campotxt.png) repeat-x scroll left top #FFFFFF; border: 1px solid #B6C7CB; border-radius:3px; -moz-border-radius:3px; -webkit-border-radius:3px; }
+.decorator_medium br {display:none;}
+
+
+
+
+/*estilos padrao para radios e etc*/
+.form_hidden {display:none;}
+
+.decorator_submit {width:100%; float:left; margin:10px 0 0 0; padding:0 20px 0 0;}
+.decorator_submit_inline { float:left; padding:36px 10px 0 10px;}
+
+.decorator_check {width:100%; float:left; margin:20px 0 0 0; padding:0 20px 0 0;}
+.decorator_terms {width:100%; float:left; margin:20px 0 0 0; padding:0 20px 0 0;}
+.decorator_terms label {font-weight:bold;}
+.form_input_radio {width:15px !important; margin:5px 0 0 10px;}
+.form_input_check {width:15px !important; float:left !important; margin-top:0px;}
+.decorator_terms textarea {width:100%; height:200px; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:12px;}
+.decorator_credit_card_terms textarea {width:98%; height:200px; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:12px;}
+
+/*captcha*/
+
+#captcha {display:none}
+
+/*campos para presente*/
+.div_gift { display: none;}
+.div_gift_error { color: #900;}
+.div_gift_error input { background-color: #FFDBCE;}
+
+
+/*errors*/
+.errors,.success {
+ padding:0 0 5px 0;
+}
+.errors li {
+ margin:0;
+ color:#900;
+ font-size:11px;
+}
+.success li {
+ margin:0;
+ color:#383;
+ font-size:11px;
+}
+
+/* Forma de Pagamento */
+
+.radio-Payment-Type       { display:block; margin:15px 0px; clear:both; }
+.radio-Payment-Type br    { display:none; }
+.radio-Payment-Type label { padding:15px; position:relative; background:#F3F3F3; margin:15px 15px 0 0px; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;  }
+.radio-Payment-Type input { top:5px; position:relative; background:#F3F3F3; border:none; }
+
+.radio-Payment-Service       { display:block; clear:both; width:680px; padding:10px 0 0 260px; clear:both; margin:0 0 15px 0; border-bottom:1px dotted #cccccc; height:42px; }
+.radio-Payment-Service br    { display:none; }
+.radio-Payment-Service label { padding:15px; position:relative; background:#f7f7f7; margin:15px 15px 0 0px; border-radius:5px 5px 0  0; -moz-border-radius:5px 5px 0  0; -webkit-border-radius:5px 5px 0  0; border:1px solid #f0f0f0; border-bottom:none; }
+.radio-Payment-Service input { top:5px; position:relative; background:#F3F3F3; border:none; }
+
+.radio-Payment-Flag       { clear:both; width:550px; margin:0 auto; margin-bottom:15px; }
+.radio-Payment-Flag br    { display:none;  }
+.radio-Payment-Flag img   { margin-right:20px; }
+.radio-Payment-Flag input { background:#ffffff; border:none; }
+
+
+.form-Payment        { width:550px; background:#F3F3F3; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px; padding:10px; margin:0 auto; margin-top:5px; margin-bottom:10px; }
+.form-Payment label  { width:250px; position:relative; float:left; height:20px; text-align:right; padding-top:3px; margin-right:10px; font-weight:normal; }
+.form-Payment input  { border:1px solid #f0f0f0; width:250px; }
+.form-Payment select { border:1px solid #f0f0f0; }
+
+.form-Payment-Error        { width:550px; background:#F3F3F3; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px; padding:10px; margin:0 auto; margin-top:5px; margin-bottom:10px;   }
+.form-Payment-Error label  { width:250px; position:relative; float:left; height:20px; text-align:right; padding-top:3px; margin-right:10px; font-weight:normal; color:#990000;  }
+.form-Payment-Error input  { background:#FFDBCE; border: none; }
+.form-Payment-Error select { background:#FFDBCE; border: none; }
+
+/* box Login iFrame*/
+.link-Forgot-password { position:absolute; top:170px; left:30px; }
+.link-Cancel          { position:absolute; top:190px; left:30px; }
+
+#input-ForIE7 { *width:100px; }
+/* box Login iFrame*/
+

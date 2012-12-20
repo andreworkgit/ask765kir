@@ -1,0 +1,9 @@
+@charset "utf-8";
+/* CSS Document */
+
+.loading_span {
+	display:block;
+	background:url(../images/loading.gif) no-repeat;
+	width:46px;
+	height:46px;
+}

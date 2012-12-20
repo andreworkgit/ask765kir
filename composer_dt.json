@@ -1,0 +1,6 @@
+ {
+     "minimum-stability": "alpha",
+     "require": {
+         "doctrine/doctrine-orm-module": "0.*"
+     }
+ }

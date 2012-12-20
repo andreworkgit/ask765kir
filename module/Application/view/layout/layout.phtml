@@ -1,0 +1,397 @@
+<?php
+// Get params in the controllers
+$children = $this->viewModel()->getCurrent()->getChildren();
+$child = $children[0];
+
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <?php echo $this->headTitle('Nome projeto - Compre 100 pixels, concorra prêmios e anuncie qualquer coisa para sempre')->setSeparator(' - ')->setAutoEscape(false) ?>
+  <meta property="og:title" content="" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="" />
+  <meta property="og:url" content="" />
+  <meta property="og:site_name" content="OutMarcas" />
+  <meta property="og:locale" content="pt_BR" />
+   <!-- Le styles -->
+   <?php
+   echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/images/favicon.ico'))
+           ->prependStylesheet($this->basePath() . '/css/app/checkout.css')
+           ->prependStylesheet($this->basePath() . '/css/app/green_position1.css')
+           ->prependStylesheet($this->basePath() . '/css/app/blockUI.css')
+           ->prependStylesheet($this->basePath() . '/css/app/forms.css')
+           ->prependStylesheet($this->basePath() . '/css/app/fancybox/fancybox.css')
+           ->prependStylesheet($this->basePath() . '/css/app/reset.css')
+           
+   ?>        
+   <!-- Scripts -->
+   <?php echo $this->headScript()->prependFile($this->basePath() . '/js/app/default.js', 'text/javascript')
+   								 ->prependFile($this->basePath() . '/js/app/jquery.maphilight.js')
+                                  ->prependFile($this->basePath() . '/js/app/main.js')
+                                  ->prependFile($this->basePath() . '/js/app/jquery.nivo.slider.js')
+                                  ->prependFile($this->basePath() . '/js/app/fancybox.js')
+                                  ->prependFile($this->basePath() . '/js/app/jquery.maskedinput-1.2.2.js')
+                                  ->prependFile($this->basePath() . '/js/app/jquery.cookie.js')
+                                  ->prependFile($this->basePath() . '/js/app/jquery-1.5.1.min.js', 'text/javascript')
+								  
+                                 
+                                 
+                                 
+                                 
+                                 
+                                 //->prependFile($this->basePath() . '/js/app/default.js')
+                                 
+   ?>
+
+    <script type="text/javascript">
+    //<![CDATA[
+var vCityId='1000000';    //]]>
+</script>
+
+    <style type="text/css">
+        
+    .bg_store {
+      background: url('<?php echo $this->basePath();  ?>/images/app/background/supperofertas20120621105224.jpg') no-repeat center center;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='<?php echo $this->basePath();  ?>/images/app/background/supperofertas20120621105224.jpg', sizingMethod='scale');
+      -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='<?php echo $this->basePath();  ?>/images/app/background/supperofertas20120621105224.jpg', sizingMethod='scale')";
+      width:100%;
+      }
+    
+      .logo_store {background:url('<?php echo $this->basePath();  ?>/images/app/logo/logotipo300px.png') no-repeat; width:190px; margin:0 20px 0 0; height:50px; display:block; float:left; text-indent:-9999px}
+
+    </style>
+   
+    <script type="text/javascript">
+
+        // fancybox!
+        var no_fancybox = true;
+        // analytics
+    </script>
+    
+    <!-- Piwik -->
+        <!-- End Piwik Tracking Code -->
+    
+    <!--[if IE 6]><style type="text/css">#page-background {position:absolute; z-index:-1; top: expression(document.compatMode=="CSS1Compat"? document.documentElement.scrollTop+0+"px" : body.scrollTop+0+"px");} #content {position:absolute; z-index:1;} </style> <![endif]-->
+
+</head>
+<body>
+  <div class="bg_store" style=" background-attachment: fixed;">
+       
+         
+    <div id="content_full">
+    <input type="hidden" id="site_permalink" value=""/>  
+
+    <div id="fb-root"></div>
+
+    <div class="header">
+        <div class="center">
+            <a href="" class="logo_store" title="">Logo da Empresa</a>
+            
+            <!-- City Selection -->
+      <!-- City Selection -->
+
+<div class="city_selected" style="display: <?php if($this->show_carrinho) echo "block"; else echo "none"; ?>">
+    <table>
+      <tr>
+        <td><span id="carrinho_bar">Carrinho</span></td>
+        <td>Qtd.</td>
+        <td>Valor total</td>
+      </tr>
+      <tr>
+        <td class="td_sub_title">Quatidade de área(s) selecionada(s)</td>
+        <td>{$itens}</td>
+        <td>R$ {$valor_total}</td>
+      </tr>
+      <tr>
+        <td class="td_sub_title"></td>
+        <td></td>
+        <td><input type="button" class="btn_submit_register rounded shadow" value=" Comprar " title=" Comprar " onclick="window.location='{$url_carrinho}'" id="btn_submit_register_newsletter"></td>
+      </tr>
+        
+    </table>
+   
+    
+</div>
+
+<!-- End City Selection -->               
+            <!-- End City Selection -->            
+        
+            <div class="email_register"> 
+              
+        <!-- Email register -->
+        <!-- Email register -->
+<div id="email_register">
+    <div class="email_register_form">
+        <label for="" id="compra_credito">Comprar Créditos</label>
+            <table>
+                <tr>
+                    <td>
+                        <form name="pagamentodigital" action="https://www.pagamentodigital.com.br/checkout/pay/" method="post" target="_blanck">
+                          <input name="email_loja" type="hidden" value="andrework@gmail.com">
+                          <input name="tipo_integracao" type="hidden" value="PAD">
+                          <input name="produto_descricao_1" type="hidden" value="R$ 3,00 de Crédito">
+                          <input name="produto_qtde_1" type="hidden" value="1"> 
+                          <input name="produto_valor_1" type="hidden" value="3.00" >
+                          <input type="submit" class="btn_submit shadow" value=" R$ 3,00 " title="R$ 3,00" id=""/>
+                        </form>
+                    </td>
+                    <td>
+                        <form name="pagamentodigital" action="https://www.pagamentodigital.com.br/checkout/pay/" method="post" target="_blanck">
+                          <input name="email_loja" type="hidden" value="andrework@gmail.com">
+                          <input name="tipo_integracao" type="hidden" value="PAD">
+                          <input name="produto_descricao_1" type="hidden" value="R$ 6,00 de Crédito">
+                          <input name="produto_qtde_1" type="hidden" value="1"> 
+                          <input name="produto_valor_1" type="hidden" value="6.00" >
+                          <input type="submit" class="btn_submit shadow" value=" R$ 6,00 " title="R$ 6,00" id=""/>
+                        </form>
+                    </td>
+                    <td>
+                        <form name="pagamentodigital" action="https://www.pagamentodigital.com.br/checkout/pay/" method="post" target="_blanck">
+                          <input name="email_loja" type="hidden" value="andrework@gmail.com">
+                          <input name="tipo_integracao" type="hidden" value="PAD">
+                          <input name="produto_descricao_1" type="hidden" value="R$ 9,00 de Crédito">
+                          <input name="produto_qtde_1" type="hidden" value="1"> 
+                          <input name="produto_valor_1" type="hidden" value="9.00" >
+                          <input type="submit" class="btn_submit shadow" value=" R$ 9,00 " title="R$ 9,00" id=""/>
+                        </form>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <form name="pagamentodigital" action="https://www.pagamentodigital.com.br/checkout/pay/" method="post" target="_blanck">
+                          <input name="email_loja" type="hidden" value="andrework@gmail.com">
+                          <input name="tipo_integracao" type="hidden" value="PAD">
+                          <input name="produto_descricao_1" type="hidden" value="R$ 12,00 de Crédito">
+                          <input name="produto_qtde_1" type="hidden" value="1"> 
+                          <input name="produto_valor_1" type="hidden" value="12.00" >
+                          <input type="submit" class="btn_submit shadow" value="R$ 12,00" title="R$ 12,00" id=""/>
+                        </form>
+                    </td>
+                    <td>
+                        <form name="pagamentodigital" action="https://www.pagamentodigital.com.br/checkout/pay/" method="post" target="_blanck">
+                          <input name="email_loja" type="hidden" value="andrework@gmail.com">
+                          <input name="tipo_integracao" type="hidden" value="PAD">
+                          <input name="produto_descricao_1" type="hidden" value="R$ 15,00 de Crédito">
+                          <input name="produto_qtde_1" type="hidden" value="1"> 
+                          <input name="produto_valor_1" type="hidden" value="15.00" >
+                          <input type="submit" class="btn_submit shadow" value="R$ 15,00" title="R$ 15,00" id=""/>
+                        </form>
+                    </td>
+                    <td>
+                        <form name="pagamentodigital" action="https://www.pagamentodigital.com.br/checkout/pay/" method="post" target="_blanck">
+                          <input name="email_loja" type="hidden" value="andrework@gmail.com">
+                          <input name="tipo_integracao" type="hidden" value="PAD">
+                          <input name="produto_descricao_1" type="hidden" value="R$ 18,00 de Crédito">
+                          <input name="produto_qtde_1" type="hidden" value="1"> 
+                          <input name="produto_valor_1" type="hidden" value="18.00" >
+                          <input type="submit" class="btn_submit shadow" value="R$ 18,00" title="R$ 18,00" id=""/>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <div class="clear"></div>
+        
+        <span class="erro rounded shadow" style="display: none;" ></span>
+    </div>
+</div>
+<!-- End Email register -->                <!-- End Email register -->
+                
+            </div>    
+           
+            <div class="clear"></div>
+        </div>
+    </div>
+   
+    <!-- Helper Box de Cidades -->
+    <!--BOX CITIES-->
+    <div class="center select_other_city_box">
+        <div class="arrow_select_city"></div>
+        <div class="select_other_city rounded">
+            <p class="select_city_title">
+                Detalhes:                <a href="javascript:;" onclick="selectOtherCity();" class="close_select_city rounded" title="Fechar">X</a>
+            </p>
+            <p>Área - 74,93,29,33</p>
+            <p>Área - 74,93,29,33</p>
+            <p>Área - 74,93,29,33</p>
+            <p style="float:right;"><input type="submit" class="btn_submit_register rounded shadow" value="Confirmar Compra" title="Confirmar Comprar" id="btn_submit_register_newsletter"></p>
+            <div class="clear"></div>
+        </div>
+    </div>
+<!--END BOX CITIES-->
+   
+    <!--MENU-->
+    <div class="nav"> 
+        <div class="center rounded">
+
+            <!-- Helper Box do Menu -->
+            <!--MENU-->
+<ul class="nav_links">
+    <li><span><img src="<?php echo $this->basePath();  ?>/images/app/m51_livre.jpg" /> Livres</span></li>
+    <li><span><img src="<?php echo $this->basePath();  ?>/images/app/m51_comprado.jpg" /> Registradas</span></li>
+    <li>
+        <span><img src="<?php echo $this->basePath();  ?>/images/app/m51_minhas.jpg" /> Minhas</span>
+        
+    </li>
+    <li><span><img src="<?php echo $this->basePath();  ?>/images/app/m51_carrinho.jpg" /> No Carrinho</span></li>
+    <!--<li><a href="http://cupom.saveme.com.br/supperofertas/faq/index/" class=" rounded" title="FAQ">FAQ</a></li>
+    <li><a href="http://cupom.saveme.com.br/supperofertas/contact-us/index/" class=" rounded" title="Fale conosco">Fale conosco</a></li>-->
+</ul>
+
+<!--END MENU-->           
+            
+           
+            <!-- Usuario Logado -->
+            <?php if(!empty($this->dados['nome_usuario'])): ?>
+            <div id="SVM_logged" style="">
+                <ul class="nav_menu_login">
+                    <li><span class="login_align_list">Olá, <span id="logged_name"><?php echo $this->dados['nome_usuario']; ?></span> </span> você tem R$ <?php echo $this->dados['credito_usuario']; ?> de crédito</li>
+                    <li><a href="{$url_minha_conta}" title="Minha Conta" >Minha Conta</a></li>
+                   <li><a href="{$url_logout}" title="Sair">Sair</a></li>
+                    
+                </ul>
+            </div>
+            <?php else: ?>
+            
+            <!-- Usuario Deslogado -->
+            <div id="SVM_dologin">
+                <ul class="nav_menu_login">
+                    <?php if(!empty($this->dados['nome_indicado'])): ?><li ><span class="indicado_align_list">Indicado por: <?php echo $this->dados['nome_indicado']; ?> -></span></li><?php endif; ?>
+                    <li><a href="{$url_cadastro}" class="register_link_nav" title="Cadastre-se">Cadastre-se</a></li>
+                    <li><a href="javascript:;" class="do_login_nav" onclick="loginNavBar();" title="Faça seu Login">Faça seu Login</a></li>
+                </ul>
+            </div>
+            
+            
+             <?php endif; ?>
+            <div class="clear"></div>
+           
+           
+            <!-- Box login --> 
+            <!--BUY LOGIN IFRAME-->
+<div class="login_container" >
+  <div class="line_login_container"></div>
+  <br>
+  <iframe id="iframe_login" src="<?php echo $this->url('login-iframe'); ?>" scrolling="no" height="176" width="245" style="*width:230px;" frameborder="0"></iframe>
+    <p class="forgot_password_login_nav link-Forgot-password"><a id="inline" class="iframe" href="<?php echo $this->url('reminder'); ?>" title="">Esqueci minha senha</a></p>
+  <p class="forgot_password_login_nav link-Cancel"><a href="javascript:;" onclick="loginNavBar();" title="Cancelar">Cancelar</a></p>
+
+</div>
+<!--END LOGIN IFRAME-->            <!-- Box login --> 
+            
+        </div>
+         
+    </div>
+    <!--END MENU-->
+
+    <!--FLASH MESSAGE-->
+    <?php if(!empty($child->dados['form_sucesso'])): ?>
+    <div class="center" id="flash_message">
+        <div class="fm_ok rounded shadow">
+          <?php
+          //var_dump($this->dados);
+            switch($child->dados['form_sucesso']){
+              
+              case 13:
+                echo "Formulário enviado com sucesso, logo entraremos em contato.";
+                break;
+            }
+          ?>
+        </div>
+    </div>
+    <?php endif; ?>
+    
+    
+    <?php if(!empty($this->dados['form_error'])): ?>
+    <div class="center" id="flash_message">
+        <div  class="fm_error rounded shadow"><?php echo $this->dados['form_error']; ?></div>
+    </div>
+    <?php endif; ?>
+    
+    
+    <?php if(!empty($this->dados['form_alert'])): ?>
+    <div class="center" id="flash_message">
+        <div  class="fm_alert rounded shadow"><?php echo $this->dados['form_alert']; ?></div>
+    </div>
+    <?php endif; ?>
+    
+    
+    <!--FLASH MESSAGE-->
+
+    <!--CONTENT-->
+       
+      
+    <div class="content_container">
+
+            <?php echo $this->content; ?>
+
+            <!--END SIDEBAR-->
+            <div class="clear"></div>
+            
+        </div>
+    </div>
+    <!--CONTENT-->
+
+    <!--FOOTER-->
+    <div class="footer">
+        <div class="center">
+           
+            <ul class="footer_links">
+                <li class="footer_links_first">Institucional</li>
+
+                  <li><a href="<?php echo $this->url('quem-somos'); ?>" class="rounded" title="Quem Somos">Quem Somos</a></li>
+                
+                  <li><a href="<?php echo $this->url('faq'); ?>" class="rounded" title="FAQ">FAQ</a></li>
+
+                  <li><a href="" class="rounded" title="Como Funciona?">Como Funciona?</a></li>
+                
+            </ul>
+           
+                <ul class="footer_links">
+                    <li class="footer_links_first">Programa de Afiliados</li>
+                    <li><a href="<?php echo $this->url('afiliados'); ?>" class="rounded" title="Anuncie Aqui">Como Funciona?</a></li>
+                </ul>
+                       
+            <ul class="footer_links">
+                <li class="footer_links_first">Contato</li>
+                <li><a href="<?php echo $this->url('faleconosco'); ?>" class="rounded" title="Fale conosco">Fale conosco</a></li>
+            </ul>
+
+                                  
+            <ul class="footer_links">
+                <li class="footer_links_first"></li>
+                                    <li><img src="https://www.pagamentodigital.com.br/site/banner/campanhas/_CompraSegura/Selo-CompraSegura-184x120.png" alt="Selo Compra Segura" border="0"/></li>
+                                            </ul>
+        </div>
+    </div>
+    <!--END FOOTER-->
+
+    <!--LINKS FOOTER-->
+    <div class="saveme_cupons_bar">
+        <div class="center">
+            <p class="saveme_cupons_copy"><a href='/'> OutMarcas </a> - Todos os direitos reservados <?php echo $this->inlineScript() ?></p>
+            <span style="color:#F0F0F0;">2012-08-29 18:55:34</span>
+            <p class="saveme_cupons_logo"></p>
+            <ul class="saveme_cupons_links">
+        
+            </ul>
+           
+        </div>
+    </div>
+    <!--END LINKS FOOTER-->
+</div>
+</div>
+
+
+</body>
+</html>
+
+
+
+
