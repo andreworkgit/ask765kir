@@ -33,7 +33,7 @@ class ChangePasswordController extends AbstractActionController {
         
         if($token && $email){
             
-            $repository = $this->getEm()->getRepository("Login\Entity\Users");
+            $repository = $this->getEm()->getRepository("Application\Entity\Users");
             $obj_records_users = $repository->findByTokenAndEmail($token,$email);
             //var_dump($repository,$obj_records_users);
             $form = $this->getServiceLocator()->get("service_changepassword_form");
@@ -56,21 +56,21 @@ class ChangePasswordController extends AbstractActionController {
                     $records_post['data_alteracao']  = $data;
                     $records_post['senha'] = $service->encryptPassword($records_post['senha']);
                     $service->update($records_post);
-                    $error = 2;
+                   	$this->redirect()->toRoute('home-message',array('tipo'=>'fsuccess','ref'=>'changepassword','cod_msg'=>'1'));
                     //return $this->redirect()->toRoute('home');
                   }
                }
                
                 
             }else{
-                $error = 1; //usuario nao encontrado
+                $this->redirect()->toRoute('home-message',array('tipo'=>'ferror','ref'=>'changepassword','cod_msg'=>'1'));
             }
             
         }else{
             return $this->redirect()->toRoute('home');
         }
         
-        return new ViewModel(array('form' => $form,'msg'=>$error));    
+        return new ViewModel(array('form' => $form));    
 
     }
     

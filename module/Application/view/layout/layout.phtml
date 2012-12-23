@@ -291,26 +291,51 @@ var vCityId='1000000';    //]]>
     <!--END MENU-->
 
     <!--FLASH MESSAGE-->
-    <?php if(!empty($child->dados['form_sucesso'])): ?>
+    <?php if(!empty($child->dados['fsuccess'])): ?>
     <div class="center" id="flash_message">
         <div class="fm_ok rounded shadow">
           <?php
-          //var_dump($this->dados);
-            switch($child->dados['form_sucesso']){
+            switch($child->dados['fsuccess']['ref']):
               
-              case 13:
-                echo "Formulário enviado com sucesso, logo entraremos em contato.";
-                break;
-            }
+				case "changepassword":
+					
+					switch ($child->dados['fsuccess']['cod_msg']) :
+						case 1:
+							echo "Senha alterada com sucesso";
+							break;
+					
+					endswitch;
+					
+					break;
+					
+            endswitch;
           ?>
         </div>
     </div>
     <?php endif; ?>
     
     
-    <?php if(!empty($this->dados['form_error'])): ?>
+    <?php if(!empty($child->dados['ferror'])): ?>
     <div class="center" id="flash_message">
-        <div  class="fm_error rounded shadow"><?php echo $this->dados['form_error']; ?></div>
+        <div class="fm_error rounded shadow">
+        	
+        <?php
+            switch($child->dados['ferror']['ref']) :
+              
+				case "changepassword":
+					
+					switch ($child->dados['ferror']['cod_msg']) :
+						case 1:
+							echo "Usuário não encontrado";
+							break;
+					
+					endswitch;
+					
+					break;
+					
+            endswitch;
+          ?>	
+        </div>
     </div>
     <?php endif; ?>
     

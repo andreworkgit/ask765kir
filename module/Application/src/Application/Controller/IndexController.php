@@ -25,8 +25,14 @@ class IndexController extends AbstractActionController {
     }
     
     public function indexAction() {
-		
-        $records['form_sucesso'] = $this->params()->fromRoute('msg_id', 0);
+
+        $referencia = $this->params()->fromRoute('ref', 0);
+		$tipo 		= $this->params()->fromRoute('tipo', 0);
+		$cod_msg 	= $this->params()->fromRoute('cod_msg', 0);
+
+		$records[$tipo]['ref'] 	   = $this->params()->fromRoute('ref', 0);	
+		$records[$tipo]['cod_msg'] = $this->params()->fromRoute('cod_msg', 0);
+			
         /** Zend\DB
           $categoriaService = $this->getServiceLocator()->get("Livraria\Model\CategoriaService");
           $categorias = $categoriaService->fetchAll();

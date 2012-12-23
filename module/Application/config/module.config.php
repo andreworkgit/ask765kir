@@ -48,9 +48,11 @@ return array(
             'home-message' => array(
               'type' => 'segment',
                 'options' => array(
-                    'route' => '/[:msg_id]',
+                    'route' => '/[:tipo][/:ref][/:cod_msg]',
                     'constraints' => array(
-                        'msg_id'=> '[0-9]+'
+                        'ref'=> '[a-z]+',
+                        'tipo'=> '[a-z]+',
+                        'cod_msg'=> '[0-9]+'
                     ),
                     'defaults' => array(
                         'controller' => 'Application\Controller\Index',
@@ -192,6 +194,7 @@ return array(
             'Login\Controller\Login' 			 => 'Login\Controller\LoginController',
             'Login\Controller\Reminder' 		 => 'Login\Controller\ReminderController',
             'Login\Controller\Register' 		 => 'Login\Controller\RegisterController',
+            'Login\Controller\ChangePassword' 	 => 'Login\Controller\ChangePasswordController',
             
         ),
     ),
