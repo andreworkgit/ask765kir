@@ -1,0 +1,29 @@
+<?php 
+$title = 'Register';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<?php
+
+if(empty($this->records)){
+  echo "Página Inválida";
+}else{
+  echo "Email: ".$this->records['email'];
+  $form = $this->form;
+  $form->setAttribute('action', $this->url('register/step2', array('token' => $this->records['token'])));
+  $form->prepare();
+  
+  echo $this->form()->openTag($form) . PHP_EOL;
+  echo $this->formHidden($form->get('id')) . PHP_EOL;
+  echo $this->formRow($form->get('nome')) . PHP_EOL;
+  echo $this->formRow($form->get('cep')) . PHP_EOL;
+  echo $this->formRow($form->get('senha')) . PHP_EOL;
+  echo $this->formRow($form->get('contra_senha')) . PHP_EOL;
+  echo $this->formRow($form->get('confirm_term')) . PHP_EOL;
+  echo $this->formRow($form->get('opt_newsletter')) . PHP_EOL;
+  
+  echo $this->formInput($form->get('submit')) . PHP_EOL;
+  echo $this->form()->closeTag($form) . PHP_EOL;
+}
+//echo $this->partial('login/register/confirmationEmail.phtml',array());
