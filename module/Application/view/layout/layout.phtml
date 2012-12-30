@@ -306,7 +306,22 @@ var vCityId='1000000';    //]]>
 					
 					endswitch;
 					
-					break;
+				break;
+				
+				case "register":
+					
+					switch ($child->dados['fsuccess']['cod_msg']) :
+						case 1:
+							echo "1° Etapa do cadastro realizada com sucesso. Enviamos um email agora para você, verifique sua caixa de entrada.";
+							break;
+						
+						case 2:
+							echo "Cadastro realizada com sucesso.";
+							break;
+					
+					endswitch;
+					
+				break;
 					
             endswitch;
           ?>
@@ -331,7 +346,18 @@ var vCityId='1000000';    //]]>
 					
 					endswitch;
 					
-					break;
+				break;
+				
+				case "register":
+					
+					switch ($child->dados['ferror']['cod_msg']) :
+						case 1:
+							echo "Página inválida";
+							break;
+					
+					endswitch;
+					
+				break;
 					
             endswitch;
           ?>	

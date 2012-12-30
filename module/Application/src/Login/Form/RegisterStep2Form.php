@@ -29,6 +29,7 @@ class RegisterStep2Form extends Form
             'name' => 'nome',
             'attributes' => array(
                 'type'  => 'text',
+                'class' => 'campotxt'
             ),
             'options' => array(
                 'label' => 'Nome Completo*',
@@ -39,6 +40,7 @@ class RegisterStep2Form extends Form
             'name' => 'cep',
             'attributes' => array(
                 'type'  => 'text',
+                'class' => 'campotxt'
             ),
             'options' => array(
                 'label' => 'Cep: (Opcional)',
@@ -49,6 +51,7 @@ class RegisterStep2Form extends Form
             'name' => 'senha',
             'attributes' => array(
                 'type'  => 'password',
+                'class' => 'campotxt'
             ),
             'options' => array(
                 'label' => 'Senha:',
@@ -59,6 +62,7 @@ class RegisterStep2Form extends Form
             'name' => 'contra_senha',
             'attributes' => array(
                 'type'  => 'password',
+                'class' => 'campotxt'
             ),
             'options' => array(
                 'label' => 'Confirme sua senha:',
@@ -76,7 +80,10 @@ class RegisterStep2Form extends Form
                  
             ),
             //'attributes' => array('disabled' => 'disabled')
-        ));
+        	'attributes' => array(
+				'class' => 'form_input_check'
+			)
+		));
          
          $this->add(array(
             'type' => 'Zend\Form\Element\Checkbox',
@@ -85,7 +92,8 @@ class RegisterStep2Form extends Form
                 'label' => 'Desejo receber ofertas',
             ),
             'attributes' => array(
-                'value' => '1' //set selected to '1'
+                'value' => '1', //set selected to '1'
+                'class' => 'form_input_check'
             )
             
         )); 

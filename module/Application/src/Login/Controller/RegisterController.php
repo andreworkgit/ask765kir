@@ -37,7 +37,9 @@ class RegisterController extends AbstractActionController {
                 //var_dump($records);
                 $service->insert($records);
                 $service->SendEmail($records);    
-                return $this->redirect()->toRoute('home');
+                //return $this->redirect()->toRoute('home');
+				return $this->redirect()->toRoute('home-message',array('tipo'=>'fsuccess','ref'=>'register','cod_msg'=>'1'));
+                    
             }
         }
 
@@ -55,7 +57,7 @@ class RegisterController extends AbstractActionController {
         $records = $form = array();
         $token = $this->params('token', false);
         
-        $repository = $this->getEm()->getRepository("Login\Entity\Users");
+        $repository = $this->getEm()->getRepository("Application\Entity\Users");
         $obj_records_users = $repository->findByToken($token);
         
         if(!empty($obj_records_users)){
@@ -64,6 +66,11 @@ class RegisterController extends AbstractActionController {
             //$records['token'] = $token;
             
             $records = $obj_records_users->getArrayCopy();
+			
+			if(empty($records)):
+				return $this->redirect()->toRoute('home-message',array('tipo'=>'ferror','ref'=>'register','cod_msg'=>'1'));
+			endif;
+			
             $form = $this->getServiceLocator()->get("service_register_step2_form");
             
             //var_dump($records['id']);exit;
@@ -83,7 +90,7 @@ class RegisterController extends AbstractActionController {
                     $records['senha']           = $service->encryptPassword($records['senha']);
                     $service->update($records);
                     //$service->SendEmail($records);    
-                    return $this->redirect()->toRoute('home');
+                    return $this->redirect()->toRoute('home-message',array('tipo'=>'fsuccess','ref'=>'register','cod_msg'=>'2'));
                 }
                 
                 //$form->setData($obj_records_users); 
