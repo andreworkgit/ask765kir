@@ -29,6 +29,8 @@ class RegisterForm extends Form
             'name' => 'email',
             'attributes' => array(
                 'type'  => 'text',
+                'class' => 'campotxt',
+                'size' => '30'
             ),
             'options' => array(
                 'label' => 'Email',

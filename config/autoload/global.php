@@ -16,7 +16,7 @@ return array(
         'driver' => 'Pdo',
         'dsn'            => 'mysql:dbname=zf2-tutorial;hostname=127.0.0.1',
         'username'       => 'root',
-        'password'       => '',
+        'password'       => 'keync123',
         'driver_options' => array(
             PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
         ),
@@ -35,7 +35,7 @@ return array(
                     'host'     => '127.0.0.1',
                     //'port'     => '3306',
                     'user'     => 'root',
-                    'password' => '',
+                    'password' => 'keync123',
                     'dbname'   => 'zf2-tutorial', //sua base de dados
                 )
             )

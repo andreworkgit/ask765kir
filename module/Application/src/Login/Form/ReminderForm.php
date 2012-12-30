@@ -22,6 +22,7 @@ class ReminderForm extends Form
             'name' => 'email',
             'attributes' => array(
                 'type'  => 'text',
+                'class' => 'campotxt'
             ),
             'options' => array(
                 'label' => 'Email',

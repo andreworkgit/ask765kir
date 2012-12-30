@@ -263,7 +263,7 @@ var vCityId='1000000';    //]]>
             <div id="SVM_dologin">
                 <ul class="nav_menu_login">
                     <?php if(!empty($this->dados['nome_indicado'])): ?><li ><span class="indicado_align_list">Indicado por: <?php echo $this->dados['nome_indicado']; ?> -></span></li><?php endif; ?>
-                    <li><a href="{$url_cadastro}" class="register_link_nav" title="Cadastre-se">Cadastre-se</a></li>
+                    <li><a href="<?php echo $this->url('register'); ?>" class="register_link_nav" title="Cadastre-se">Cadastre-se</a></li>
                     <li><a href="javascript:;" class="do_login_nav" onclick="loginNavBar();" title="Faça seu Login">Faça seu Login</a></li>
                 </ul>
             </div>
