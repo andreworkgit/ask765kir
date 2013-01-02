@@ -86,15 +86,14 @@ VI. Responsabilidades
 
 A Empresa declara expressamente que não será responsável pelas obrigações assumidas entre Usuário-Anunciante e Usuário. O Usuário reconhece que ao clicar na imagem disponível na página principal será redirecionado para site registrado pelo usuário-anunciante.</textarea></div>
 <div class="decorator_check">
-	<label for="confirm_term" class="required">Li e concordo com os Termos de Uso acima</label>
+	
 
 	<!--<input type="checkbox" name="confirm_term" id="confirm_term" value="1" checked="checked" class="form_input_check" title="Li e concordo com os Termos de Uso acima">-->
-	<?php echo $this->formInput($form->get('confirm_term')); ?>
+	<?php echo $this->formRow($form->get('confirm_term')); ?>
 </div>
 <div class="decorator_check">
-	<label for="newsletter_site" class="optional">Desejo receber ofertas do NewDescontos</label>
 	<!--<input type="checkbox" name="opt_newsletter" id="opt_newsletter" value="1" checked="checked" class="form_input_check" title="Desejo receber ofertas do NewDescontos">-->
-	<?php echo $this->formInput($form->get('opt_newsletter')); ?>
+	<?php echo $this->formRow($form->get('opt_newsletter')); ?>
 </div>
 
 <div class="decorator_submit">

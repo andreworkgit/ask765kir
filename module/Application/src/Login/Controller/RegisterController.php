@@ -54,6 +54,11 @@ class RegisterController extends AbstractActionController {
     }
     
     public function step2Action(){
+    	/*
+		'driverOptions' => array(
+                        1002=>'SET NAMES \'UTF8\''
+                	)
+		*/
         $records = $form = array();
         $token = $this->params('token', false);
         
@@ -66,9 +71,13 @@ class RegisterController extends AbstractActionController {
             //$records['token'] = $token;
             
             $records = $obj_records_users->getArrayCopy();
-			
+				
 			if(empty($records)):
 				return $this->redirect()->toRoute('home-message',array('tipo'=>'ferror','ref'=>'register','cod_msg'=>'1'));
+				exit;
+			elseif(!empty($records['nome']) && !empty($records['senha'])):
+				return $this->redirect()->toRoute('home-message',array('tipo'=>'ferror','ref'=>'register','cod_msg'=>'2'));
+				exit;
 			endif;
 			
             $form = $this->getServiceLocator()->get("service_register_step2_form");
@@ -80,7 +89,9 @@ class RegisterController extends AbstractActionController {
         
             if ($request->isPost()) {
                 $form->setData($request->getPost());
+				
                 if ($form->isValid()) {
+                	
                     $service = $this->getServiceLocator()->get("service_register");
                     $records = $request->getPost()->toArray();
                     //$records['token'] = '';

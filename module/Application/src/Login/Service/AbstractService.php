@@ -49,6 +49,7 @@ abstract class AbstractService {
     public function update(array $data) {
         $entity = $this->em->getReference($this->entity, $data['id']);
         //$entity = Configurator::configure($entity, $data);
+        
         foreach($data as $k => $v){
             $entity->$k = $v;
         }
