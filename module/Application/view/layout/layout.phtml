@@ -246,7 +246,7 @@ var vCityId='1000000';    //]]>
                 <ul class="nav_menu_login">
                     <li><span class="login_align_list">Olá, <span id="logged_name"><?php echo $sessionUser['user']->nome; ?></span> </span> você tem R$ xxxxx de crédito</li>
                     <li><a href="{$url_minha_conta}" title="Minha Conta" >Minha Conta</a></li>
-                   <li><a href="{$url_logout}" title="Sair">Sair</a></li>
+                   <li><a href="<?php echo $this->url('logout'); ?>" title="Sair">Sair</a></li>
                     
                 </ul>
             </div>

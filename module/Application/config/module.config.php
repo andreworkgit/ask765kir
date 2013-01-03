@@ -181,6 +181,16 @@ return array(
                     ),
                 ),
             ),
+            'logout' => array(
+                'type' => 'Literal',
+                'options' => array(
+                    'route' => '/logout',
+                    'defaults' => array(
+                        'action' => 'logout',
+                        'controller'=>'Login\Controller\Login'
+                    ),
+                ),
+            ),
             
         ),    
     ),

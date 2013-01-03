@@ -84,6 +84,14 @@ class LoginController extends AbstractActionController {
         return new ViewModel(array('form' => $form,'dados' => $msg));    
 
     }
+
+	public function logoutAction() {
+        $auth = new AuthenticationService;
+        $auth->setStorage(new SessionStorage('Login'));
+        $auth->clearIdentity();
+        
+        return $this->redirect()->toRoute('home');
+    }
     
 
 
