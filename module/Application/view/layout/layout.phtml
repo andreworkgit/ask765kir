@@ -1,9 +1,3 @@
-<?php
-// Get params in the controllers
-$children = $this->viewModel()->getCurrent()->getChildren();
-$child = $children[0];
-
-?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -17,6 +11,11 @@ $child = $children[0];
   <meta property="og:locale" content="pt_BR" />
    <!-- Le styles -->
    <?php
+   
+	// Get params in the controllers
+	$children = $this->viewModel()->getCurrent()->getChildren();
+	$child = $children[0];
+	
    echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/images/favicon.ico'))
            ->prependStylesheet($this->basePath() . '/css/app/checkout.css')
            ->prependStylesheet($this->basePath() . '/css/app/green_position1.css')
@@ -35,12 +34,6 @@ $child = $children[0];
                                   ->prependFile($this->basePath() . '/js/app/jquery.maskedinput-1.2.2.js')
                                   ->prependFile($this->basePath() . '/js/app/jquery.cookie.js')
                                   ->prependFile($this->basePath() . '/js/app/jquery-1.5.1.min.js', 'text/javascript')
-								  
-                                 
-                                 
-                                 
-                                 
-                                 
                                  //->prependFile($this->basePath() . '/js/app/default.js')
                                  
    ?>
@@ -91,7 +84,7 @@ var vCityId='1000000';    //]]>
 
     <div class="header">
         <div class="center">
-            <a href="" class="logo_store" title="">Logo da Empresa</a>
+            <a href="/" class="logo_store" title="">Logo da Empresa</a>
             
             <!-- City Selection -->
       <!-- City Selection -->
@@ -248,10 +241,10 @@ var vCityId='1000000';    //]]>
             
            
             <!-- Usuario Logado -->
-            <?php if(!empty($this->dados['nome_usuario'])): ?>
+            <?php $sessionUser = $this->UserIdentity('Login');  if($sessionUser): ?>
             <div id="SVM_logged" style="">
                 <ul class="nav_menu_login">
-                    <li><span class="login_align_list">Olá, <span id="logged_name"><?php echo $this->dados['nome_usuario']; ?></span> </span> você tem R$ <?php echo $this->dados['credito_usuario']; ?> de crédito</li>
+                    <li><span class="login_align_list">Olá, <span id="logged_name"><?php echo $sessionUser['user']->nome; ?></span> </span> você tem R$ xxxxx de crédito</li>
                     <li><a href="{$url_minha_conta}" title="Minha Conta" >Minha Conta</a></li>
                    <li><a href="{$url_logout}" title="Sair">Sair</a></li>
                     
@@ -357,6 +350,21 @@ var vCityId='1000000';    //]]>
 						
 						case 2:
 							echo "Você já efetivou seu cadastro. Faça seu Login.";
+							break;
+					
+					endswitch;
+					
+				break;
+				
+				case "login":
+					
+					switch ($child->dados['ferror']['cod_msg']) :
+						case 1:
+							echo "Usuário ou senha inválidos";
+							break;
+						
+						case 2:
+							echo "No momento seu e-mail não foi confirmado. Clique aqui para reenviar confirmação.";
 							break;
 					
 					endswitch;

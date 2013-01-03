@@ -158,9 +158,10 @@ class Module {
     public function getViewHelperConfig() {
         return array(
             'invokables' => array(
-                //'UserIdentity' => new View\Helper\UserIdentity()
+                'UserIdentity' => new View\Helper\UserIdentity()
             )
         );
     }
+
 
 }

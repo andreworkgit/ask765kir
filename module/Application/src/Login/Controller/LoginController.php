@@ -54,8 +54,8 @@ class LoginController extends AbstractActionController {
                           ->setPassword($service->encryptPassword($obj_post_array['senha']));
         
               $result = $auth->authenticate($authAdapter);
-
-              if ($result->isValid()) {
+				
+			  if ($result->isValid()) {
                   //var_dump($auth->getIdentity());
                   $getIdentity = $result->getIdentity();
                   $getIdentity['user']->senha = null;
@@ -65,19 +65,23 @@ class LoginController extends AbstractActionController {
                   echo "Logado com sucesso";
                   //return $this->redirect()->toRoute("livraria-admin", array('controller' => 'categorias'));
               }else{
-                  $getIdentity = $result->getIdentity();
+              	  $getIdentity = $result->getIdentity();
                   //var_dump($getIdentity);
-                  if(!empty($getIdentity))
+                  
+                  if(!empty($getIdentity)):
                     //echo "No momento seu e-mail não foi confirmado. Clique aqui para confirmar.";
-                    $error = 2;
-                  else
-                   $error = 1;
+                    $msg['ferror']['ref'] 	  = "login";	
+				  	$msg['ferror']['cod_msg'] = "2";
+           	   	  else:
+                  	$msg['ferror']['ref'] 	  = "login";	
+				  	$msg['ferror']['cod_msg'] = "1";
+				  endif;
               }
               
             }
         }
 
-        return new ViewModel(array('form' => $form,'error' => $error));    
+        return new ViewModel(array('form' => $form,'dados' => $msg));    
 
     }
     

@@ -1,6 +1,6 @@
 <?php
 
-namespace Livraria\View\Helper;
+namespace Application\View\Helper;
 
 use Zend\View\Helper\AbstractHelper;
 use Zend\Authentication\AuthenticationService,
