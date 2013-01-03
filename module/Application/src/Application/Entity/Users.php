@@ -54,7 +54,6 @@ class Users
     protected $opt_newsletter;
     
     
-    
     /**
      * @ORM\Column(type="string")
      */
@@ -75,11 +74,15 @@ class Users
      */
     protected $diretorio;
     
-    
     /**
      * @ORM\Column(type="string")
      */
     protected $senha;
+	
+	 /**
+	 * @ORM\Column(type="float")
+	 */
+    protected $credito;
     
     /**
      * Magic getter to expose protected properties.
@@ -129,6 +132,7 @@ class Users
         $this->data_alteracao = $data['data_alteracao'];
         $this->diretorio      = $data['diretorio'];
         $this->senha          = $data['senha'];
+		$this->credito        = $data['credito'];
         
         //$d = new DateTime( "2010-01-15 10:41 $tzid" );
         $date = new \DateTime("now America/Sao_Paulo");

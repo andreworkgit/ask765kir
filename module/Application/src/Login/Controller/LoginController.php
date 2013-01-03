@@ -61,17 +61,30 @@ class LoginController extends AbstractActionController {
                   $getIdentity['user']->senha = null;
                   
                   //var_dump($getIdentity);exit;
-                  //$sessionStorage->write($getIdentity['user'], null);
-                  echo "Logado com sucesso";
-                  //return $this->redirect()->toRoute("livraria-admin", array('controller' => 'categorias'));
+                  //$sessionStorage->write($getIdentity['user'], null);       
+                  $msg['fsuccess']['ref']  	  = "login";	
+				  $msg['fsuccess']['cod_msg'] = "1";
+                  return $this->redirect()->toRoute("home");
               }else{
               	  $getIdentity = $result->getIdentity();
                   //var_dump($getIdentity);
                   
                   if(!empty($getIdentity)):
-                    //echo "No momento seu e-mail não foi confirmado. Clique aqui para confirmar.";
-                    $msg['ferror']['ref'] 	  = "login";	
-				  	$msg['ferror']['cod_msg'] = "2";
+					//echo "No momento seu e-mail não foi confirmado. Clique aqui para confirmar.";
+                    
+					$repository = $this->getEm()->getRepository("Application\Entity\Users");
+        			$objRecordUser = $repository->findByEmail($obj_post_array['email']);
+					
+					if(!empty($objRecordUser)):
+						$recordsBaseUser = $objRecordUser->getArrayCopy();
+						
+						$recordsLogin['email'] = $recordsBaseUser['email'];
+						$recordsLogin['token'] = $recordsBaseUser['token'];
+	                    $service->SendEmail($recordsLogin);
+	                    
+	                    $msg['falert']['ref'] 	  = "login";	
+					  	$msg['falert']['cod_msg'] = "1";
+					endif;
            	   	  else:
                   	$msg['ferror']['ref'] 	  = "login";	
 				  	$msg['ferror']['cod_msg'] = "1";

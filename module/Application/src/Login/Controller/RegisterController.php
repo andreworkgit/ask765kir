@@ -82,7 +82,6 @@ class RegisterController extends AbstractActionController {
 			
             $form = $this->getServiceLocator()->get("service_register_step2_form");
             
-            //var_dump($records['id']);exit;
             $form->setData($records);
             
             $request = $this->getRequest();

@@ -244,7 +244,7 @@ var vCityId='1000000';    //]]>
             <?php $sessionUser = $this->UserIdentity('Login');  if($sessionUser): ?>
             <div id="SVM_logged" style="">
                 <ul class="nav_menu_login">
-                    <li><span class="login_align_list">Olá, <span id="logged_name"><?php echo $sessionUser['user']->nome; ?></span> </span> você tem R$ xxxxx de crédito</li>
+                    <li><span class="login_align_list">Olá, <span id="logged_name"><?php echo $sessionUser['user']->nome; ?></span> </span> você tem R$ <?php echo number_format($sessionUser['user']->credito, 2, ',', '.'); ?> de crédito</li>
                     <li><a href="{$url_minha_conta}" title="Minha Conta" >Minha Conta</a></li>
                    <li><a href="<?php echo $this->url('logout'); ?>" title="Sair">Sair</a></li>
                     
@@ -315,6 +315,17 @@ var vCityId='1000000';    //]]>
 					endswitch;
 					
 				break;
+				
+				case "login":
+					
+					switch ($child->dados['fsuccess']['cod_msg']) :
+						case 1:
+							echo "Logado com sucesso";
+							break;
+				
+					endswitch;
+					
+				break;
 					
             endswitch;
           ?>
@@ -377,10 +388,28 @@ var vCityId='1000000';    //]]>
     </div>
     <?php endif; ?>
     
-    
-    <?php if(!empty($this->dados['form_alert'])): ?>
+    <?php if(!empty($child->dados['falert'])): ?>
     <div class="center" id="flash_message">
-        <div  class="fm_alert rounded shadow"><?php echo $this->dados['form_alert']; ?></div>
+        <div class="fm_alert rounded shadow">
+        	
+        <?php
+            switch($child->dados['falert']['ref']) :
+				
+				case "login":
+					
+					switch ($child->dados['falert']['cod_msg']) :
+						
+						case 1:
+							echo "Você não confirmou seu e-mail. Reenviamos um novo e-mail para confirmação. Verifique sua caixa de entrada.";
+							break;
+					
+					endswitch;
+					
+				break;
+					
+            endswitch;
+          ?>	
+        </div>
     </div>
     <?php endif; ?>
     
