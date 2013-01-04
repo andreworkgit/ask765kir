@@ -23,5 +23,11 @@ class AreasRepository extends EntityRepository {
         
         return $array;
     }
+	
+	public function findByUser($userId)
+	{ 
+		$records = $this->findBy(array('id_user'=>$userId));
+		return $records;
+	}
     
 }

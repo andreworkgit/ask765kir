@@ -37,14 +37,13 @@ class IndexController extends AbstractActionController {
           $categoriaService = $this->getServiceLocator()->get("Livraria\Model\CategoriaService");
           $categorias = $categoriaService->fetchAll();
          */
-        /*
-            $repository = $this->getEm()->getRepository("Application\Entity\Areas");
-            $array_records = $repository->fetchPairs();
-            //precisa seta layout principal
-            return new ViewModel(array('array_records_all' => $array_records));
-        */
         
-        return new ViewModel(array('dados' => $records));
+        $repository = $this->getEm()->getRepository("Application\Entity\Areas");
+        $array_records = $repository->fetchPairs();
+//    	var_dump($array_records);exit;
+
+        
+        return new ViewModel(array('dados' => $records,'array_records_all' => $array_records));
     }
     
     public function loginIframeAction(){
@@ -57,12 +56,51 @@ class IndexController extends AbstractActionController {
     }
     
     public function photoSpaceAction(){
-        $response = $this->getResponse();
-        
-        $response->getHeaders()->addHeaderLine('Content-Type', "image/jpg");
+		
+		//$sessionLogin = $this->_helper->UserIdentity('Login');
+		
+		/*$sm = $this->getEvent()->getApplication()->getServiceManager();
+		$helper = $sm->get('viewhelpermanager')->get('UserIdentity');
+		$sessionLogin = $helper('Login');*/
+		$tipo 		= $this->params()->fromRoute('tipo', 0);
+		
+		$background = imagecreatefromjpeg("./data/images/spacefree.jpg");
+		//$response = $this->getResponse();
+		
+		if($tipo != 2):
+		
+			$sessionLogin = $this->getServiceLocator()->get("service_helper_session_login");
+			
+			if(!empty($sessionLogin)):
+			
+				$repository = $this->getEm()->getRepository("Application\Entity\Areas");
+				$obj_records = $repository->findByUser($sessionLogin['user']->id);
+				
+				$my_image = imagecreatefromjpeg("./public/images/app/m51_minhas.jpg");
+	  			$imagesx = imagesx($my_image);
+	  			$imagesy = imagesy($my_image);
+				
+				
+				if(!empty($obj_records)):
+					//$array_records = $obj_records->getArrayCopy();
+					foreach($obj_records as $item):
+						imagecopymerge($background, $my_image,$item->p_left,$item->p_top,0,0,$imagesx,$imagesy,100);	
+					endforeach;
+					
+				endif;
+				
+			endif;
+	        
+	        //$response->getHeaders()->addHeaderLine('Content-Type', "image/jpg");
+		
+		else:
+			//$response->getHeaders()->addHeaderLine('Cache-Control',"no-cache, must-revalidate");
+			header("Cache-Control: no-cache, must-revalidate");
+		endif;
         //var_dump($response->getHeaders());
-        $background = imagecreatefromjpeg("./data/images/spacefree.jpg");
-        //header("Content-type: image/jpeg");
+        
+        header("Content-type: image/jpeg");
+        
         imagejpeg($background,null,100);
         imagedestroy($background);
         

@@ -62,6 +62,11 @@ class Module {
         return array(
             'factories' => array(
                 
+				'service_helper_session_login' => function($service){
+					$helper = $service->get('viewhelpermanager')->get('UserIdentity');
+					return $helper('Login');
+				},
+				
                 'service_faleconosco_form' => function ($service) {
                      $form = new \Application\Form\FaleConoscoForm();
                      return $form;

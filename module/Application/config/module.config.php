@@ -8,7 +8,7 @@ return array(
             'home' => array(
               'type' => 'segment',
                 'options' => array(
-                    'route' => '/[:action]',
+                    'route' => '/[:action][/:tipo]',
                     'defaults' => array(
                         'controller' => 'Application\Controller\Index',
                         'action'     => 'index',

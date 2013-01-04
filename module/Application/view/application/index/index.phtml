@@ -12,14 +12,16 @@
     function modo_area(tipo,id_coord){
       if(tipo == "over"){
         //$('#'.id_coord).mouseout();
-        $('#photo_space').attr("src", "{/literal}{$url_photo_space_original}{literal}");
+        console.log('<?php echo $this->serverUrl($this->url('home', array('action' => 'photoSpace','tipo'=>2))); ?>');
+        $('#photo_space').attr("src", "<?php echo $this->serverUrl($this->url('home', array('action' => 'photoSpace','tipo'=>2))); ?>");
         //document.getElementById('photo_space').src = "{/literal}{$url_photo_space_original}{literal}";
          
       }
       if(tipo == "out"){
         //$('#'.id_coord).mouseover();
         //document.getElementById('photo_space').src = "{/literal}{$url_photo_space}{literal}";
-        $('#photo_space').attr("src", "{/literal}{$url_photo_space}{literal}");
+        console.log('<?php echo $this->serverUrl($this->url('home', array('action' => 'photoSpace'))); ?>');
+       	$('#photo_space').attr("src", "<?php echo $this->serverUrl($this->url('home', array('action' => 'photoSpace'))); ?>");
         
       }
     }
@@ -53,16 +55,23 @@
             $url_area = $this->url('home/action');//url_secure("index.php?a=".$codfica);
             $area_title = "Área Livre: Clique aqui para registrar";
             
-            
-            
             if(!empty($this->array_records_all[$area_seq]['seq_coord']) &&
                $area_seq == $this->array_records_all[$area_seq]['seq_coord']){
             
-                $url_area = $this->array_records_all[$area_seq]['url'];
-                $area_title = $this->array_records_all[$area_seq]['titulo'];
-                $onmouseover = '';
-                $onmouseout = '';
-                
+				$sessionUser = $this->UserIdentity('Login');
+				
+				if(!empty($sessionUser))
+				{
+					$url_area 	= "/editar";
+	                $area_title = "Clique aqui para editar está área |Titulo:".$this->array_records_all[$area_seq]['titulo']."|URL:".$this->array_records_all[$area_seq]['url'];
+			        $onmouseover = "modo_area('over','id".$area_seq."')";
+			        $onmouseout = "modo_area('out','id".$area_seq."')";
+				}else{
+	                $url_area = $this->array_records_all[$area_seq]['url'];
+	                $area_title = $this->array_records_all[$area_seq]['titulo'];
+	                $onmouseover = '';
+	                $onmouseout = '';
+				}
             }else{
                 $onmouseover = '';
                 $onmouseout = '';
