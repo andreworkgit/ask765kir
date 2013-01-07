@@ -64,7 +64,8 @@ class Module {
                 
 				'service_helper_session_login' => function($service){
 					$helper = $service->get('viewhelpermanager')->get('UserIdentity');
-					return $helper('Login');
+					$session =$helper('Login'); 
+					return ( $session != false? $session : false);
 				},
 				
                 'service_faleconosco_form' => function ($service) {

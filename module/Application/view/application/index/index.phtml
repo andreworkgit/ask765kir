@@ -9,20 +9,16 @@
       });
     <?php endif; ?>
     
+    var am_id;
     function modo_area(tipo,id_coord){
       if(tipo == "over"){
         //$('#'.id_coord).mouseout();
-        console.log('<?php echo $this->serverUrl($this->url('home', array('action' => 'photoSpace','tipo'=>2))); ?>');
-        $('#photo_space').attr("src", "<?php echo $this->serverUrl($this->url('home', array('action' => 'photoSpace','tipo'=>2))); ?>");
-        //document.getElementById('photo_space').src = "{/literal}{$url_photo_space_original}{literal}";
+        $('.maphome').css('background-image', 'url("<?php echo $this->serverUrl($this->url('home', array('action' => 'photoSpace','tipo'=>2))); ?>")');
          
       }
       if(tipo == "out"){
         //$('#'.id_coord).mouseover();
-        //document.getElementById('photo_space').src = "{/literal}{$url_photo_space}{literal}";
-        console.log('<?php echo $this->serverUrl($this->url('home', array('action' => 'photoSpace'))); ?>');
-       	$('#photo_space').attr("src", "<?php echo $this->serverUrl($this->url('home', array('action' => 'photoSpace'))); ?>");
-        
+        $('.maphome').css('background-image', 'url("<?php echo $this->serverUrl($this->url('home', array('action' => 'photoSpace'))); ?>")');  
       }
     }
     

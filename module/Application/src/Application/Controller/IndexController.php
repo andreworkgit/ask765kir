@@ -59,19 +59,20 @@ class IndexController extends AbstractActionController {
 		
 		//$sessionLogin = $this->_helper->UserIdentity('Login');
 		
-		/*$sm = $this->getEvent()->getApplication()->getServiceManager();
-		$helper = $sm->get('viewhelpermanager')->get('UserIdentity');
-		$sessionLogin = $helper('Login');*/
 		$tipo 		= $this->params()->fromRoute('tipo', 0);
 		
 		$background = imagecreatefromjpeg("./data/images/spacefree.jpg");
 		//$response = $this->getResponse();
 		
-		if($tipo != 2):
+		if($tipo != 2){
 		
-			$sessionLogin = $this->getServiceLocator()->get("service_helper_session_login");
+			//$sessionLogin = $this->getServiceLocator()->get("service_helper_session_login");
+			$sm = $this->getEvent()->getApplication()->getServiceManager();
+			$helper = $sm->get('viewhelpermanager')->get('UserIdentity');
+			$sessionLogin = $helper('Login');
+			//var_dump($sessionLogin);exit;
 			
-			if(!empty($sessionLogin)):
+			if(!empty($sessionLogin)){
 			
 				$repository = $this->getEm()->getRepository("Application\Entity\Areas");
 				$obj_records = $repository->findByUser($sessionLogin['user']->id);
@@ -81,22 +82,22 @@ class IndexController extends AbstractActionController {
 	  			$imagesy = imagesy($my_image);
 				
 				
-				if(!empty($obj_records)):
+				if(!empty($obj_records)){
 					//$array_records = $obj_records->getArrayCopy();
-					foreach($obj_records as $item):
+					foreach($obj_records as $item){
 						imagecopymerge($background, $my_image,$item->p_left,$item->p_top,0,0,$imagesx,$imagesy,100);	
-					endforeach;
+					}
 					
-				endif;
+				}
 				
-			endif;
+			}
 	        
 	        //$response->getHeaders()->addHeaderLine('Content-Type', "image/jpg");
 		
-		else:
+		}else{
 			//$response->getHeaders()->addHeaderLine('Cache-Control',"no-cache, must-revalidate");
 			header("Cache-Control: no-cache, must-revalidate");
-		endif;
+		}
         //var_dump($response->getHeaders());
         
         header("Content-type: image/jpeg");
