@@ -9,7 +9,6 @@
       });
     <?php endif; ?>
     
-    var am_id;
     function modo_area(tipo,id_coord){
       if(tipo == "over"){
         //$('#'.id_coord).mouseout();
@@ -58,7 +57,7 @@
 				
 				if(!empty($sessionUser))
 				{
-					$url_area 	= "/editar";
+					$url_area 	= $this->url('area-edit',array('area'=>$codfica));
 	                $area_title = "Clique aqui para editar está área |Titulo:".$this->array_records_all[$area_seq]['titulo']."|URL:".$this->array_records_all[$area_seq]['url'];
 			        $onmouseover = "modo_area('over','id".$area_seq."')";
 			        $onmouseout = "modo_area('out','id".$area_seq."')";

@@ -45,6 +45,8 @@ return array(
                 */
             ),
             
+			
+            
             'home-message' => array(
               'type' => 'segment',
                 'options' => array(
@@ -191,6 +193,16 @@ return array(
                     ),
                 ),
             ),
+            'area-edit' => array(
+              'type' => 'segment',
+                'options' => array(
+                    'route' => '/area/edit[/:area]',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Area',
+                        'action'     => 'index',
+                    ),
+                ),
+            ),
             
         ),    
     ),
@@ -201,6 +213,7 @@ return array(
             'Application\Controller\Afiliados' 	 => 'Application\Controller\AfiliadosController',
             'Application\Controller\QuemSomos' 	 => 'Application\Controller\QuemSomosController',
             'Application\Controller\Faq' 	 	 => 'Application\Controller\FaqController',
+            'Application\Controller\Area'        => 'Application\Controller\AreaController',
             'Login\Controller\Login' 			 => 'Login\Controller\LoginController',
             'Login\Controller\Reminder' 		 => 'Login\Controller\ReminderController',
             'Login\Controller\Register' 		 => 'Login\Controller\RegisterController',
