@@ -68,6 +68,11 @@ class Module {
 					return ( $session != false? $session : false);
 				},
 				
+				'service_area_upload_form' => function ($service) {
+                     $form = new \Application\Form\AreaUploadForm();
+                     return $form;
+                },
+				
                 'service_faleconosco_form' => function ($service) {
                      $form = new \Application\Form\FaleConoscoForm();
                      return $form;

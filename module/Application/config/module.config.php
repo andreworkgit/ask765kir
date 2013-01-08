@@ -196,7 +196,7 @@ return array(
             'area-edit' => array(
               'type' => 'segment',
                 'options' => array(
-                    'route' => '/area/edit[/:area]',
+                    'route' => '/area/edit[/:area][/:action]',
                     'defaults' => array(
                         'controller' => 'Application\Controller\Area',
                         'action'     => 'index',

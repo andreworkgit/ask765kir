@@ -5,6 +5,8 @@ namespace Application\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
+use Zend\Validator\File\Size;
+
 class AreaController extends AbstractActionController {
     
     /**
@@ -23,13 +25,77 @@ class AreaController extends AbstractActionController {
 
         return $this->em;
     }
-    
+    /*
     public function indexAction() {
-        //echo "aki";exit;
-        $records['nome']="teste";
-		$array_records['tipo']="teste2";
+        return $this->redirect()->toRoute("home");
+        //return new ViewModel(array('dados' => $records,'array_records_all' => $array_records));
+    }*/
+
+	
+	public function indexAction()
+    {
+    	
+		$sm = $this->getEvent()->getApplication()->getServiceManager();
+		$helper = $sm->get('viewhelpermanager')->get('UserIdentity');
+		$sessionLogin = $helper('Login');
+
+		if(!$sessionLogin){
+			 return $this->redirect()->toRoute("home");
+		}
 		
-        return new ViewModel(array('dados' => $records,'array_records_all' => $array_records));
+		//var_dump($sessionLogin['user']->diretorio);
+    	
+        $form = $this->getServiceLocator()->get("service_area_upload_form");
+        $request = $this->getRequest();
+        
+        if ($request->isPost()) {
+            
+            //$profile = new Profile();
+            //$form->setInputFilter($profile->getInputFilter());
+            
+            $nonFile = $request->getPost()->toArray();
+            $File    = $this->params()->fromFiles('fileupload');
+            $data = array_merge(
+                 $nonFile,
+                 array('fileupload'=> $File['name'])
+             );
+			 
+			// var_dump($data);exit;
+			 
+			 
+            //set data post and file ...    
+            $form->setData($data);
+             
+            if ($form->isValid()) {
+                
+                $size = new Size(array('min'=>5120,'max'=>512000)); //minimum bytes filesize
+                
+                $adapter = new \Zend\File\Transfer\Adapter\Http(); 
+                $adapter->setValidators(array($size), $File['name']);
+				
+                if (!$adapter->isValid()){
+                    $dataError = $adapter->getMessages();
+                    $error = array();
+                    foreach($dataError as $key=>$row)
+                    {
+                        $error[] = $row;
+                    }
+					
+                    $form->setMessages(array('fileupload'=>$error ));
+                } else {
+                	
+                    //$adapter->setDestination(dirname(__DIR__).'/assets');
+                    $adapter->setDestination("./data/".$sessionLogin['user']->diretorio."image");
+                    if ($adapter->receive($File['name'])) {
+                        echo "Enviado com sucesso";	
+                        //$profile->exchangeArray($form->getData());
+                        //echo 'Profile Name '.$profile->profilename.' upload '.$profile->fileupload;
+                    }
+                }  
+            }
+        }
+         
+        return array('form' => $form);
     }
 
 }

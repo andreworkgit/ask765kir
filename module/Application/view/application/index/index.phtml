@@ -9,7 +9,7 @@
       });
     <?php endif; ?>
     
-    function modo_area(tipo,id_coord){
+    function modo_area(tipo,id_coord,obj){
       if(tipo == "over"){
         //$('#'.id_coord).mouseout();
         $('.maphome').css('background-image', 'url("<?php echo $this->serverUrl($this->url('home', array('action' => 'photoSpace','tipo'=>2))); ?>")');
@@ -59,8 +59,8 @@
 				{
 					$url_area 	= $this->url('area-edit',array('area'=>$codfica));
 	                $area_title = "Clique aqui para editar está área |Titulo:".$this->array_records_all[$area_seq]['titulo']."|URL:".$this->array_records_all[$area_seq]['url'];
-			        $onmouseover = "modo_area('over','id".$area_seq."')";
-			        $onmouseout = "modo_area('out','id".$area_seq."')";
+			        $onmouseover = "modo_area('over','id".$area_seq."',this)";
+			        $onmouseout = "modo_area('out','id".$area_seq."',this)";
 				}else{
 	                $url_area = $this->array_records_all[$area_seq]['url'];
 	                $area_title = $this->array_records_all[$area_seq]['titulo'];

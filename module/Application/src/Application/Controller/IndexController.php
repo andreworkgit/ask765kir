@@ -40,9 +40,7 @@ class IndexController extends AbstractActionController {
         
         $repository = $this->getEm()->getRepository("Application\Entity\Areas");
         $array_records = $repository->fetchPairs();
-//    	var_dump($array_records);exit;
 
-        
         return new ViewModel(array('dados' => $records,'array_records_all' => $array_records));
     }
     
