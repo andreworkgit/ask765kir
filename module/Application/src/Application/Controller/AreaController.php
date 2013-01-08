@@ -43,6 +43,8 @@ class AreaController extends AbstractActionController {
 			 return $this->redirect()->toRoute("home");
 		}
 		
+		
+		
 		//var_dump($sessionLogin['user']->diretorio);
     	
         $form = $this->getServiceLocator()->get("service_area_upload_form");
@@ -84,9 +86,19 @@ class AreaController extends AbstractActionController {
                     $form->setMessages(array('fileupload'=>$error ));
                 } else {
                 	
-                    //$adapter->setDestination(dirname(__DIR__).'/assets');
-                    $adapter->setDestination("./data/".$sessionLogin['user']->diretorio."image");
-                    if ($adapter->receive($File['name'])) {
+					$path_folder = "./data/".$sessionLogin['user']->diretorio."images";
+					//verifica se diretorio exists
+					if(!file_exists($path_folder))
+					{
+						$create_dir = mkdir($path_folder,0755,true);
+						if(!$create_dir)
+							return $this->redirect()->toRoute("home");
+					}
+                	
+                    $adapter->setDestination($path_folder);
+					$adapter->addFilter('Rename', array('target' => $path_folder.'/myImgToCut.jpg',
+                     'overwrite' => true));
+                    if ($adapter->receive()) {
                         echo "Enviado com sucesso";	
                         //$profile->exchangeArray($form->getData());
                         //echo 'Profile Name '.$profile->profilename.' upload '.$profile->fileupload;
