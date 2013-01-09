@@ -203,6 +203,16 @@ return array(
                     ),
                 ),
             ),
+            'area-edit-myimg' => array(
+              'type' => 'segment',
+                'options' => array(
+                    'route' => '/area/edit/myimg',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Area',
+                        'action'     => 'myimg',
+                    ),
+                ),
+            ),
             
         ),    
     ),

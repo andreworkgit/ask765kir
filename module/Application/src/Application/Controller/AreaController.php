@@ -6,6 +6,7 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
 use Zend\Validator\File\Size;
+use Zend\Validator\File\Extension;
 
 class AreaController extends AbstractActionController {
     
@@ -25,11 +26,58 @@ class AreaController extends AbstractActionController {
 
         return $this->em;
     }
-    /*
-    public function indexAction() {
-        return $this->redirect()->toRoute("home");
-        //return new ViewModel(array('dados' => $records,'array_records_all' => $array_records));
-    }*/
+    
+    public function step2Action() {
+        //return $this->redirect()->toRoute("home");
+        
+        $sm = $this->getEvent()->getApplication()->getServiceManager();
+		$helper = $sm->get('viewhelpermanager')->get('UserIdentity');
+		$sessionLogin = $helper('Login');
+
+		if(!$sessionLogin){
+			 return $this->redirect()->toRoute("home");
+		}
+        
+		$area = $this->params()->fromRoute('area', 0);
+		$path_folder = "./data/".$sessionLogin['user']->diretorio."images";
+		$path_img = $path_folder."/myImgToCut.jpg";
+		$records['area'] = $area; 
+		list($records['width'], $records['height'], $records['type'], $records['attr']) = getimagesize($path_img);
+        return new ViewModel(array('dados' => $records));
+    }
+	
+	public function removeAction(){
+		$sm = $this->getEvent()->getApplication()->getServiceManager();
+		$helper = $sm->get('viewhelpermanager')->get('UserIdentity');
+		$sessionLogin = $helper('Login');
+
+		if(!$sessionLogin){
+			 return $this->redirect()->toRoute("home");
+		}
+		
+		$path_folder = "./data/".$sessionLogin['user']->diretorio."images";
+		$path_img = $path_folder."/myImgToCut.jpg";
+	}
+	
+	
+	
+	public function myimgAction(){
+		$sm = $this->getEvent()->getApplication()->getServiceManager();
+		$helper = $sm->get('viewhelpermanager')->get('UserIdentity');
+		$sessionLogin = $helper('Login');
+
+		if($sessionLogin){
+			$response = $this->getResponse();
+        	$response->getHeaders()->addHeaderLine('Content-Type', "image/jpeg");
+			
+			$path_folder = "./data/".$sessionLogin['user']->diretorio."images";
+			$imagegetcontent = @file_get_contents($path_folder."/myImgToCut.jpg");
+			$response->setStatusCode(200);
+            $response->setContent($imagegetcontent);
+				
+			return $response;
+		}
+	}
 
 	
 	public function indexAction()
@@ -43,8 +91,20 @@ class AreaController extends AbstractActionController {
 			 return $this->redirect()->toRoute("home");
 		}
 		
+		$area = $this->params()->fromRoute('area', 0);
 		
+		$path_folder = "./data/".$sessionLogin['user']->diretorio."images";
 		
+		//verifica se diretorio exists
+		if(!file_exists($path_folder))
+		{
+			$create_dir = mkdir($path_folder,0755,true);
+			if(!$create_dir)
+				return $this->redirect()->toRoute("home");
+		}elseif(file_exists($path_folder."/myImgToCut.jpg")){
+			return $this->redirect()->toRoute("area-edit",array('area'=>$area,'action'=>'step2'));
+		}
+
 		//var_dump($sessionLogin['user']->diretorio);
     	
         $form = $this->getServiceLocator()->get("service_area_upload_form");
@@ -71,9 +131,10 @@ class AreaController extends AbstractActionController {
             if ($form->isValid()) {
                 
                 $size = new Size(array('min'=>5120,'max'=>512000)); //minimum bytes filesize
+                $extension = new Extension(array("extension" => array("jpg", "png")));
                 
                 $adapter = new \Zend\File\Transfer\Adapter\Http(); 
-                $adapter->setValidators(array($size), $File['name']);
+                $adapter->setValidators(array($size,$extension), $File['name']);
 				
                 if (!$adapter->isValid()){
                     $dataError = $adapter->getMessages();
@@ -86,20 +147,13 @@ class AreaController extends AbstractActionController {
                     $form->setMessages(array('fileupload'=>$error ));
                 } else {
                 	
-					$path_folder = "./data/".$sessionLogin['user']->diretorio."images";
-					//verifica se diretorio exists
-					if(!file_exists($path_folder))
-					{
-						$create_dir = mkdir($path_folder,0755,true);
-						if(!$create_dir)
-							return $this->redirect()->toRoute("home");
-					}
+					
                 	
                     $adapter->setDestination($path_folder);
 					$adapter->addFilter('Rename', array('target' => $path_folder.'/myImgToCut.jpg',
                      'overwrite' => true));
                     if ($adapter->receive()) {
-                        echo "Enviado com sucesso";	
+                        return $this->redirect()->toRoute("area-edit",array('area'=>$area,'action'=>'step2'));
                         //$profile->exchangeArray($form->getData());
                         //echo 'Profile Name '.$profile->profilename.' upload '.$profile->fileupload;
                     }
