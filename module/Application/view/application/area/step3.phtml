@@ -1,0 +1,15 @@
+<div class="center">
+  <div class="checkout_content rounded shadow">
+    <div id="alert_message" class="fm_alert rounded shadow" style="display:none"></div>
+    <p class="content_title">EDITAR ÁREA</p>
+    <p style="text-align: center;">Upload -> Seleção -> <span style="font-weight: bold;">Confirmação</span></p>
+    <p style="margin: 10px 0 10px 0;text-align: center;">Selecione abaixo uma área (10x10=100 pixels) da imagem enviada:</p>
+	
+		<img src="<?php echo $this->url('area-edit-myimg',array('img-sel'=>1)); ?>" />
+		
+		<p style="text-align: center;"><input type="button" value="Remover imagem" class="btn_submit shadow" onclick="window.location='<?php echo $this->url("area-edit",array('area'=>$this->dados['area'],'action'=>'rmimg'));?>';"  /></p>
+	</div>  
+	<div class="clear"></div>
+	<div class="clear"></div>
+</div>
+
