@@ -196,7 +196,7 @@ return array(
             'area-edit' => array(
               'type' => 'segment',
                 'options' => array(
-                    'route' => '/area/edit[/:area][/:action]',
+                    'route' => '/area/edit[/:area][/:action][/:area-sel]',
                     'defaults' => array(
                         'controller' => 'Application\Controller\Area',
                         'action'     => 'index',
@@ -206,7 +206,7 @@ return array(
             'area-edit-myimg' => array(
               'type' => 'segment',
                 'options' => array(
-                    'route' => '/area/edit/myimg',
+                    'route' => '/area/edit/myimg[/:img-sel]',
                     'defaults' => array(
                         'controller' => 'Application\Controller\Area',
                         'action'     => 'myimg',
