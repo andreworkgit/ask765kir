@@ -76,7 +76,33 @@ class AreaController extends AbstractActionController {
     	imagejpeg($image_p, $path_folder."/".$name_submetida_100p, 100);
     	imagedestroy($image_p);
 		
+		$file_save = $ar_coord[0].$ar_coord[1].$ar_coord[2].$ar_coord[3].".jpg";
 		
+		if(file_exists($path_folder."/".$file_save))
+		{
+			$img_atual = $ar_coord[0].$ar_coord[1].$ar_coord[2].$ar_coord[3]; 
+		}else{
+			$img_atual = 'my';
+		}
+		
+		$records['img_atual'] = $img_atual;
+		
+		$form = $this->getServiceLocator()->get("service_area_step3_form");
+        $request = $this->getRequest();
+        
+        if ($request->isPost()) {
+            $form->setData($request->getPost());
+            if ($form->isValid()) {
+                
+                $service = $this->getServiceLocator()->get("service_faleconosco");
+                $records = $request->getPost()->toArray();
+                //$service->insert($records);
+                $service->update($records);   
+                return $this->redirect()->toRoute('home-message',array('msg_id'=>'13'));
+            }
+        }
+		
+		return new ViewModel(array('dados' => $records,'form' => $form));
 	}
 	
 	public function rmimgAction(){
@@ -114,15 +140,12 @@ class AreaController extends AbstractActionController {
 			
 			$img_sel = $this->params()->fromRoute('img-sel', 0);
 		
-			
-			switch($img_sel){
-				case 1:
-					$name_file = "10x10.jpg";
-					break;
-				default:
-					$name_file = "myImgToCut.jpg";	
+			if(empty($img_sel)){
+				$name_file = "myImgToCut.jpg";
+			}else{
+				$name_file = $img_sel.".jpg";
 			}
-			
+
 			$imagegetcontent = @file_get_contents($path_folder."/".$name_file);
 			$response->setStatusCode(200);
             $response->setContent($imagegetcontent);

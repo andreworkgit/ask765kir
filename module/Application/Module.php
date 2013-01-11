@@ -72,6 +72,11 @@ class Module {
                      $form = new \Application\Form\AreaUploadForm();
                      return $form;
                 },
+                
+                'service_area_step3_form' => function ($service) {
+                     $form = new \Application\Form\AreaStep3Form();
+                     return $form;
+                },
 				
                 'service_faleconosco_form' => function ($service) {
                      $form = new \Application\Form\FaleConoscoForm();
@@ -80,6 +85,12 @@ class Module {
                 
                 'service_faleconosco' => function($service) {
                     $obj = new \Application\Service\FaleConosco($service->get('Doctrine\ORM\EntityManager'));
+                    $obj->setMessageRenderer($service->get('Zend\View\Renderer\PhpRenderer'));
+                    return $obj;
+                },
+                
+				'service_area_step3' => function($service) {
+                    $obj = new \Application\Service\AreaStep3($service->get('Doctrine\ORM\EntityManager'));
                     $obj->setMessageRenderer($service->get('Zend\View\Renderer\PhpRenderer'));
                     return $obj;
                 },
