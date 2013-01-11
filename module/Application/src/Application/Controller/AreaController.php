@@ -60,10 +60,12 @@ class AreaController extends AbstractActionController {
 		$path_img = $path_folder."/myImgToCut.jpg";
 		
 		$area_sel = $this->params()->fromRoute('area-sel', 0);
+		$area = $this->params()->fromRoute('area', 0);
+		$records['area'] = $area;
 		
 		$coord = base64_decode(urldecode($area_sel));
     	$ar_coord = explode(",",$coord);
-    
+		
    	 	$area_size_default = 10;
     	list($width, $height) = getimagesize($path_img);
    	 	$image_p = imagecreatetruecolor($area_size_default,$area_size_default);
@@ -87,14 +89,26 @@ class AreaController extends AbstractActionController {
 		
 		$records['img_atual'] = $img_atual;
 		
+		$coord_g = base64_decode(urldecode($area));
+    	$ar_coord_g = explode(",",$coord_g);
+		
 		$form = $this->getServiceLocator()->get("service_area_step3_form");
         $request = $this->getRequest();
-        
+		
+		$repository = $this->getEm()->getRepository("Application\Entity\Areas");
+		$obj_records = $repository->findByArea($ar_coord_g[0],$ar_coord_g[1],$ar_coord_g[2],$ar_coord_g[3]);
+        if(!empty($obj_records))
+        {
+        	//var_dump($obj_records);exit;
+        	$records = $obj_records->getArrayCopy();
+        	$form->setData($records);
+		}
+		
         if ($request->isPost()) {
             $form->setData($request->getPost());
             if ($form->isValid()) {
                 
-                $service = $this->getServiceLocator()->get("service_faleconosco");
+                $service = $this->getServiceLocator()->get("service_area_step3");
                 $records = $request->getPost()->toArray();
                 //$service->insert($records);
                 $service->update($records);   
