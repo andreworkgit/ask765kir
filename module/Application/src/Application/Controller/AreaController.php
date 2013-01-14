@@ -78,16 +78,9 @@ class AreaController extends AbstractActionController {
     	imagejpeg($image_p, $path_folder."/".$name_submetida_100p, 100);
     	imagedestroy($image_p);
 		
-		$file_save = $ar_coord[0].$ar_coord[1].$ar_coord[2].$ar_coord[3].".jpg";
 		
-		if(file_exists($path_folder."/".$file_save))
-		{
-			$img_atual = $ar_coord[0].$ar_coord[1].$ar_coord[2].$ar_coord[3]; 
-		}else{
-			$img_atual = 'my';
-		}
 		
-		$records['img_atual'] = $img_atual;
+		
 		
 		$coord_g = base64_decode(urldecode($area));
     	$ar_coord_g = explode(",",$coord_g);
@@ -112,10 +105,21 @@ class AreaController extends AbstractActionController {
                 $records = $request->getPost()->toArray();
                 //$service->insert($records);
                 $service->update($records);   
-                return $this->redirect()->toRoute('home-message',array('msg_id'=>'13'));
+				return $this->redirect()->toRoute('home-message',array('tipo'=>'fsuccess','ref'=>'changepassword','cod_msg'=>'1'));
+                
             }
         }
 		
+		$file_save = $ar_coord[0].$ar_coord[1].$ar_coord[2].$ar_coord[3].".jpg";
+		
+		if(file_exists($path_folder."/".$file_save))
+		{
+			$img_atual = $ar_coord[0].$ar_coord[1].$ar_coord[2].$ar_coord[3]; 
+		}else{
+			$img_atual = 'my';
+		}
+		
+		$records['img_atual'] = $img_atual;
 		return new ViewModel(array('dados' => $records,'form' => $form));
 	}
 	

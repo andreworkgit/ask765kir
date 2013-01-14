@@ -13,6 +13,13 @@ class AreaStep3Form extends Form
 
         $this->setAttribute('method', 'post');
         
+		$this->add(array(
+            'name' => 'id',
+            'attributes' => array(
+                'type'  => 'hidden',
+            ),
+        ));
+		
         $this->add(array(
             'name' => 'titulo',
             'attributes' => array(

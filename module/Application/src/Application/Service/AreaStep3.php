@@ -6,7 +6,7 @@ namespace Application\Service;
 use Doctrine\ORM\EntityManager;
 
 
-class FaleConosco extends AbstractService {
+class AreaStep3 extends AbstractService {
   
     /**
      * @var EntityManager
