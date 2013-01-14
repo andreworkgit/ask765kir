@@ -52,7 +52,6 @@ return array(
                 'options' => array(
                     'route' => '/[:tipo][/:ref][/:cod_msg]',
                     'constraints' => array(
-                        'ref'=> '[a-z]+',
                         'tipo'=> '[a-z]+',
                         'cod_msg'=> '[0-9]+'
                     ),

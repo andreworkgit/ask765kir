@@ -57,8 +57,8 @@
 				
 				if(!empty($sessionUser))
 				{
-					$url_area 	= $this->url('area-edit',array('area'=>$codfica));
-	                $area_title = "Clique aqui para editar está área |Titulo:".$this->array_records_all[$area_seq]['titulo']."|URL:".$this->array_records_all[$area_seq]['url'];
+					$url_area 	= $this->url('area-edit',array('area'=>$codfica, 'action' => 'step3'));
+	                $area_title = "Clique aqui para editar está área \nTitulo: ".$this->array_records_all[$area_seq]['titulo']."\nURL: ".$this->array_records_all[$area_seq]['url'];
 			        $onmouseover = "modo_area('over','id".$area_seq."',this)";
 			        $onmouseout = "modo_area('out','id".$area_seq."',this)";
 				}else{

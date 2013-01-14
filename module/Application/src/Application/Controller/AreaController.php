@@ -60,27 +60,27 @@ class AreaController extends AbstractActionController {
 		$path_img = $path_folder."/myImgToCut.jpg";
 		
 		$area_sel = $this->params()->fromRoute('area-sel', 0);
-		$area = $this->params()->fromRoute('area', 0);
-		$records['area'] = $area;
-		
-		$coord = base64_decode(urldecode($area_sel));
-    	$ar_coord = explode(",",$coord);
-		
-   	 	$area_size_default = 10;
-    	list($width, $height) = getimagesize($path_img);
-   	 	$image_p = imagecreatetruecolor($area_size_default,$area_size_default);
-    	
-		$image = imagecreatefromjpeg($path_img);
-    	
-		$name_submetida_100p = "10x10.jpg";
-		
-		imagecopy($image_p, $image, 0, 0, $ar_coord[0], $ar_coord[1], $width, $height);
-    	imagejpeg($image_p, $path_folder."/".$name_submetida_100p, 100);
-    	imagedestroy($image_p);
+		$area 	  = $this->params()->fromRoute('area', 0);
 		
 		
+		if(!empty($area_sel)){
+			$coord = base64_decode(urldecode($area_sel));
+	    	$ar_coord = explode(",",$coord);
+			
+	   	 	$area_size_default = 10;
+	    	list($width, $height) = getimagesize($path_img);
+	   	 	$image_p = imagecreatetruecolor($area_size_default,$area_size_default);
+	    	
+			$image = imagecreatefromjpeg($path_img);
+	    	
+			$name_submetida_100p = "10x10.jpg";
+			
+			imagecopy($image_p, $image, 0, 0, $ar_coord[0], $ar_coord[1], $width, $height);
+	    	imagejpeg($image_p, $path_folder."/".$name_submetida_100p, 100);
+	    	imagedestroy($image_p);
+		}
 		
-		
+		$file_save = $ar_coord[0].$ar_coord[1].$ar_coord[2].$ar_coord[3].".jpg";
 		
 		$coord_g = base64_decode(urldecode($area));
     	$ar_coord_g = explode(",",$coord_g);
@@ -90,9 +90,9 @@ class AreaController extends AbstractActionController {
 		
 		$repository = $this->getEm()->getRepository("Application\Entity\Areas");
 		$obj_records = $repository->findByArea($ar_coord_g[0],$ar_coord_g[1],$ar_coord_g[2],$ar_coord_g[3]);
+
         if(!empty($obj_records))
         {
-        	//var_dump($obj_records);exit;
         	$records = $obj_records->getArrayCopy();
         	$form->setData($records);
 		}
@@ -100,26 +100,56 @@ class AreaController extends AbstractActionController {
         if ($request->isPost()) {
             $form->setData($request->getPost());
             if ($form->isValid()) {
+            	
+				if(!empty($ar_coord))
+				{
+					if(copy($path_folder."/".$name_submetida_100p,$path_folder."/".$file_save)){
+				    		
+				    	$background = imagecreatefromjpeg("/images/spacefree.jpg");
+				      
+				    	$my_image = imagecreatefromjpeg($path_folder."/".$name_submetida_100p);
+				    	$imagesx = imagesx($my_image);
+				    	$imagesy = imagesy($my_image);
+				      
+				    	imagecopymerge($background, $my_image,$ar_coord[0],$ar_coord[1],0,0,$imagesx,$imagesy,100);
+				    	imagejpeg($background,"/images/spacefree.jpg",100);
+				      	
+				      	//remove a imagem selecionada
+				      	unlink($path_folder."/".$name_submetida_100p);
+				      	imagedestroy($background);
+				    }
+				
+				}
+				
                 
                 $service = $this->getServiceLocator()->get("service_area_step3");
                 $records = $request->getPost()->toArray();
                 //$service->insert($records);
                 $service->update($records);   
-				return $this->redirect()->toRoute('home-message',array('tipo'=>'fsuccess','ref'=>'changepassword','cod_msg'=>'1'));
+				return $this->redirect()->toRoute('home-message',array('tipo'=>'fsuccess','ref'=>'step3','cod_msg'=>'1'));
                 
             }
         }
 		
-		$file_save = $ar_coord[0].$ar_coord[1].$ar_coord[2].$ar_coord[3].".jpg";
 		
-		if(file_exists($path_folder."/".$file_save))
+		if(!empty($ar_coord))
 		{
-			$img_atual = $ar_coord[0].$ar_coord[1].$ar_coord[2].$ar_coord[3]; 
-		}else{
-			$img_atual = 'my';
-		}
+			
+			
+			if(file_exists($path_folder."/".$file_save))
+			{
+				$img_atual = $ar_coord[0].$ar_coord[1].$ar_coord[2].$ar_coord[3]; 
+			}else{
+				$img_atual = 'my';
+			}
+			
+			$records['img_atual'] = $img_atual;
 		
-		$records['img_atual'] = $img_atual;
+		}else{
+			$records['modo_sem_sel'] = true;	
+		}
+		$records['area'] = $area;
+		
 		return new ViewModel(array('dados' => $records,'form' => $form));
 	}
 	

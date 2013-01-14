@@ -301,6 +301,17 @@ var vCityId='1000000';    //]]>
 					
 				break;
 				
+				case "step3":
+					
+					switch ($child->dados['fsuccess']['cod_msg']) :
+						case 1:
+							echo "Área alterada com sucesso";
+							break;
+					
+					endswitch;
+					
+				break;
+				
 				case "register":
 					
 					switch ($child->dados['fsuccess']['cod_msg']) :
