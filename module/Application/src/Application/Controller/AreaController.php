@@ -97,22 +97,27 @@ class AreaController extends AbstractActionController {
         	$form->setData($records);
 		}
 		
+		$uri = $this->getRequest()->getUri();
+    	$url_base = sprintf('%s://%s', $uri->getScheme(), $uri->getHost());
+		
         if ($request->isPost()) {
             $form->setData($request->getPost());
             if ($form->isValid()) {
             	
 				if(!empty($ar_coord))
 				{
-					if(copy($path_folder."/".$name_submetida_100p,$path_folder."/".$file_save)){
+					$area_file_save = $ar_coord_g[0].$ar_coord_g[1].$ar_coord_g[2].$ar_coord_g[3].".jpg";
+					
+					if(copy($path_folder."/".$name_submetida_100p,$path_folder."/".$area_file_save)){
 				    		
-				    	$background = imagecreatefromjpeg("/images/spacefree.jpg");
+				    	$background = imagecreatefromjpeg("./data/images/spacefree.jpg");
 				      
 				    	$my_image = imagecreatefromjpeg($path_folder."/".$name_submetida_100p);
 				    	$imagesx = imagesx($my_image);
 				    	$imagesy = imagesy($my_image);
 				      
-				    	imagecopymerge($background, $my_image,$ar_coord[0],$ar_coord[1],0,0,$imagesx,$imagesy,100);
-				    	imagejpeg($background,"/images/spacefree.jpg",100);
+				    	imagecopymerge($background, $my_image,$ar_coord_g[0],$ar_coord_g[1],0,0,$imagesx,$imagesy,100);
+				    	imagejpeg($background,"./data/images/spacefree.jpg",100);
 				      	
 				      	//remove a imagem selecionada
 				      	unlink($path_folder."/".$name_submetida_100p);
@@ -135,7 +140,6 @@ class AreaController extends AbstractActionController {
 		if(!empty($ar_coord))
 		{
 			
-			
 			if(file_exists($path_folder."/".$file_save))
 			{
 				$img_atual = $ar_coord[0].$ar_coord[1].$ar_coord[2].$ar_coord[3]; 
@@ -146,6 +150,7 @@ class AreaController extends AbstractActionController {
 			$records['img_atual'] = $img_atual;
 		
 		}else{
+			$records['img_atual'] 	 = $ar_coord_g[0].$ar_coord_g[1].$ar_coord_g[2].$ar_coord_g[3];
 			$records['modo_sem_sel'] = true;	
 		}
 		$records['area'] = $area;
@@ -173,8 +178,7 @@ class AreaController extends AbstractActionController {
 		
 	}
 	
-	
-	
+
 	public function myimgAction(){
 		$sm = $this->getEvent()->getApplication()->getServiceManager();
 		$helper = $sm->get('viewhelpermanager')->get('UserIdentity');

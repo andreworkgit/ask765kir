@@ -32,13 +32,12 @@ echo $this->formHidden($form->get('id')) . PHP_EOL;
 		
 	
 	<div class="decorator_submit">
-		<input type="button" value="Selecionar outra área" class="btn_submit shadow" onclick="window.location='<?php echo $this->url("area-edit",array('area'=>$this->dados['area'],'action'=>'step2'));?>';"  />
- 
-	
 		<input type="submit" name="register" id="register" value="Alterar e Publicar" class="btn_submit shadow" title="Cadastrar" style="margin-left: 200px;" />
-	<?php echo $this->form()->closeTag($form) . PHP_EOL; ?>
-	
+		
 	</div>
+	<?php echo $this->form()->closeTag($form) . PHP_EOL; ?>
+	<input type="button" value="Selecionar outra área" class="btn_submit shadow" onclick="window.location='<?php echo $this->url("area-edit",array('area'=>$this->dados['area'],'action'=>'step2'));?>';"  />
+ 
 </div>
 <div class="clear"></div>
 </div>
