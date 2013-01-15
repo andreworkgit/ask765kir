@@ -28,8 +28,6 @@ class AreaController extends AbstractActionController {
     }
     
     public function step2Action() {
-        //return $this->redirect()->toRoute("home");
-        
         $sm = $this->getEvent()->getApplication()->getServiceManager();
 		$helper = $sm->get('viewhelpermanager')->get('UserIdentity');
 		$sessionLogin = $helper('Login');
@@ -61,7 +59,6 @@ class AreaController extends AbstractActionController {
 		
 		$area_sel = $this->params()->fromRoute('area-sel', 0);
 		$area 	  = $this->params()->fromRoute('area', 0);
-		
 		
 		if(!empty($area_sel)){
 			$coord = base64_decode(urldecode($area_sel));
@@ -180,6 +177,7 @@ class AreaController extends AbstractActionController {
 	
 
 	public function myimgAction(){
+		
 		$sm = $this->getEvent()->getApplication()->getServiceManager();
 		$helper = $sm->get('viewhelpermanager')->get('UserIdentity');
 		$sessionLogin = $helper('Login');
