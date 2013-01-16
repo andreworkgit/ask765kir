@@ -222,6 +222,16 @@ return array(
                     ),
                 ),
             ),
+            'area-remove' => array(
+              'type' => 'segment',
+                'options' => array(
+                    'route' => '/area/remove[/:area]',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Index',
+                        'action'     => 'remove',
+                    ),
+                ),
+            ),
             
             
         ),    

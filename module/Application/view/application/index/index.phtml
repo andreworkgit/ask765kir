@@ -25,6 +25,17 @@
     
     
   </script>
+  
+	  <?php
+		$sessionCarrinho = $this->SessionSelection('carrinho');
+		$itens_carrinho = $sessionCarrinho->areas;
+	    $ar_id_areas = array();
+		if(!empty($itens_carrinho)){
+			foreach($itens_carrinho as $k => $v){
+				$ar_id_areas[] = $v['id_area'];	
+			}
+		}
+	  ?>
     
       <img src="<?php echo $this->serverUrl($this->url('home', array('action' => 'photoSpace'))); ?>" class="maphome"  usemap="#planetmap" id="photo_space"  />
       
@@ -50,7 +61,16 @@
             
             $url_area 	= $this->url('area-add',array('area'=>$codfica));
             $area_title = "Área Livre: Clique aqui para registrar";
-            
+
+		    if(is_array($ar_id_areas))
+		    {
+		    	if(in_array($area_seq,$ar_id_areas)){
+			      	$url_area 	= $this->url('area-remove',array('area'=>$codfica));
+	    			$area_title = "Clique aqui para remover a área do carrinho";
+			    } 
+		    }
+			
+			
             if(!empty($this->array_records_all[$area_seq]['seq_coord']) &&
                $area_seq == $this->array_records_all[$area_seq]['seq_coord']){
             

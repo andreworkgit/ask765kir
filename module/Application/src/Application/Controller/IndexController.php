@@ -58,7 +58,7 @@ class IndexController extends AbstractActionController {
 		
 		$area = $this->params()->fromRoute('area', 0);
 		
-		$coord = urldecode(base64_decode($area));
+		$coord = base64_decode(urldecode($area));
     	$id_area = str_replace(",","",$coord);
 
 		if(!empty($sessionLogin['user']->credito))
@@ -83,6 +83,7 @@ class IndexController extends AbstractActionController {
 
 	public function removeAction(){
 		
+
 		$sm = $this->getEvent()->getApplication()->getServiceManager();
 		$helper = $sm->get('viewhelpermanager')->get('UserIdentity');
 		$sessionLogin = $helper('Login');
@@ -93,23 +94,29 @@ class IndexController extends AbstractActionController {
 		
 		$area = $this->params()->fromRoute('area', 0);
 		
-		$coord = urldecode(base64_decode($area));
+		$coord = base64_decode(urldecode($area));
     	$id_area = str_replace(",","",$coord);
-		/*
-	    if(!empty($_SESSION['carrinho']) && $_GET['remove']){
-	      foreach($_SESSION['carrinho'] as $k => $v){
-	        if($id_area == $v['id_area']){
-	          
-	          unset($_SESSION['carrinho'][$k]);
-	          $_SESSION['carrinho_qtd'] = $_SESSION['carrinho_qtd'] - 1; 
-	          $_SESSION['carrinho_valor_total'] = $_SESSION['carrinho_valor_total'] - 3;
-	          //var_dump($id_area,$_SESSION['carrinho'],$v['id_area']);
-	          $assing['form_sucesso'] = "�rea removida do carrinho";
-	          break;
-	        }
-	      }
-	      
-	    }*/
+		
+		$session = new Container('carrinho');
+		$areas = $session->offsetGet('areas');
+		
+		if(!empty($areas)){
+			foreach($areas as $k => $v){
+				if($id_area == $v['id_area']){
+	          	  unset($areas[$k]);
+				  $session->offsetSet('areas', $areas);
+		          
+		          $qtd = $session->offsetGet('qtd') - 1;
+				  $session->offsetSet('qtd', $qtd);
+				  
+				  $vl_total = $session->offsetGet('vl_total') - 3;
+				  $session->offsetSet('vl_total', $vl_total);
+				  
+				  return $this->redirect()->toRoute('home-message',array('tipo'=>'fsuccess','ref'=>'add','cod_msg'=>'2'));
+
+	        	}
+			}
+		}
 		
 	}
     
