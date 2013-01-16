@@ -212,6 +212,17 @@ return array(
                     ),
                 ),
             ),
+            'area-add' => array(
+              'type' => 'segment',
+                'options' => array(
+                    'route' => '/area/add[/:area]',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Index',
+                        'action'     => 'add',
+                    ),
+                ),
+            ),
+            
             
         ),    
     ),

@@ -88,8 +88,8 @@ var vCityId='1000000';    //]]>
             
             <!-- City Selection -->
       <!-- City Selection -->
-
-<div class="city_selected" style="display: <?php if($this->show_carrinho) echo "block"; else echo "none"; ?>">
+<?php $sessionCarrinho = $this->SessionSelection('carrinho'); $item_carrinho = $sessionCarrinho->areas; ?>
+<div class="city_selected" style="display: <?php if(!empty($item_carrinho)) echo "block"; else echo "none"; ?>">
     <table>
       <tr>
         <td><span id="carrinho_bar">Carrinho</span></td>
@@ -98,8 +98,8 @@ var vCityId='1000000';    //]]>
       </tr>
       <tr>
         <td class="td_sub_title">Quatidade de área(s) selecionada(s)</td>
-        <td>{$itens}</td>
-        <td>R$ {$valor_total}</td>
+        <td><?php echo $sessionCarrinho->qtd; ?></td>
+        <td>R$ <?php echo number_format($sessionCarrinho->vl_total, 2, ',', '.'); ?></td>
       </tr>
       <tr>
         <td class="td_sub_title"></td>
@@ -301,6 +301,18 @@ var vCityId='1000000';    //]]>
 					
 				break;
 				
+				case "add":
+					
+					switch ($child->dados['fsuccess']['cod_msg']) :
+						
+						case 1:
+							echo "Área adicionada ao carrinho com sucesso";
+							break;
+					
+					endswitch;
+					
+				break;
+				
 				case "step3":
 					
 					switch ($child->dados['fsuccess']['cod_msg']) :
@@ -412,6 +424,18 @@ var vCityId='1000000';    //]]>
 						
 						case 1:
 							echo "Você não confirmou seu e-mail. Reenviamos um novo e-mail para confirmação. Verifique sua caixa de entrada.";
+							break;
+					
+					endswitch;
+					
+				break;
+				
+				case "add":
+					
+					switch ($child->dados['falert']['cod_msg']) :
+						
+						case 1:
+							echo "Você não tem crédito suficiente para comprar áreas. Por favor compre créditos a partir de R$ 3,00.";
 							break;
 					
 					endswitch;

@@ -102,7 +102,8 @@ class LoginController extends AbstractActionController {
         $auth = new AuthenticationService;
         $auth->setStorage(new SessionStorage('Login'));
         $auth->clearIdentity();
-        
+        $session = new \Zend\Session\Container('carrinho'); 
+        $session->getManager()->destroy(); 
         return $this->redirect()->toRoute('home');
     }
     

@@ -3,27 +3,28 @@
 <div class="center">
   
     <script type="text/javascript">
-    <?php if(empty($this->dados['nome_usuario'])): ?>
+    <?php $sessionUser = $this->UserIdentity('Login');  if(!$sessionUser): ?>
       $(function() {
         $('.maphome').maphilight();
       });
     <?php endif; ?>
     
     function modo_area(tipo,id_coord,obj){
+    	
       if(tipo == "over"){
         //$('#'.id_coord).mouseout();
-        $('.maphome').css('background-image', 'url("<?php echo $this->serverUrl($this->url('home', array('action' => 'photoSpace','tipo'=>2))); ?>")');
-         
+        //$('.maphome').css('background-image', 'url("<?php echo $this->serverUrl($this->url('home', array('action' => 'photoSpace','tipo'=>2))); ?>")');
+        $('#photo_space').attr('src','<?php echo $this->serverUrl($this->url('home', array('action' => 'photoSpace','tipo'=>2))); ?>'); 
       }
       if(tipo == "out"){
         //$('#'.id_coord).mouseover();
-        $('.maphome').css('background-image', 'url("<?php echo $this->serverUrl($this->url('home', array('action' => 'photoSpace'))); ?>")');  
+        //$('.maphome').css('background-image', 'url("<?php echo $this->serverUrl($this->url('home', array('action' => 'photoSpace'))); ?>")');  
+      	$('#photo_space').attr('src','<?php echo $this->serverUrl($this->url('home', array('action' => 'photoSpace'))); ?>');
       }
     }
     
     
   </script>
-    <?php //var_dump($this->dados);  ?>
     
       <img src="<?php echo $this->serverUrl($this->url('home', array('action' => 'photoSpace'))); ?>" class="maphome"  usemap="#planetmap" id="photo_space"  />
       
@@ -47,7 +48,7 @@
             
             $codfica = urlencode(base64_encode($v_left.','.$v_top.','.$v_right.','.$v_btn));
             
-            $url_area = $this->url('home/action');//url_secure("index.php?a=".$codfica);
+            $url_area 	= $this->url('area-add',array('area'=>$codfica));
             $area_title = "Área Livre: Clique aqui para registrar";
             
             if(!empty($this->array_records_all[$area_seq]['seq_coord']) &&

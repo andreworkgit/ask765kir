@@ -5,6 +5,8 @@ namespace Application\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
+use Zend\Session\Container;
+
 class IndexController extends AbstractActionController {
     
     /**
@@ -43,6 +45,73 @@ class IndexController extends AbstractActionController {
 
         return new ViewModel(array('dados' => $records,'array_records_all' => $array_records));
     }
+	
+	public function addAction(){
+		
+		$sm = $this->getEvent()->getApplication()->getServiceManager();
+		$helper = $sm->get('viewhelpermanager')->get('UserIdentity');
+		$sessionLogin = $helper('Login');
+
+		if(!$sessionLogin){
+			 return $this->redirect()->toRoute("home");
+		}
+		
+		$area = $this->params()->fromRoute('area', 0);
+		
+		$coord = urldecode(base64_decode($area));
+    	$id_area = str_replace(",","",$coord);
+
+		if(!empty($sessionLogin['user']->credito))
+		{
+			return $this->redirect()->toRoute('home-message',array('tipo'=>'falert','ref'=>'add','cod_msg'=>'1'));   
+		}else{
+			$session = new Container('carrinho');
+			$qtd = $session->offsetGet('qtd') + 1;
+			$session->offsetSet('qtd', $qtd);
+			$valor_total = (3 * $qtd);
+			$session->offsetSet('vl_total', $valor_total);
+			
+			$areas = $session->offsetGet('areas');
+			$areas[] = array('id_area' => $id_area,'coord' => $coord,'valor' => 3);
+			$session->offsetSet('areas', $areas);
+			
+			return $this->redirect()->toRoute('home-message',array('tipo'=>'fsuccess','ref'=>'add','cod_msg'=>'1'));
+			
+		}
+		
+	}
+
+	public function removeAction(){
+		
+		$sm = $this->getEvent()->getApplication()->getServiceManager();
+		$helper = $sm->get('viewhelpermanager')->get('UserIdentity');
+		$sessionLogin = $helper('Login');
+
+		if(!$sessionLogin){
+			 return $this->redirect()->toRoute("home");
+		}
+		
+		$area = $this->params()->fromRoute('area', 0);
+		
+		$coord = urldecode(base64_decode($area));
+    	$id_area = str_replace(",","",$coord);
+		/*
+	    if(!empty($_SESSION['carrinho']) && $_GET['remove']){
+	      foreach($_SESSION['carrinho'] as $k => $v){
+	        if($id_area == $v['id_area']){
+	          
+	          unset($_SESSION['carrinho'][$k]);
+	          $_SESSION['carrinho_qtd'] = $_SESSION['carrinho_qtd'] - 1; 
+	          $_SESSION['carrinho_valor_total'] = $_SESSION['carrinho_valor_total'] - 3;
+	          //var_dump($id_area,$_SESSION['carrinho'],$v['id_area']);
+	          $assing['form_sucesso'] = "�rea removida do carrinho";
+	          break;
+	        }
+	      }
+	      
+	    }*/
+		
+	}
     
     public function loginIframeAction(){
 
@@ -79,6 +148,7 @@ class IndexController extends AbstractActionController {
 	  			$imagesx = imagesx($my_image);
 	  			$imagesy = imagesy($my_image);
 				
+				$add_carrinho = imagecreatefromjpeg("./public/images/app/m51_carrinho.jpg");
 				
 				if(!empty($obj_records)){
 					//$array_records = $obj_records->getArrayCopy();
@@ -88,22 +158,31 @@ class IndexController extends AbstractActionController {
 					
 				}
 				
+				$session = new Container('carrinho');
+				$areas = $session->offsetGet('areas');
+				if(!empty($areas)){
+					foreach($areas as $k=>$v){
+      					$v_coord = explode(",",$v['coord']);
+      					imagecopymerge($background, $add_carrinho,$v_coord[0],$v_coord[1],0,0,imagesx($add_carrinho),imagesy($add_carrinho),100);
+   		 			}
+				}
+				
 			}
 	        
 	        //$response->getHeaders()->addHeaderLine('Content-Type', "image/jpg");
 		
 		}else{
 			//$response->getHeaders()->addHeaderLine('Cache-Control',"no-cache, must-revalidate");
-			header("Cache-Control: no-cache, must-revalidate");
+			
 		}
         //var_dump($response->getHeaders());
-        
+        //header("Cache-Control: no-cache, must-revalidate");
         header("Content-type: image/jpeg");
         
         imagejpeg($background,null,100);
         imagedestroy($background);
         
-        return $response;
+        //return $response;
         
     }
 
