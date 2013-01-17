@@ -25,6 +25,46 @@ class CarrinhoController extends AbstractActionController {
 
         return $this->em;
     }
+	
+	public function finishAction(){
+		
+		$sm = $this->getEvent()->getApplication()->getServiceManager();
+		$helper = $sm->get('viewhelpermanager')->get('UserIdentity');
+		$sessionLogin = $helper('Login');
+
+		if(!$sessionLogin){
+			 return $this->redirect()->toRoute("home");
+		}
+		
+		var_dump($sessionLogin);exit;
+		
+		$background = imagecreatefromjpeg("./data/images/spacefree.jpg");
+    	$my_image = imagecreatefromjpeg("./public/images/app/m51_comprado.jpg");
+    	$imagesx = imagesx($my_image);
+    	$imagesy = imagesy($my_image);
+		
+		$session = new Container('carrinho');
+		$areas = $session->offsetGet('areas');
+		$qtd = $session->offsetGet('qtd');
+		$vl_total = $session->offsetGet('vl_total');
+		
+		if(!empty($areas)){
+			$soma_insert = 0;
+			$service = $this->getServiceLocator()->get("service_carrinho");
+			foreach($areas as $k => $v){
+				$v_coord = explode(",",$v['coord']);
+        		$records = array('id_user'=>$sessionLogin['user']->id,'p_left'=>$v_coord[0],'p_top'=>$v_coord[1],'p_right'=>$v_coord[2],'p_btn'=>$v_coord[3]);
+      			$service->insert($records);
+				imagecopymerge($background, $my_image,$v_coord[0],$v_coord[1],0,0,$imagesx,$imagesy,100);
+          		$soma_insert++;
+			}
+			
+			if($soma_insert == $qtd){
+				
+			}
+		}
+		
+	}
     
     public function indexAction() {
     	

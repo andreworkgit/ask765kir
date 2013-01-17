@@ -100,6 +100,12 @@ class Module {
                     return $obj;
                 },
                 
+				'service_carrinho' => function($service) {
+                    $obj = new \Application\Service\Carrinho($service->get('Doctrine\ORM\EntityManager'));
+                    $obj->setMessageRenderer($service->get('Zend\View\Renderer\PhpRenderer'));
+                    return $obj;
+                },
+                
 				
 				'service_register' => function($service) {
                     $obj = new \Login\Service\Register($service->get('Doctrine\ORM\EntityManager'));

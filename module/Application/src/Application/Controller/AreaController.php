@@ -230,9 +230,7 @@ class AreaController extends AbstractActionController {
 			return $this->redirect()->toRoute("area-edit",array('area'=>$area,'action'=>'step2'));
 		}
 
-		//var_dump($sessionLogin['user']->diretorio);
-    	
-        $form = $this->getServiceLocator()->get("service_area_upload_form");
+		$form = $this->getServiceLocator()->get("service_area_upload_form");
         $request = $this->getRequest();
         
         if ($request->isPost()) {
@@ -246,9 +244,6 @@ class AreaController extends AbstractActionController {
                  $nonFile,
                  array('fileupload'=> $File['name'])
              );
-			 
-			// var_dump($data);exit;
-			 
 			 
             //set data post and file ...    
             $form->setData($data);

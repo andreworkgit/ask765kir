@@ -244,6 +244,17 @@ return array(
                 ),
             ),
             
+			'finish-carrinho' => array(
+              'type' => 'segment',
+                'options' => array(
+                    'route' => '/carrinho/finish',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Carrinho',
+                        'action'     => 'finish',
+                    ),
+                ),
+            ),
+            
             
         ),    
     ),
