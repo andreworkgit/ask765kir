@@ -89,7 +89,7 @@ var vCityId='1000000';    //]]>
             <!-- City Selection -->
       <!-- City Selection -->
 <?php $sessionCarrinho = $this->SessionSelection('carrinho'); $item_carrinho = $sessionCarrinho->areas; ?>
-<div class="city_selected" style="display: <?php if(!empty($item_carrinho)) echo "block"; else echo "none"; ?>">
+<div class="city_selected" style="display: <?php if(!empty($item_carrinho) && $this->controllerclass != "Application\Controller\CarrinhoController") echo "block"; else echo "none"; ?>">
     <table>
       <tr>
         <td><span id="carrinho_bar">Carrinho</span></td>
@@ -104,7 +104,7 @@ var vCityId='1000000';    //]]>
       <tr>
         <td class="td_sub_title"></td>
         <td></td>
-        <td><input type="button" class="btn_submit_register rounded shadow" value=" Comprar " title=" Comprar " onclick="window.location='{$url_carrinho}'" id="btn_submit_register_newsletter"></td>
+        <td><input type="button" class="btn_submit_register rounded shadow" value=" Comprar " title=" Comprar " onclick="window.location='<?php echo $this->serverUrl($this->url('carrinho')); ?>'" id="btn_submit_register_newsletter"></td>
       </tr>
         
     </table>

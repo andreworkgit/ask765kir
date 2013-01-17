@@ -31,6 +31,8 @@ class Module {
     }
 
     public function onBootstrap($e) {
+    	
+		
         $e->getApplication()->getEventManager()->getSharedManager()->attach('Zend\Mvc\Controller\AbstractActionController', 'dispatch', function($e) {
                     $controller = $e->getTarget();
                     $controllerClass = get_class($controller);
@@ -39,8 +41,11 @@ class Module {
                     if (isset($config['module_layouts'][$moduleNamespace])) {
                         $controller->layout($config['module_layouts'][$moduleNamespace]);
                     }
+					//seta variavel no layout
+					$e->getViewModel()->setVariable('controllerclass', $controllerClass);
                 }, 98);
     }
+	
 /*
     public function init(ModuleManager $moduleManager) {
         $sharedEvents = $moduleManager->getEventManager()->getSharedManager();

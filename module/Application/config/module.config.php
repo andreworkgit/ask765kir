@@ -233,12 +233,24 @@ return array(
                 ),
             ),
             
+			'carrinho' => array(
+              'type' => 'segment',
+                'options' => array(
+                    'route' => '/carrinho[/:area]',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Carrinho',
+                        'action'     => 'index',
+                    ),
+                ),
+            ),
+            
             
         ),    
     ),
     'controllers' => array(
         'invokables' => array(
             'Application\Controller\Index'       => 'Application\Controller\IndexController',
+            'Application\Controller\Carrinho'    => 'Application\Controller\CarrinhoController',
             'Application\Controller\FaleConosco' => 'Application\Controller\FaleConoscoController',
             'Application\Controller\Afiliados' 	 => 'Application\Controller\AfiliadosController',
             'Application\Controller\QuemSomos' 	 => 'Application\Controller\QuemSomosController',
