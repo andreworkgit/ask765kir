@@ -8,6 +8,7 @@ use Zend\Mvc\Controller\AbstractActionController,
     
 use Zend\Authentication\AuthenticationService;
 use Zend\Authentication\Storage\Session as SessionStorage;
+use Zend\Session\Container;
 
 class LoginController extends AbstractActionController {
     
@@ -64,6 +65,10 @@ class LoginController extends AbstractActionController {
                   //$sessionStorage->write($getIdentity['user'], null);       
                   $msg['fsuccess']['ref']  	  = "login";	
 				  $msg['fsuccess']['cod_msg'] = "1";
+				  
+				  $session = new Container('user');
+				  $session->offsetSet('credito', $getIdentity['user']->credito);
+				  
                   return $this->redirect()->toRoute("home");
               }else{
               	  $getIdentity = $result->getIdentity();

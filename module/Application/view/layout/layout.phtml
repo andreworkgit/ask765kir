@@ -242,9 +242,10 @@ var vCityId='1000000';    //]]>
            
             <!-- Usuario Logado -->
             <?php $sessionUser = $this->UserIdentity('Login');  if($sessionUser): ?>
+           	<?php $sessionCredito = $this->SessionSelection('user'); ?>
             <div id="SVM_logged" style="">
                 <ul class="nav_menu_login">
-                    <li><span class="login_align_list">Olá, <span id="logged_name"><?php echo $sessionUser['user']->nome; ?></span> </span> você tem R$ <?php echo number_format($sessionUser['user']->credito, 2, ',', '.'); ?> de crédito</li>
+                    <li><span class="login_align_list">Olá, <span id="logged_name"><?php echo $sessionUser['user']->nome; ?></span> </span> você tem R$ <?php echo number_format($sessionCredito->credito, 2, ',', '.'); ?> de crédito</li>
                     <li><a href="{$url_minha_conta}" title="Minha Conta" >Minha Conta</a></li>
                    <li><a href="<?php echo $this->url('logout'); ?>" title="Sair">Sair</a></li>
                     
@@ -338,6 +339,10 @@ var vCityId='1000000';    //]]>
 						case 2:
 							echo "Cadastro realizada com sucesso.";
 							break;
+							
+						case 3:
+							echo "Área registrada com sucesso.";
+							break;	
 					
 					endswitch;
 					

@@ -27,7 +27,7 @@ class IndexController extends AbstractActionController {
     }
     
     public function indexAction() {
-
+		
         $referencia = $this->params()->fromRoute('ref', 0);
 		$tipo 		= $this->params()->fromRoute('tipo', 0);
 		$cod_msg 	= $this->params()->fromRoute('cod_msg', 0);
@@ -47,7 +47,7 @@ class IndexController extends AbstractActionController {
     }
 	
 	public function addAction(){
-		
+		//verificar se pode comprar esta área
 		$sm = $this->getEvent()->getApplication()->getServiceManager();
 		$helper = $sm->get('viewhelpermanager')->get('UserIdentity');
 		$sessionLogin = $helper('Login');
@@ -60,8 +60,11 @@ class IndexController extends AbstractActionController {
 		
 		$coord = base64_decode(urldecode($area));
     	$id_area = str_replace(",","",$coord);
+		
+		$sessionUser = new Container('user');
+		$credito = $sessionUser->offsetGet('credito');
 
-		if(!empty($sessionLogin['user']->credito))
+		if(empty($credito))
 		{
 			return $this->redirect()->toRoute('home-message',array('tipo'=>'falert','ref'=>'add','cod_msg'=>'1'));   
 		}else{
@@ -117,6 +120,19 @@ class IndexController extends AbstractActionController {
 	        	}
 			}
 		}
+		
+	}
+
+	public function registerSessionAction(){
+		
+		$sm = $this->getEvent()->getApplication()->getServiceManager();
+		$helper = $sm->get('viewhelpermanager')->get('UserIdentity');
+		$sessionLogin = $helper('Login');
+
+		
+		$session = new Container('user');
+		$session->offsetSet('credito', $sessionLogin['user']->credito);
+		return $this->redirect()->toRoute("home");
 		
 	}
     

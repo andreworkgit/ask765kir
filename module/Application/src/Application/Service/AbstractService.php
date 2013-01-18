@@ -31,7 +31,7 @@ abstract class AbstractService {
     protected $mail_to_email = 'andrework@gmail.com';
     protected $mail_to_name = '';
     
-    protected $mail_subject = '1ª Etapa do cadastro realizada com sucesso';
+    protected $mail_subject = '1ï¿½ Etapa do cadastro realizada com sucesso';
     protected $mail_template = 'login/register/confirmation-email';
     
     public function __construct(EntityManager $em) {
@@ -43,7 +43,7 @@ abstract class AbstractService {
         $entity->populate($data);
         $this->em->persist($entity);
         $this->em->flush();
-        return $entity;
+        return $entity->id;
     }
     
     public function update(array $data) {
