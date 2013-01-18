@@ -47,7 +47,7 @@ class IndexController extends AbstractActionController {
     }
 	
 	public function addAction(){
-		//verificar se pode comprar esta área
+		
 		$sm = $this->getEvent()->getApplication()->getServiceManager();
 		$helper = $sm->get('viewhelpermanager')->get('UserIdentity');
 		$sessionLogin = $helper('Login');
@@ -59,7 +59,17 @@ class IndexController extends AbstractActionController {
 		$area = $this->params()->fromRoute('area', 0);
 		
 		$coord = base64_decode(urldecode($area));
+		$ar_coord_g = explode(",",$coord);
     	$id_area = str_replace(",","",$coord);
+		
+		$repository = $this->getEm()->getRepository("Application\Entity\Areas");
+		$obj_records = $repository->findByArea($ar_coord_g[0],$ar_coord_g[1],$ar_coord_g[2],$ar_coord_g[3]);
+
+        if(!empty($obj_records))
+        {
+        	//$records = $obj_records->getArrayCopy();
+        	return $this->redirect()->toRoute('home-message',array('tipo'=>'falert','ref'=>'add','cod_msg'=>'2'));
+		}
 		
 		$sessionUser = new Container('user');
 		$credito = $sessionUser->offsetGet('credito');

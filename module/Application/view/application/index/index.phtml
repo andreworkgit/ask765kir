@@ -27,6 +27,7 @@
   </script>
   
 	  <?php
+	  	//var_dump($this->array_records_all);exit;
 		$sessionCarrinho = $this->SessionSelection('carrinho');
 		$itens_carrinho = $sessionCarrinho->areas;
 	    $ar_id_areas = array();
@@ -41,7 +42,6 @@
       
       <map name="planetmap">
         <?php
-        //var_dump($this->array_records_all);
             $size_area = 10;
             $c_left = 0;
             $c_top = 0;
@@ -51,66 +51,65 @@
             
             for($qtd_total = 1;$qtd_total <= $area_total;$qtd_total++){
             
-            $v_left = $c_left;
-            $v_top = $c_top;
-            $v_right = $c_left+$size_area;
-            $v_btn = $c_btn;
-            $area_seq =  $v_left.$v_top.$v_right.$v_btn;
-            
-            $codfica = urlencode(base64_encode($v_left.','.$v_top.','.$v_right.','.$v_btn));
-            
-            $url_area 	= $this->url('area-add',array('area'=>$codfica));
-            $area_title = "Área Livre: Clique aqui para registrar";
-
-		    if(is_array($ar_id_areas))
-		    {
-		    	if(in_array($area_seq,$ar_id_areas)){
-			      	$url_area 	= $this->url('area-remove',array('area'=>$codfica));
-	    			$area_title = "Clique aqui para remover a área do carrinho";
-			    } 
-		    }
-			
-			
-            if(!empty($this->array_records_all[$area_seq]['seq_coord']) &&
-               $area_seq == $this->array_records_all[$area_seq]['seq_coord']){
-            
-				$sessionUser = $this->UserIdentity('Login');
+	            $v_left = $c_left;
+	            $v_top = $c_top;
+	            $v_right = $c_left+$size_area;
+	            $v_btn = $c_btn;
+	            $area_seq =  $v_left.$v_top.$v_right.$v_btn;
+	            
+	            $codfica = urlencode(base64_encode($v_left.','.$v_top.','.$v_right.','.$v_btn));
+	            
+	            $url_area 	= $this->url('area-add',array('area'=>$codfica));
+	            $area_title = "Área Livre: Clique aqui para registrar";
+	
+			    if(is_array($ar_id_areas))
+			    {
+			    	if(in_array($area_seq,$ar_id_areas)){
+				      	$url_area 	= $this->url('area-remove',array('area'=>$codfica));
+		    			$area_title = "Clique aqui para remover a área do carrinho";
+				    } 
+			    }
 				
-				if(!empty($sessionUser))
-				{
-					$url_area 	= $this->url('area-edit',array('area'=>$codfica, 'action' => 'step3'));
-	                $area_title = "Clique aqui para editar está área \nTitulo: ".$this->array_records_all[$area_seq]['titulo']."\nURL: ".$this->array_records_all[$area_seq]['url'];
-			        $onmouseover = "modo_area('over','id".$area_seq."',this)";
-			        $onmouseout = "modo_area('out','id".$area_seq."',this)";
-				}else{
-	                $url_area = $this->array_records_all[$area_seq]['url'];
-	                $area_title = $this->array_records_all[$area_seq]['titulo'];
+				
+	            if(!empty($this->array_records_all[$area_seq]['seq_coord']) &&
+	               $area_seq == $this->array_records_all[$area_seq]['seq_coord']){
+	            
+					$sessionUser = $this->UserIdentity('Login');
+					if($sessionUser['user']->id == $this->array_records_all[$area_seq]['id_user'])
+					{
+						$url_area 	= $this->url('area-edit',array('area'=>$codfica, 'action' => 'step3'));
+		                $area_title = "Clique aqui para editar está área \nTitulo: ".$this->array_records_all[$area_seq]['titulo']."\nURL: ".$this->array_records_all[$area_seq]['url'];
+				        $onmouseover = "modo_area('over','id".$area_seq."',this)";
+				        $onmouseout = "modo_area('out','id".$area_seq."',this)";
+					}else{
+		                $url_area = $this->array_records_all[$area_seq]['url'];
+		                $area_title = $this->array_records_all[$area_seq]['titulo'];
+		                $onmouseover = '';
+		                $onmouseout = '';
+					}
+	            }else{
 	                $onmouseover = '';
 	                $onmouseout = '';
-				}
-            }else{
-                $onmouseover = '';
-                $onmouseout = '';
-            }
-            
-            /*
-            if(is_array($ar_my_id_areas))
-            {
-                if(in_array($area_seq,$ar_my_id_areas) ){
-                $url_area = url_secure("index.php?pag=editar_area&a=".$codfica);
-                $area_title = "Clique aqui para editar está área";
-                } 
-            }*/
-            
-            echo '<area id="id'.$area_seq.'" class="area_style" onmouseover="'.$onmouseover.'" onmouseout="'.$onmouseout.'" shape="rect" coords="'.$v_left.','.$v_top.','.$v_right.','.$v_btn.'" href="'.$url_area.'" onclick="" style=""  title="'.$area_title.'" />';
-            
-            if($v_right < 1000)
-                $c_left = $c_left + $size_area;
-            else{
-                $c_top = $c_top + $size_area;
-                $c_btn = $c_btn + $size_area;
-                $c_left = 0;
-            }
+	            }
+	            
+	            /*
+	            if(is_array($ar_my_id_areas))
+	            {
+	                if(in_array($area_seq,$ar_my_id_areas) ){
+	                $url_area = url_secure("index.php?pag=editar_area&a=".$codfica);
+	                $area_title = "Clique aqui para editar está área";
+	                } 
+	            }*/
+	            
+	            echo '<area id="id'.$area_seq.'" class="area_style" onmouseover="'.$onmouseover.'" onmouseout="'.$onmouseout.'" shape="rect" coords="'.$v_left.','.$v_top.','.$v_right.','.$v_btn.'" href="'.$url_area.'" onclick="" style=""  title="'.$area_title.'" />';
+	            
+	            if($v_right < 1000)
+	                $c_left = $c_left + $size_area;
+	            else{
+	                $c_top = $c_top + $size_area;
+	                $c_btn = $c_btn + $size_area;
+	                $c_left = 0;
+	            }
             
             }
         

@@ -16,7 +16,8 @@ class AreasRepository extends EntityRepository {
               $seq_coord = $entity->p_left.$entity->p_top.$entity->p_right.$entity->p_btn;
               $array[$seq_coord]['seq_coord'] = $seq_coord;
               $array[$seq_coord]['titulo'] = $entity->titulo;
-              $array[$seq_coord]['url'] = "http://".$entity->url;   
+              $array[$seq_coord]['url'] = "http://".$entity->url;
+			  $array[$seq_coord]['id_user'] = $entity->id_user;   
             }
         }
         
