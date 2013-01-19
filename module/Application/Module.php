@@ -125,6 +125,12 @@ class Module {
                     return $obj;
                 },
                 
+				'service_changemydata' => function($service) {
+                    $obj = new \Application\Service\ChangeMyData($service->get('Doctrine\ORM\EntityManager'));
+                    $obj->setMessageRenderer($service->get('Zend\View\Renderer\PhpRenderer'));
+                    return $obj;
+                },
+                
                 'Login\Auth\Adapter' => function($service) {
                     return new \Login\Auth\Adapter($service->get('Doctrine\ORM\EntityManager'));
                 },
@@ -172,6 +178,12 @@ class Module {
                      $form = new \Login\Form\RegisterStep2Form();
                      return $form;
                 },
+                
+				'service_change_my_data_form' => function ($service) {
+                     $form = new \Application\Form\ChangeMyDataForm();
+                     return $form;
+                },
+				
                 'service_changepassword_form' => function ($service) {
                      $form = new \Login\Form\ChangePasswordForm();
                      return $form;

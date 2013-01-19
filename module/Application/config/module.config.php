@@ -255,6 +255,28 @@ return array(
                 ),
             ),
             
+			'minha-conta' => array(
+              'type' => 'segment',
+                'options' => array(
+                    'route' => '/minhaconta',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\MinhaConta',
+                        'action'     => 'index',
+                    ),
+                ),
+            ),
+            
+			'change-my-data' => array(
+              'type' => 'segment',
+                'options' => array(
+                    'route' => '/changemydata',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\ChangeMyData',
+                        'action'     => 'index',
+                    ),
+                ),
+            ),
+            
             
         ),    
     ),
@@ -267,6 +289,8 @@ return array(
             'Application\Controller\QuemSomos' 	 => 'Application\Controller\QuemSomosController',
             'Application\Controller\Faq' 	 	 => 'Application\Controller\FaqController',
             'Application\Controller\Area'        => 'Application\Controller\AreaController',
+            'Application\Controller\MinhaConta'  => 'Application\Controller\MinhaContaController',
+            'Application\Controller\ChangeMyData'=> 'Application\Controller\ChangeMyDataController',
             'Login\Controller\Login' 			 => 'Login\Controller\LoginController',
             'Login\Controller\Reminder' 		 => 'Login\Controller\ReminderController',
             'Login\Controller\Register' 		 => 'Login\Controller\RegisterController',
