@@ -26,7 +26,7 @@ abstract class AbstractService {
     protected $mail_password='raf123abc';
     
     protected $mail_form_email = 'report.af@gmail.com';
-    protected $mail_form_name = 'Nome da Empresa';
+    protected $mail_form_name = 'OutMarcas';
     
     protected $mail_to_email = 'andrework@gmail.com';
     protected $mail_to_name = '';

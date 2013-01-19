@@ -74,7 +74,7 @@ class IndexController extends AbstractActionController {
 		$sessionUser = new Container('user');
 		$credito = $sessionUser->offsetGet('credito');
 
-		if(empty($credito))
+		if(empty($credito) && $credito < 3)
 		{
 			return $this->redirect()->toRoute('home-message',array('tipo'=>'falert','ref'=>'add','cod_msg'=>'1'));   
 		}else{

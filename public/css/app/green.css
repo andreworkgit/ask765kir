@@ -567,7 +567,7 @@ h1 a:hover {
   background-position: 0 -20px;
 }
 .footer {
-  background-color:#333;
+  background-color:#537E87;
   clear: both;
   color: #999999;
   display: table;
@@ -725,7 +725,7 @@ h1 a:hover {
   font-weight:bold
 }
 .nav .center {
-  background-color:#333;
+  background-color:#537E87;
   font-size:14px;
   color:#999;
 }
@@ -784,7 +784,7 @@ h1 a:hover {
   display:none;
   position:absolute;
    *width:220px;
-  background-color:#333;
+  background-color:#537E87;
   right:0;
   border-radius:0 0 5px 5px;
   -moz-border-radius:0 0 5px 5px;
@@ -1003,7 +1003,8 @@ Author URI: http://dev7studios.com
 }
 
 #compra_credito{
-  background:url(../../images/app/pagamento_digital2.png) no-repeat right;
+  color: #fff;
+  /*background:url(../../images/app/pagamento_digital2.png) no-repeat right;*/
   height: 25px;
 }
 
@@ -1011,7 +1012,6 @@ Author URI: http://dev7studios.com
    text-align:right;
   background:url(../../images/app/shopping_cart.png) no-repeat right;
   font-size:14px;
-  color: #fff;
   padding:0 25px 0 0;
   
   font-weight:bold;

@@ -39,6 +39,10 @@ class AreaController extends AbstractActionController {
 		$area = $this->params()->fromRoute('area', 0);
 		$path_folder = "./data/".$sessionLogin['user']->diretorio."images";
 		$path_img = $path_folder."/myImgToCut.jpg";
+		if(!file_exists($path_img)){
+			return $this->redirect()->toRoute("area-edit",array('area'=>$area));
+		}
+		
 		$records['area'] = $area; 
 		list($records['width'], $records['height'], $records['type'], $records['attr']) = getimagesize($path_img);
         return new ViewModel(array('dados' => $records));

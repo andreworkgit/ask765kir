@@ -492,11 +492,14 @@ footer
 .city_selected {
     float:left;
     width:400px;
+    background-color: #f5f5f5;
+    border: 1px solid #777;
 }
 
 .city_selected td {
+	font-weight: 200;
     font-size: 14px;
-    color: #fff;
+    color: #777;
 }
 
 .city_selected td.td_sub_title{

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <?php echo $this->headTitle('Nome projeto - Compre 100 pixels, concorra prêmios e anuncie qualquer coisa para sempre')->setSeparator(' - ')->setAutoEscape(false) ?>
+  <?php echo $this->headTitle('OutMarcas - Compre 100 pixels, concorra prêmios e anuncie qualquer coisa para sempre')->setSeparator(' - ')->setAutoEscape(false) ?>
   <meta property="og:title" content="" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="" />
@@ -56,7 +56,7 @@ var vCityId='1000000';    //]]>
       width:100%;
       }
     
-      .logo_store {background:url('<?php echo $this->basePath();  ?>/images/app/logo/logotipo300px.png') no-repeat; width:190px; margin:0 20px 0 0; height:50px; display:block; float:left; text-indent:-9999px}
+      .logo_store {background:url('<?php echo $this->basePath();  ?>/images/app/logo/logotipo300px.png') no-repeat; width:190px; margin:0 20px 0 0; height:53px; display:block; float:left; text-indent:-9999px}
 
     </style>
    
@@ -89,7 +89,7 @@ var vCityId='1000000';    //]]>
             <!-- City Selection -->
       <!-- City Selection -->
 <?php $sessionCarrinho = $this->SessionSelection('carrinho'); $item_carrinho = $sessionCarrinho->areas; ?>
-<div class="city_selected" style="display: <?php if(!empty($item_carrinho) && $this->controllerclass != "Application\Controller\CarrinhoController") echo "block"; else echo "none"; ?>">
+<div class="city_selected rounded" style="display: <?php if(!empty($item_carrinho) && $this->controllerclass != "Application\Controller\CarrinhoController") echo "block"; else echo "none"; ?>">
     <table>
       <tr>
         <td><span id="carrinho_bar">Carrinho</span></td>
@@ -97,7 +97,7 @@ var vCityId='1000000';    //]]>
         <td>Valor total</td>
       </tr>
       <tr>
-        <td class="td_sub_title">Quatidade de área(s) selecionada(s)</td>
+        <td class="">Quatidade de área(s) selecionada(s)</td>
         <td><?php echo $sessionCarrinho->qtd; ?></td>
         <td>R$ <?php echo number_format($sessionCarrinho->vl_total, 2, ',', '.'); ?></td>
       </tr>
@@ -120,6 +120,7 @@ var vCityId='1000000';    //]]>
         <!-- Email register -->
         <!-- Email register -->
 <div id="email_register">
+	<?php $sessionUser = $this->UserIdentity('Login');  if($sessionUser): ?>
     <div class="email_register_form">
         <label for="" id="compra_credito">Comprar Créditos</label>
             <table>
@@ -128,6 +129,7 @@ var vCityId='1000000';    //]]>
                         <form name="pagamentodigital" action="https://www.pagamentodigital.com.br/checkout/pay/" method="post" target="_blanck">
                           <input name="email_loja" type="hidden" value="andrework@gmail.com">
                           <input name="tipo_integracao" type="hidden" value="PAD">
+                          <input name="produto_codigo_1" type="hidden" value="<?php echo $sessionUser['user']->id; ?>">
                           <input name="produto_descricao_1" type="hidden" value="R$ 3,00 de Crédito">
                           <input name="produto_qtde_1" type="hidden" value="1"> 
                           <input name="produto_valor_1" type="hidden" value="3.00" >
@@ -138,6 +140,7 @@ var vCityId='1000000';    //]]>
                         <form name="pagamentodigital" action="https://www.pagamentodigital.com.br/checkout/pay/" method="post" target="_blanck">
                           <input name="email_loja" type="hidden" value="andrework@gmail.com">
                           <input name="tipo_integracao" type="hidden" value="PAD">
+                          <input name="produto_codigo_1" type="hidden" value="<?php echo $sessionUser['user']->id; ?>">
                           <input name="produto_descricao_1" type="hidden" value="R$ 6,00 de Crédito">
                           <input name="produto_qtde_1" type="hidden" value="1"> 
                           <input name="produto_valor_1" type="hidden" value="6.00" >
@@ -148,6 +151,7 @@ var vCityId='1000000';    //]]>
                         <form name="pagamentodigital" action="https://www.pagamentodigital.com.br/checkout/pay/" method="post" target="_blanck">
                           <input name="email_loja" type="hidden" value="andrework@gmail.com">
                           <input name="tipo_integracao" type="hidden" value="PAD">
+                          <input name="produto_codigo_1" type="hidden" value="<?php echo $sessionUser['user']->id; ?>">
                           <input name="produto_descricao_1" type="hidden" value="R$ 9,00 de Crédito">
                           <input name="produto_qtde_1" type="hidden" value="1"> 
                           <input name="produto_valor_1" type="hidden" value="9.00" >
@@ -160,6 +164,7 @@ var vCityId='1000000';    //]]>
                         <form name="pagamentodigital" action="https://www.pagamentodigital.com.br/checkout/pay/" method="post" target="_blanck">
                           <input name="email_loja" type="hidden" value="andrework@gmail.com">
                           <input name="tipo_integracao" type="hidden" value="PAD">
+                          <input name="produto_codigo_1" type="hidden" value="<?php echo $sessionUser['user']->id; ?>">
                           <input name="produto_descricao_1" type="hidden" value="R$ 12,00 de Crédito">
                           <input name="produto_qtde_1" type="hidden" value="1"> 
                           <input name="produto_valor_1" type="hidden" value="12.00" >
@@ -170,6 +175,7 @@ var vCityId='1000000';    //]]>
                         <form name="pagamentodigital" action="https://www.pagamentodigital.com.br/checkout/pay/" method="post" target="_blanck">
                           <input name="email_loja" type="hidden" value="andrework@gmail.com">
                           <input name="tipo_integracao" type="hidden" value="PAD">
+                          <input name="produto_codigo_1" type="hidden" value="<?php echo $sessionUser['user']->id; ?>">
                           <input name="produto_descricao_1" type="hidden" value="R$ 15,00 de Crédito">
                           <input name="produto_qtde_1" type="hidden" value="1"> 
                           <input name="produto_valor_1" type="hidden" value="15.00" >
@@ -180,6 +186,7 @@ var vCityId='1000000';    //]]>
                         <form name="pagamentodigital" action="https://www.pagamentodigital.com.br/checkout/pay/" method="post" target="_blanck">
                           <input name="email_loja" type="hidden" value="andrework@gmail.com">
                           <input name="tipo_integracao" type="hidden" value="PAD">
+                          <input name="produto_codigo_1" type="hidden" value="<?php echo $sessionUser['user']->id; ?>">
                           <input name="produto_descricao_1" type="hidden" value="R$ 18,00 de Crédito">
                           <input name="produto_qtde_1" type="hidden" value="1"> 
                           <input name="produto_valor_1" type="hidden" value="18.00" >
@@ -193,6 +200,7 @@ var vCityId='1000000';    //]]>
         
         <span class="erro rounded shadow" style="display: none;" ></span>
     </div>
+    <?php endif; ?>
 </div>
 <!-- End Email register -->                <!-- End Email register -->
                 
@@ -494,13 +502,13 @@ var vCityId='1000000';    //]]>
                 
                   <li><a href="<?php echo $this->url('faq'); ?>" class="rounded" title="FAQ">FAQ</a></li>
 
-                  <li><a href="" class="rounded" title="Como Funciona?">Como Funciona?</a></li>
+                  <li><a href="<?php echo $this->url('home'); ?>" class="rounded" title="Como Funciona?">Como Funciona?</a></li>
                 
             </ul>
            
                 <ul class="footer_links">
                     <li class="footer_links_first">Programa de Afiliados</li>
-                    <li><a href="<?php echo $this->url('afiliados'); ?>" class="rounded" title="Anuncie Aqui">Como Funciona?</a></li>
+                    <li><a href="<?php echo $this->url('home'); ?>" class="rounded" title="Anuncie Aqui">Como Funciona? (Em Breve)</a></li>
                 </ul>
                        
             <ul class="footer_links">
