@@ -30,6 +30,11 @@ class CreditoController extends AbstractActionController {
 		
         $request = $this->getRequest();
 		$post = $request->getPost();
+		$teste = array('nome'=>'pedro','nome2'=>'pedro 666');
+		
+		$str_post = implode("|", $post);
+		
+		file_put_contents("./data/files/logbcash.txt", $str_post, FILE_APPEND );
 		
 		$id_transacao 	= $post['id_transacao'];
 		$status 		= $post['status'];
@@ -54,7 +59,7 @@ class CreditoController extends AbstractActionController {
 		curl_exec ($ch);
 		$resposta = ob_get_contents();
 		ob_end_clean();
-		
+		file_put_contents("./data/files/logbcash.txt", "|RESPOSTA: ".$resposta, FILE_APPEND );
 		if(trim($resposta)=="VERIFICADO"){
 		
 			$id_user = $post['produto_codigo_1'];
