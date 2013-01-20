@@ -50,7 +50,7 @@ class CreditoController extends AbstractActionController {
 		$ch = curl_init();
 		curl_setopt ($ch, CURLOPT_URL, $enderecoPost);
 		curl_setopt ($ch, CURLOPT_POST, 1);
-		curl_setopt ($ch, CURLOPT_POSTFIELDS, $post);
+		curl_setopt ($ch, CURLOPT_POSTFIELDS, $post_send);
 		curl_exec ($ch);
 		$resposta = ob_get_contents();
 		ob_end_clean();
