@@ -277,6 +277,17 @@ return array(
                 ),
             ),
             
+			'list-areas' => array(
+              'type' => 'segment',
+                'options' => array(
+                    'route' => '/listareas',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Index',
+                        'action'     => 'list-areas',
+                    ),
+                ),
+            ),
+            
             
         ),    
     ),

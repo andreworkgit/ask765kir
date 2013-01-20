@@ -46,6 +46,17 @@ class IndexController extends AbstractActionController {
         return new ViewModel(array('dados' => $records,'array_records_all' => $array_records));
     }
 	
+	public function listAreasAction() {
+		$result = new ViewModel();
+    	$result->setTerminal(true);
+        $repository = $this->getEm()->getRepository("Application\Entity\Areas");
+        $array_records = $repository->fetchPairs();
+		
+		$result->setVariables(array('dados' => $records,'array_records_all' => $array_records));
+    	return $result;
+        //return new ViewModel(array('dados' => $records,'array_records_all' => $array_records));
+    }
+	
 	public function addAction(){
 		
 		$sm = $this->getEvent()->getApplication()->getServiceManager();

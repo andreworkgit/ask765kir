@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -37,7 +37,6 @@
                                  //->prependFile($this->basePath() . '/js/app/default.js')
                                  
    ?>
-
     <script type="text/javascript">
     //<![CDATA[
 var vCityId='1000000';    //]]>
@@ -74,6 +73,7 @@ var vCityId='1000000';    //]]>
 
 </head>
 <body>
+	<div id="loadp" style="width: 100%;height: 50px;position: absolute;top:50px;left:0;background-color: #fff;color:#bbb;text-align: left;border: 1px solid #bbb;display: none;"><img src="/images/app/loading2.gif" /></div>
   <div class="bg_store" style=" background-attachment: fixed;">
        
          
@@ -133,7 +133,7 @@ var vCityId='1000000';    //]]>
                           <input name="produto_descricao_1" type="hidden" value="R$ 3,00 de Crédito">
                           <input name="produto_qtde_1" type="hidden" value="1"> 
                           <input name="produto_valor_1" type="hidden" value="3.00" >
-                          <input type="submit" class="btn_submit shadow" value=" R$ 3,00 " title="R$ 3,00" id=""/>
+                          <input type="submit" class="btn_submit rounded shadow" value=" R$ 3,00 " title="R$ 3,00" id=""/>
                         </form>
                     </td>
                     <td>
@@ -539,8 +539,6 @@ var vCityId='1000000';    //]]>
     </div>
     <!--END LINKS FOOTER-->
 </div>
-</div>
-
 
 </body>
 </html>

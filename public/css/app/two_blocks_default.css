@@ -453,7 +453,7 @@ barrinha cinza de baixo. é padrão para tudo
 .saveme_cupons_logo {
     display:block;
     float:right;
-    background:url(../../images/app/logo-saveme-cupons.gif) no-repeat;
+    /*background:url(../../images/app/logo-saveme-cupons.gif) no-repeat;*/
     margin:3px 0 0 0;
     width:71px;
     height:33px;
