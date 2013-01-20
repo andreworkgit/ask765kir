@@ -122,80 +122,46 @@ var vCityId='1000000';    //]]>
 <div id="email_register">
 	<?php $sessionUser = $this->UserIdentity('Login');  if($sessionUser): ?>
     <div class="email_register_form">
-        <label for="" id="compra_credito">Comprar Créditos</label>
-            <table>
-                <tr>
-                    <td>
-                        <form name="pagamentodigital" action="https://www.pagamentodigital.com.br/checkout/pay/" method="post" target="_blanck">
-                          <input name="email_loja" type="hidden" value="andrework@gmail.com">
-                          <input name="tipo_integracao" type="hidden" value="PAD">
-                          <input name="produto_codigo_1" type="hidden" value="<?php echo $sessionUser['user']->id; ?>">
-                          <input name="produto_descricao_1" type="hidden" value="R$ 3,00 de Crédito">
-                          <input name="produto_qtde_1" type="hidden" value="1"> 
-                          <input name="produto_valor_1" type="hidden" value="3.00" >
-                          <input type="submit" class="btn_submit rounded shadow" value=" R$ 3,00 " title="R$ 3,00" id=""/>
-                        </form>
-                    </td>
-                    <td>
-                        <form name="pagamentodigital" action="https://www.pagamentodigital.com.br/checkout/pay/" method="post" target="_blanck">
-                          <input name="email_loja" type="hidden" value="andrework@gmail.com">
-                          <input name="tipo_integracao" type="hidden" value="PAD">
-                          <input name="produto_codigo_1" type="hidden" value="<?php echo $sessionUser['user']->id; ?>">
-                          <input name="produto_descricao_1" type="hidden" value="R$ 6,00 de Crédito">
-                          <input name="produto_qtde_1" type="hidden" value="1"> 
-                          <input name="produto_valor_1" type="hidden" value="6.00" >
-                          <input type="submit" class="btn_submit shadow" value=" R$ 6,00 " title="R$ 6,00" id=""/>
-                        </form>
-                    </td>
-                    <td>
-                        <form name="pagamentodigital" action="https://www.pagamentodigital.com.br/checkout/pay/" method="post" target="_blanck">
-                          <input name="email_loja" type="hidden" value="andrework@gmail.com">
-                          <input name="tipo_integracao" type="hidden" value="PAD">
-                          <input name="produto_codigo_1" type="hidden" value="<?php echo $sessionUser['user']->id; ?>">
-                          <input name="produto_descricao_1" type="hidden" value="R$ 9,00 de Crédito">
-                          <input name="produto_qtde_1" type="hidden" value="1"> 
-                          <input name="produto_valor_1" type="hidden" value="9.00" >
-                          <input type="submit" class="btn_submit shadow" value=" R$ 9,00 " title="R$ 9,00" id=""/>
-                        </form>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <form name="pagamentodigital" action="https://www.pagamentodigital.com.br/checkout/pay/" method="post" target="_blanck">
-                          <input name="email_loja" type="hidden" value="andrework@gmail.com">
-                          <input name="tipo_integracao" type="hidden" value="PAD">
-                          <input name="produto_codigo_1" type="hidden" value="<?php echo $sessionUser['user']->id; ?>">
-                          <input name="produto_descricao_1" type="hidden" value="R$ 12,00 de Crédito">
-                          <input name="produto_qtde_1" type="hidden" value="1"> 
-                          <input name="produto_valor_1" type="hidden" value="12.00" >
-                          <input type="submit" class="btn_submit shadow" value="R$ 12,00" title="R$ 12,00" id=""/>
-                        </form>
-                    </td>
-                    <td>
-                        <form name="pagamentodigital" action="https://www.pagamentodigital.com.br/checkout/pay/" method="post" target="_blanck">
-                          <input name="email_loja" type="hidden" value="andrework@gmail.com">
-                          <input name="tipo_integracao" type="hidden" value="PAD">
-                          <input name="produto_codigo_1" type="hidden" value="<?php echo $sessionUser['user']->id; ?>">
-                          <input name="produto_descricao_1" type="hidden" value="R$ 15,00 de Crédito">
-                          <input name="produto_qtde_1" type="hidden" value="1"> 
-                          <input name="produto_valor_1" type="hidden" value="15.00" >
-                          <input type="submit" class="btn_submit shadow" value="R$ 15,00" title="R$ 15,00" id=""/>
-                        </form>
-                    </td>
-                    <td>
-                        <form name="pagamentodigital" action="https://www.pagamentodigital.com.br/checkout/pay/" method="post" target="_blanck">
-                          <input name="email_loja" type="hidden" value="andrework@gmail.com">
-                          <input name="tipo_integracao" type="hidden" value="PAD">
-                          <input name="produto_codigo_1" type="hidden" value="<?php echo $sessionUser['user']->id; ?>">
-                          <input name="produto_descricao_1" type="hidden" value="R$ 18,00 de Crédito">
-                          <input name="produto_qtde_1" type="hidden" value="1"> 
-                          <input name="produto_valor_1" type="hidden" value="18.00" >
-                          <input type="submit" class="btn_submit shadow" value="R$ 18,00" title="R$ 18,00" id=""/>
-                        </form>
-                    </td>
-                </tr>
-            </table>
-        </form>
+		<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+		<input type="hidden" name="cmd" value="_xclick">
+		<input type="hidden" name="business" value="FYUEQHTW5M258">
+		<input type="hidden" name="lc" value="BR">
+		<input type="hidden" name="item_name" value="Credito OutMarcas">
+		<input type="hidden" name="item_number" value="<?php echo $sessionUser['user']->id; ?>">
+		<input type="hidden" name="button_subtype" value="services">
+		<input type="hidden" name="no_note" value="0">
+		<input type="hidden" name="cn" value="Adicionar instruções especiais para o vendedor:">
+		<input type="hidden" name="no_shipping" value="1">
+		<input type="hidden" name="currency_code" value="BRL">
+		<input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHosted">
+		<table>
+		<tr><td><input type="hidden" name="on0" value="Credito">Crédito</td></tr><tr><td><select name="os0">
+			<option value="1 Area -">1 Area - R$3,00</option>
+			<option value="2 Areas -">2 Areas - R$6,00</option>
+			<option value="3 Areas -">3 Areas - R$9,00</option>
+			<option value="4 Areas -">4 Areas - R$12,00</option>
+			<option value="5 Areas -">5 Areas - R$15,00</option>
+			<option value="6 Areas -">6 Areas - R$18,00</option>
+		</select> </td></tr>
+		</table>
+		<input type="hidden" name="currency_code" value="BRL">
+		<input type="hidden" name="option_select0" value="1 Area -">
+		<input type="hidden" name="option_amount0" value="3.00">
+		<input type="hidden" name="option_select1" value="2 Areas -">
+		<input type="hidden" name="option_amount1" value="6.00">
+		<input type="hidden" name="option_select2" value="3 Areas -">
+		<input type="hidden" name="option_amount2" value="9.00">
+		<input type="hidden" name="option_select3" value="4 Areas -">
+		<input type="hidden" name="option_amount3" value="12.00">
+		<input type="hidden" name="option_select4" value="5 Areas -">
+		<input type="hidden" name="option_amount4" value="15.00">
+		<input type="hidden" name="option_select5" value="6 Areas -">
+		<input type="hidden" name="option_amount5" value="18.00">
+		<input type="hidden" name="option_index" value="0">
+		<input type="image" src="https://www.paypalobjects.com/pt_BR/BR/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" style="padding-left: 15px;" alt="PayPal - A maneira mais fácil e segura de efetuar pagamentos online!">
+		<img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1">
+		</form>
+
         <div class="clear"></div>
         
         <span class="erro rounded shadow" style="display: none;" ></span>
