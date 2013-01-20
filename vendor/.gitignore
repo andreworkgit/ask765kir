@@ -1,5 +1,3 @@
 !.gitignore
 .composer
 composerzendframwork
-
-autoload.php
