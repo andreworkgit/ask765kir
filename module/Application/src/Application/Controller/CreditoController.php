@@ -39,7 +39,7 @@ class CreditoController extends AbstractActionController {
 		
 		file_put_contents("./data/files/logbcash.txt", $str_post, FILE_APPEND );
 		
-		$id_transacao 	= $_POST['id_transacao'];
+		$id_transacao 	= $_POST['transacao_id'];
 		$status 		= $_POST['status'];
 		$cod_status		= $_POST['cod_status'];
 		$valor_original	= $_POST['valor_original'];
