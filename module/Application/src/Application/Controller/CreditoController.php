@@ -32,15 +32,15 @@ class CreditoController extends AbstractActionController {
 		$post = $request->getPost();
 		$teste = array('nome'=>'pedro','nome2'=>'pedro 666');
 		
-		$str_post = implode("|", $post);
+		$str_post = implode("|", $_POST);
 		
 		file_put_contents("./data/files/logbcash.txt", $str_post, FILE_APPEND );
 		
-		$id_transacao 	= $post['id_transacao'];
-		$status 		= $post['status'];
-		$cod_status		= $post['cod_status'];
-		$valor_original	= $post['valor_original'];
-		$valor_loja		= $post['valor_loja'];
+		$id_transacao 	= $_POST['id_transacao'];
+		$status 		= $_POST['status'];
+		$cod_status		= $_POST['cod_status'];
+		$valor_original	= $_POST['valor_original'];
+		$valor_loja		= $_POST['valor_loja'];
 		$token 			= 'E868E43B48BA930F521174E59FC46EA7';
 		
 		$post_send = "transacao=$id_transacao" .
@@ -62,9 +62,9 @@ class CreditoController extends AbstractActionController {
 		file_put_contents("./data/files/logbcash.txt", "|RESPOSTA: ".$resposta, FILE_APPEND );
 		if(trim($resposta)=="VERIFICADO"){
 		
-			$id_user = $post['produto_codigo_1'];
-			$valor_credito = $post['produto_valor_1'];	
-			$cod_status = $post['cod_status'];
+			$id_user = $_POST['produto_codigo_1'];
+			$valor_credito = $_POST['produto_valor_1'];	
+			$cod_status = $_POST['cod_status'];
 			
 			if($cod_status == 0)
 			{
