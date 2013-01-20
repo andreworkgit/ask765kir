@@ -48,9 +48,6 @@ class CreditoController extends AbstractActionController {
 		
 		$post_send = "transacao=$id_transacao" .
 		"&status=$status" .
-		"&cod_status=$cod_status" .
-		"&valor_original=$valor_original" .
-		"&valor_loja=$valor_loja" .
 		"&token=$token";
 		$enderecoPost = "https://www.bcash.com.br/checkout/verify/";
 		
