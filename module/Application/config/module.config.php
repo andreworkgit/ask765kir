@@ -288,6 +288,17 @@ return array(
                 ),
             ),
             
+			'credito-post' => array(
+              'type' => 'segment',
+                'options' => array(
+                    'route' => '/creditopost',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Credito',
+                        'action'     => 'index',
+                    ),
+                ),
+            ),
+            
             
         ),    
     ),
@@ -302,6 +313,7 @@ return array(
             'Application\Controller\Area'        => 'Application\Controller\AreaController',
             'Application\Controller\MinhaConta'  => 'Application\Controller\MinhaContaController',
             'Application\Controller\ChangeMyData'=> 'Application\Controller\ChangeMyDataController',
+            'Application\Controller\Credito'	 => 'Application\Controller\CreditoController',
             'Login\Controller\Login' 			 => 'Login\Controller\LoginController',
             'Login\Controller\Reminder' 		 => 'Login\Controller\ReminderController',
             'Login\Controller\Register' 		 => 'Login\Controller\RegisterController',

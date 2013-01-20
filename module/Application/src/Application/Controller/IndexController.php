@@ -75,7 +75,7 @@ class IndexController extends AbstractActionController {
 		
 		$repository = $this->getEm()->getRepository("Application\Entity\Areas");
 		$obj_records = $repository->findByArea($ar_coord_g[0],$ar_coord_g[1],$ar_coord_g[2],$ar_coord_g[3]);
-
+		
         if(!empty($obj_records))
         {
         	//$records = $obj_records->getArrayCopy();

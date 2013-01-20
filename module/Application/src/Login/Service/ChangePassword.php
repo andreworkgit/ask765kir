@@ -21,7 +21,6 @@ class ChangePassword extends AbstractService {
         /*$this->mail_template = "login/reminder/reminder-password";
         $this->mail_subject = "Redefinição de Senha";
         $this->mail_form_name = "OutMarcas";*/
-        
     }
     
     
