@@ -30,9 +30,12 @@ class CreditoController extends AbstractActionController {
 		
         $request = $this->getRequest();
 		$post = $request->getPost();
-		$teste = array('nome'=>'pedro','nome2'=>'pedro 666');
 		
-		$str_post = implode("|", $_POST);
+		foreach($_POST as $k => $v){
+			$str_post .= $k.":".$v."|";
+		}
+		
+		//$str_post = implode("|", $_POST);
 		
 		file_put_contents("./data/files/logbcash.txt", $str_post, FILE_APPEND );
 		
