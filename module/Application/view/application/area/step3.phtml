@@ -36,7 +36,7 @@ echo $this->formHidden($form->get('id')) . PHP_EOL;
 		
 	</div>
 	<?php echo $this->form()->closeTag($form) . PHP_EOL; ?>
-	<input type="button" value="Selecionar outra área" class="btn_submit shadow" onclick="window.location='<?php echo $this->url("area-edit",array('area'=>$this->dados['area'],'action'=>'step2'));?>';"  />
+	<input type="button" value="Selecionar área de uma imagem" class="btn_submit shadow" onclick="window.location='<?php echo $this->url("area-edit",array('area'=>$this->dados['area'],'action'=>'step2'));?>';"  />
  
 </div>
 <div class="clear"></div>
