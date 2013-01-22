@@ -86,9 +86,9 @@ class IndexController extends AbstractActionController {
 		$credito = $sessionUser->offsetGet('credito');
 		
 		$session = new Container('carrinho');
-		$valor_total_atual = $session->offsetGet('vl_total');
-
-		if(empty($credito) && $credito < 3 && $valor_total_atual > $credito)
+		$valor_total_atual = (float) $session->offsetGet('vl_total');
+		//var_dump($credito,$valor_total_atual);exit;
+		if(empty($credito) || $credito < 3 || $valor_total_atual >= $credito)
 		{
 			return $this->redirect()->toRoute('home-message',array('tipo'=>'falert','ref'=>'add','cod_msg'=>'1'));   
 		}else{
