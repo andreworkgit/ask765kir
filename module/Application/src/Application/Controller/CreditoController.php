@@ -71,7 +71,15 @@ class CreditoController extends AbstractActionController {
 					$records_user['id'] = $obj_records->id;
 					$records_user['credito'] = $obj_records->credito + $valor_credito;
 					$service_user = $this->getServiceLocator()->get("service_register");
+					
+					$log_name = "keep".date("dm").".log";
+					$log_msg = "keep wait credito id_user:".$records_user['id']." credito atual:".$obj_records->credito." credito+:".$valor_credito. PHP_EOL; 
+					@file_put_contents("./data/files/logs/".$log_name, $log_msg , FILE_APPEND );		
 					$service_user->update($records_user);
+					$log_msg = "keep complete credito id_user:".$records_user['id']." credito atual:".$obj_records->credito." credito+:".$valor_credito. PHP_EOL; 
+					@file_put_contents("./data/files/logs/".$log_name, $log_msg , FILE_APPEND );		
+					
+					
 					//log para movimentação id_user + tipo: C + valor
 					file_put_contents("./data/files/logbcash.txt", $_POST, FILE_APPEND );		
 					
@@ -85,7 +93,6 @@ class CreditoController extends AbstractActionController {
 	public function consoleAction(){
 		
 		$output = shell_exec('git pull origin master');
-		echo "console";
 		echo "<pre>$output</pre>";
 		exit;	
 	}
