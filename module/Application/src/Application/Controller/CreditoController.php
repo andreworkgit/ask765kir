@@ -39,7 +39,49 @@ class CreditoController extends AbstractActionController {
 
 	} 
     
-    public function indexAction() {
+	public function indexAction(){
+		
+		$request = $this->getRequest();
+		$post 	 = $request->getPost();
+		
+		$code = $post['notificationCode'];
+	    $token = "5720961BD8974653AF78CCA47901C6F3";
+	    $email = "andrework@gmail.com";
+	    
+	    $url = "https://ws.pagseguro.uol.com.br/v2/transactions/notifications/" . $code . "?email=" . $email . "&token=" . $token;
+	    $curl = curl_init($url);
+	    curl_setopt($curl, CURLOPT_URL, $url);
+	    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+	    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+	    $result_xml = curl_exec($curl);
+	    curl_close($curl);
+		
+		if(!empty($result_xml)){
+			$obj_result = simplexml_load_string($result_xml);
+        	
+			$id_user 		= $obj_result->items->item->id;
+			$valor_credito 	= (float)$obj_result->grossAmount;	
+			$cod_status 	= $obj_result->status;
+			file_put_contents("./data/files/logbcash.txt", $obj_result, FILE_APPEND );
+			if($cod_status == 1)
+			{
+				$repository = $this->getEm()->getRepository("Application\Entity\Users");
+				$obj_records = $repository->findById($id_user);
+		
+		        if(!empty($obj_records))
+		        {
+					$records_user['id'] = $obj_records->id;
+					$records_user['credito'] = $obj_records->credito + $valor_credito;
+					$service_user = $this->getServiceLocator()->get("service_register");
+					$service_user->update($records_user);
+				}
+			}
+			
+		}
+		exit;
+	}
+	
+    public function paypalAction() {
 		
         $request = $this->getRequest();
 		$post = $request->getPost();

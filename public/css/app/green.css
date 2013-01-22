@@ -1008,6 +1008,7 @@ Author URI: http://dev7studios.com
   color: #fff;
   /*background:url(../../images/app/pagamento_digital2.png) no-repeat right;*/
   height: 25px;
+  text-align:center;
 }
 
 #carrinho_bar {

@@ -162,6 +162,96 @@ var vCityId='1000000';    //]]>
 		<input type="image" src="https://www.paypalobjects.com/pt_BR/BR/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" style="padding-left: 15px;" alt="PayPal - A maneira mais fácil e segura de efetuar pagamentos online!">
 		<img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1">
 		</form>-->
+		
+		<label for="" id="compra_credito"><img src="https://p.simg.uol.com.br/out/pagseguro/i/botoes/pagamentos/205x30-comprar.gif" /></label>
+            <table>
+                <tr>
+                    <td>
+                        
+                        <form target="pagseguro" action="https://pagseguro.uol.com.br/security/webpagamentos/webpagto.aspx" method="post" onsubmit="">
+		                  <input type="hidden" name="email_cobranca" value="andrework@gmail.com">
+		                  <input type="hidden" name="tipo" value="CP">
+		                  <input type="hidden" name="moeda" value="BRL">
+		                  <input type="hidden" name="item_id_1" value="<?php echo $sessionUser['user']->id; ?>">
+		                  <input type="hidden" name="item_valor_1" value="<?php echo number_format(3, 2, ',', '.'); ?>">
+		                  <input type="hidden" name="item_descr_1" value="R$ 3,00 de Credito">
+		                  <input type="hidden" name="item_quant_1" value="1">
+		                  <input type="hidden" name="item_frete_1" value="000">
+		                  <input type="submit" class="btn_submit rounded shadow" value=" R$ 3,00 " title="R$ 3,00" id=""/>
+                        </form>
+                        
+                    </td>
+                    <td>
+                        <form target="pagseguro" action="https://pagseguro.uol.com.br/security/webpagamentos/webpagto.aspx" method="post" onsubmit="">
+		                  <input type="hidden" name="email_cobranca" value="andrework@gmail.com">
+		                  <input type="hidden" name="tipo" value="CP">
+		                  <input type="hidden" name="moeda" value="BRL">
+		                  <input type="hidden" name="item_id_1" value="<?php echo $sessionUser['user']->id; ?>">
+		                  <input type="hidden" name="item_valor_1" value="<?php echo number_format(6, 2, ',', '.'); ?>">
+		                  <input type="hidden" name="item_descr_1" value="R$ 6,00 de Credito">
+		                  <input type="hidden" name="item_quant_1" value="1">
+		                  <input type="hidden" name="item_frete_1" value="000">
+		                  <input type="submit" class="btn_submit rounded shadow" value=" R$ 6,00 " title="R$ 6,00" id=""/>
+                        </form>
+                    </td>
+                    <td>
+                        <form target="pagseguro" action="https://pagseguro.uol.com.br/security/webpagamentos/webpagto.aspx" method="post" onsubmit="">
+		                  <input type="hidden" name="email_cobranca" value="andrework@gmail.com">
+		                  <input type="hidden" name="tipo" value="CP">
+		                  <input type="hidden" name="moeda" value="BRL">
+		                  <input type="hidden" name="item_id_1" value="<?php echo $sessionUser['user']->id; ?>">
+		                  <input type="hidden" name="item_valor_1" value="<?php echo number_format(6, 2, ',', '.'); ?>">
+		                  <input type="hidden" name="item_descr_1" value="R$ 9,00 de Credito">
+		                  <input type="hidden" name="item_quant_1" value="1">
+		                  <input type="hidden" name="item_frete_1" value="000">
+		                  <input type="submit" class="btn_submit rounded shadow" value=" R$ 9,00 " title="R$ 9,00" id=""/>
+                        </form>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <form target="pagseguro" action="https://pagseguro.uol.com.br/security/webpagamentos/webpagto.aspx" method="post" onsubmit="">
+		                  <input type="hidden" name="email_cobranca" value="andrework@gmail.com">
+		                  <input type="hidden" name="tipo" value="CP">
+		                  <input type="hidden" name="moeda" value="BRL">
+		                  <input type="hidden" name="item_id_1" value="<?php echo $sessionUser['user']->id; ?>">
+		                  <input type="hidden" name="item_valor_1" value="<?php echo number_format(12, 2, ',', '.'); ?>">
+		                  <input type="hidden" name="item_descr_1" value="R$ 12,00 de Credito">
+		                  <input type="hidden" name="item_quant_1" value="1">
+		                  <input type="hidden" name="item_frete_1" value="000">
+		                  <input type="submit" class="btn_submit rounded shadow" value="R$ 12,00" title="R$ 12,00" id=""/>
+                        </form>
+                    </td>
+                    <td>
+                        <form target="pagseguro" action="https://pagseguro.uol.com.br/security/webpagamentos/webpagto.aspx" method="post" onsubmit="">
+		                  <input type="hidden" name="email_cobranca" value="andrework@gmail.com">
+		                  <input type="hidden" name="tipo" value="CP">
+		                  <input type="hidden" name="moeda" value="BRL">
+		                  <input type="hidden" name="item_id_1" value="<?php echo $sessionUser['user']->id; ?>">
+		                  <input type="hidden" name="item_valor_1" value="<?php echo number_format(15, 2, ',', '.'); ?>">
+		                  <input type="hidden" name="item_descr_1" value="R$ 15,00 de Credito">
+		                  <input type="hidden" name="item_quant_1" value="1">
+		                  <input type="hidden" name="item_frete_1" value="000">
+		                  <input type="submit" class="btn_submit rounded shadow" value="R$ 15,00" title="R$ 15,00" id=""/>
+                        </form>
+                    </td>
+                    <td>
+                        <form target="pagseguro" action="https://pagseguro.uol.com.br/security/webpagamentos/webpagto.aspx" method="post" onsubmit="">
+		                  <input type="hidden" name="email_cobranca" value="andrework@gmail.com">
+		                  <input type="hidden" name="tipo" value="CP">
+		                  <input type="hidden" name="moeda" value="BRL">
+		                  <input type="hidden" name="item_id_1" value="<?php echo $sessionUser['user']->id; ?>">
+		                  <input type="hidden" name="item_valor_1" value="<?php echo number_format(18, 2, ',', '.'); ?>">
+		                  <input type="hidden" name="item_descr_1" value="R$ 18,00 de Credito">
+		                  <input type="hidden" name="item_quant_1" value="1">
+		                  <input type="hidden" name="item_frete_1" value="000">
+		                  <input type="submit" class="btn_submit rounded shadow" value="R$ 18,00" title="R$ 18,00" id=""/>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+		
+		
 
         <div class="clear"></div>
         
@@ -490,7 +580,7 @@ var vCityId='1000000';    //]]>
                                   
             <ul class="footer_links">
                 <li class="footer_links_first"></li>
-                                    <li><img src="https://www.pagamentodigital.com.br/site/banner/campanhas/_CompraSegura/Selo-CompraSegura-184x120.png" alt="Selo Compra Segura" border="0"/></li>
+                                    <li><img src="https://p.simg.uol.com.br/out/pagseguro/i/botoes/pagamentos/205x30-comprar.gif"   border="0"/></li>
                                             </ul>
         </div>
     </div>
