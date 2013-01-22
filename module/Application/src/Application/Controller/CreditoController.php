@@ -43,7 +43,6 @@ class CreditoController extends AbstractActionController {
 		
 		//$request = $this->getRequest();
 		//$post 	 = $request->getPost();
-		file_put_contents("./data/files/logbcash.txt", $_POST, FILE_APPEND );
 		$code = $_POST['notificationCode'];
 	    $token = "5720961BD8974653AF78CCA47901C6F3";
 	    $email = "andrework@gmail.com";
@@ -62,7 +61,6 @@ class CreditoController extends AbstractActionController {
 			$id_user 		= $obj_result->items->item->id;
 			$valor_credito 	= (float)$obj_result->grossAmount;	
 			$cod_status 	= $obj_result->status;
-			file_put_contents("./data/files/logbcash.txt", $obj_result, FILE_APPEND );
 			if($cod_status == 1)
 			{
 				$repository = $this->getEm()->getRepository("Application\Entity\Users");
@@ -74,6 +72,9 @@ class CreditoController extends AbstractActionController {
 					$records_user['credito'] = $obj_records->credito + $valor_credito;
 					$service_user = $this->getServiceLocator()->get("service_register");
 					$service_user->update($records_user);
+					//log para movimentação id_user + tipo: C + valor
+					file_put_contents("./data/files/logbcash.txt", $_POST, FILE_APPEND );		
+					
 				}
 			}
 			
