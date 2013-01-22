@@ -84,7 +84,9 @@ var vCityId='1000000';    //]]>
     <div class="header">
         <div class="center">
             <a href="/" class="logo_store" title="">Logo da Empresa</a>
-            
+            <?php $sessionUser = $this->UserIdentity('Login');  if(!$sessionUser): ?>
+            <img src="/images/app/logo/banner728x90.png"   border="0"/>
+            <?php endif; ?>
             <!-- City Selection -->
       <!-- City Selection -->
 <?php $sessionCarrinho = $this->SessionSelection('carrinho'); $item_carrinho = $sessionCarrinho->areas; ?>
@@ -119,7 +121,7 @@ var vCityId='1000000';    //]]>
         <!-- Email register -->
         <!-- Email register -->
 <div id="email_register">
-	<?php $sessionUser = $this->UserIdentity('Login');  if($sessionUser): ?>
+	<?php if($sessionUser): ?>
     <div class="email_register_form">
 		<!--
 		<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
@@ -579,7 +581,7 @@ var vCityId='1000000';    //]]>
                                   
             <ul class="footer_links">
                 <li class="footer_links_first"></li>
-                                    <li><img src="https://p.simg.uol.com.br/out/pagseguro/i/botoes/pagamentos/205x30-comprar.gif"   border="0"/></li>
+                                    <li><img src="https://p.simg.uol.com.br/out/pagseguro/i/banners/parcelamento/468x60_pagseguro_18x.gif"   border="0"/></li>
                                             </ul>
         </div>
     </div>
