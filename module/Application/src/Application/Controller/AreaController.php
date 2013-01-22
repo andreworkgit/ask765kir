@@ -58,7 +58,7 @@ class AreaController extends AbstractActionController {
 			 return $this->redirect()->toRoute("home");
 		}
 		
-		$path_folder = "./data/".$sessionLogin['user']->diretorio."images";
+		$path_folder = ROOT_PATH."/data/".$sessionLogin['user']->diretorio."images";
 		$path_img = $path_folder."/myImgToCut.jpg";
 		
 		$area_sel = $this->params()->fromRoute('area-sel', 0);
@@ -72,7 +72,7 @@ class AreaController extends AbstractActionController {
 	    	list($width, $height) = getimagesize($path_img);
 	   	 	$image_p = imagecreatetruecolor($area_size_default,$area_size_default);
 	    	
-			$image = @imagecreatefromjpeg($path_img);
+			$image = imagecreatefromjpeg($path_img);
 	    	
 			$name_submetida_100p = "10x10.jpg";
 			
