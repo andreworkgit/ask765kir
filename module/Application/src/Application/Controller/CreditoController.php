@@ -41,10 +41,10 @@ class CreditoController extends AbstractActionController {
     
 	public function indexAction(){
 		
-		$request = $this->getRequest();
-		$post 	 = $request->getPost();
-		
-		$code = $post['notificationCode'];
+		//$request = $this->getRequest();
+		//$post 	 = $request->getPost();
+		file_put_contents("./data/files/logbcash.txt", $_POST, FILE_APPEND );
+		$code = $_POST['notificationCode'];
 	    $token = "5720961BD8974653AF78CCA47901C6F3";
 	    $email = "andrework@gmail.com";
 	    
