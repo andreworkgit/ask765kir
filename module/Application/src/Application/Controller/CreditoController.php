@@ -94,6 +94,7 @@ class CreditoController extends AbstractActionController {
 		
 		$output = shell_exec('git pull origin master');
 		echo "<pre>$output</pre>";
+		echo phpinfo();
 		exit;	
 	}
 	

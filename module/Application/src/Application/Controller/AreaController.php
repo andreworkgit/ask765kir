@@ -58,7 +58,7 @@ class AreaController extends AbstractActionController {
 			 return $this->redirect()->toRoute("home");
 		}
 		
-		$path_folder = ROOT_PATH."/data/".$sessionLogin['user']->diretorio."images";
+		$path_folder = "./data/".$sessionLogin['user']->diretorio."images";
 		$path_img = $path_folder."/myImgToCut.jpg";
 		
 		$area_sel = $this->params()->fromRoute('area-sel', 0);
