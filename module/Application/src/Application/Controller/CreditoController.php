@@ -84,7 +84,7 @@ class CreditoController extends AbstractActionController {
 
 	public function consoleAction(){
 		
-		$output = shell_exec('pwd');
+		$output = shell_exec('git pull origin master');
 		echo "console";
 		echo "<pre>$output</pre>";
 		exit;	
