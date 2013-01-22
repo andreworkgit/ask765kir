@@ -24,7 +24,8 @@ class AreaStep3Form extends Form
             'name' => 'titulo',
             'attributes' => array(
                 'type'  => 'text',
-                'class' =>'campotxt'
+                'class' =>'campotxt',
+                'maxlength' => '100'
             ),
             'options' => array(
                 'label' => 'Titulo',
@@ -36,7 +37,8 @@ class AreaStep3Form extends Form
             'name' => 'url',
             'attributes' => array(
                 'type'  => 'text',
-                'class' =>'campotxt'
+                'class' =>'campotxt',
+                'maxlength' => '100'
             ),
             'options' => array(
                 'label' => 'URL',
