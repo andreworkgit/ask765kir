@@ -73,10 +73,10 @@ class CreditoController extends AbstractActionController {
 					$service_user = $this->getServiceLocator()->get("service_register");
 					
 					$log_name = "keep".date("dm").".log";
-					$log_msg = "keep wait credito id_user:".$records_user['id']." credito atual:".$obj_records->credito." credito+:".$valor_credito. PHP_EOL; 
+					$log_msg = "keep wait credito id_user:".$records_user['id']." credito atual:".$obj_records->credito." credito+:".$valor_credito. " date:".date("d-m-Y H:i:s")."|\n"; 
 					@file_put_contents("./data/files/logs/".$log_name, $log_msg , FILE_APPEND );		
 					$service_user->update($records_user);
-					$log_msg = "keep complete credito id_user:".$records_user['id']." credito atual:".$obj_records->credito." credito+:".$valor_credito. PHP_EOL; 
+					$log_msg = "keep complete credito id_user:".$records_user['id']." credito atual:".$obj_records->credito." credito+:".$valor_credito. " date:".date("d-m-Y H:i:s")."|\n";
 					@file_put_contents("./data/files/logs/".$log_name, $log_msg , FILE_APPEND );		
 					
 					
