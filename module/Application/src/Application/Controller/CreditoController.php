@@ -81,6 +81,14 @@ class CreditoController extends AbstractActionController {
 		}
 		exit;
 	}
+
+	public function consoleAction(){
+		
+		$output = shell_exec('pwd');
+		echo "console";
+		echo "<pre>$output</pre>";
+		exit;	
+	}
 	
     public function paypalAction() {
 		

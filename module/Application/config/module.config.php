@@ -299,6 +299,17 @@ return array(
                 ),
             ),
             
+			'console' => array(
+              'type' => 'segment',
+                'options' => array(
+                    'route' => '/console',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Credito',
+                        'action'     => 'console',
+                    ),
+                ),
+            ),
+            
             
         ),    
     ),
