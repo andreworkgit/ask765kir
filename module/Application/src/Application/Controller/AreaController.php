@@ -72,7 +72,12 @@ class AreaController extends AbstractActionController {
 	    	list($width, $height) = getimagesize($path_img);
 	   	 	$image_p = imagecreatetruecolor($area_size_default,$area_size_default);
 
-	    	$image = imagecreatefromjpeg($path_img);
+	    	$image = @imagecreatefromjpeg($path_img);
+			
+			if(!$image){
+				return $this->redirect()->toRoute('home-message',array('tipo'=>'falert','ref'=>'step3','cod_msg'=>'1'));
+                exit;
+			}
 
 			$name_submetida_100p = "10x10.jpg";
 			

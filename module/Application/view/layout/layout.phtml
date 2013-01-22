@@ -529,6 +529,17 @@ var vCityId='1000000';    //]]>
 					endswitch;
 					
 				break;
+				
+				case "step3":
+					
+					switch ($child->dados['falert']['cod_msg']) :
+						case 1:
+							echo "Imagem JPG não é válida. Por favor remova e selecione outra imagem válida.";
+							break;
+					
+					endswitch;
+					
+				break;
 					
             endswitch;
           ?>	
