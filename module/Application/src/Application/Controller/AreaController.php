@@ -71,9 +71,9 @@ class AreaController extends AbstractActionController {
 	   	 	$area_size_default = 10;
 	    	list($width, $height) = getimagesize($path_img);
 	   	 	$image_p = imagecreatetruecolor($area_size_default,$area_size_default);
-	    	
-			$image = imagecreatefromjpeg($path_img);
-	    	
+
+	    	$image = imagecreatefromjpeg($path_img);
+
 			$name_submetida_100p = "10x10.jpg";
 			
 			imagecopy($image_p, $image, 0, 0, $ar_coord[0], $ar_coord[1], $width, $height);
@@ -255,7 +255,7 @@ class AreaController extends AbstractActionController {
             if ($form->isValid()) {
                 
                 $size = new Size(array('min'=>5120,'max'=>512000)); //minimum bytes filesize
-                $extension = new Extension(array("extension" => array("jpg", "png")));
+                $extension = new Extension(array("extension" => array("jpg")));
                 
                 $adapter = new \Zend\File\Transfer\Adapter\Http(); 
                 $adapter->setValidators(array($size,$extension), $File['name']);
@@ -270,8 +270,16 @@ class AreaController extends AbstractActionController {
 					
                     $form->setMessages(array('fileupload'=>$error ));
                 } else {
-                	
-					
+                	/*
+					$image = imagecreatefrompng($filePath);
+					$bg = imagecreatetruecolor(imagesx($image), imagesy($image));
+					imagefill($bg, 0, 0, imagecolorallocate($bg, 255, 255, 255));
+					imagealphablending($bg, TRUE);
+					imagecopy($bg, $image, 0, 0, 0, 0, imagesx($image), imagesy($image))
+					imagedestroy($image);
+					imagejpeg($bg, $filePath . ".jpg", 50);// the 50 is to set the quality, 0 = worst-smaller file, 100 = better-bigger file 
+					ImageDestroy($bg);
+                	*/
                 	
                     $adapter->setDestination($path_folder);
 					$adapter->addFilter('Rename', array('target' => $path_folder.'/myImgToCut.jpg',
