@@ -100,6 +100,11 @@ class AreaController extends AbstractActionController {
         if(!empty($obj_records))
         {
         	$records = $obj_records->getArrayCopy();
+			
+			if(empty($records['titulo']) && empty($records['url']) && empty($area_sel)){
+				return $this->redirect()->toRoute("area-edit",array('area'=>$area,'action'=>'step2'));
+				exit;
+			}
         	$form->setData($records);
 		}
 		
