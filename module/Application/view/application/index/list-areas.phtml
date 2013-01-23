@@ -24,12 +24,18 @@
             $v_right = $c_left+$size_area;
             $v_btn = $c_btn;
             $area_seq =  $v_left.$v_top.$v_right.$v_btn;
+			$area_target = "";
             
             $codfica = urlencode(base64_encode($v_left.','.$v_top.','.$v_right.','.$v_btn));
+            if($sessionUser){
+            	$url_area 	= $this->url('area-add',array('area'=>$codfica));
+				$area_title = "Área Livre: Clique aqui para registrar";
+			}else{
+				$area_title = "Faça seu login ou cadastre-se para registrar esta área";
+				$url_area 	= "";
+			}
+			
             
-            $url_area 	= $this->url('area-add',array('area'=>$codfica));
-            $area_title = "Área Livre: Clique aqui para registrar";
-
 		    if(is_array($ar_id_areas))
 		    {
 		    	if(in_array($area_seq,$ar_id_areas)){
@@ -49,8 +55,8 @@
 			        $onmouseover = "modo_area('over','id".$area_seq."',this)";
 			        $onmouseout = "modo_area('out','id".$area_seq."',this)";
 				}else{
-	                $url_area = $this->array_records_all[$area_seq]['url'];
-	                $area_title = $this->array_records_all[$area_seq]['titulo'];
+					$url_area = $this->array_records_all[$area_seq]['url'];
+	                $area_title = $this->array_records_all[$area_seq]['titulo']."\n".$url_area;
 	                $onmouseover = '';
 	                $onmouseout = '';
 				}
@@ -58,8 +64,17 @@
                 $onmouseover = '';
                 $onmouseout = '';
             }
+			
+			if($url_area !== "http://" && !empty($url_area)){
+				$str_link = "href='$url_area'";
+				if(!$sessionUser)
+					$str_target = "target='_blank'";
+			}else{
+				$str_link = "";
+				$str_target = "";
+			}
             
-            echo $list_areas = '<area id="id'.$area_seq.'" class="area_style" onmouseover="'.$onmouseover.'" onmouseout="'.$onmouseout.'" shape="rect" coords="'.$v_left.','.$v_top.','.$v_right.','.$v_btn.'" href="'.$url_area.'" title="'.$area_title.'" />'. PHP_EOL;
+            echo $list_areas = '<area id="id'.$area_seq.'" class="area_style" onmouseover="'.$onmouseover.'" onmouseout="'.$onmouseout.'" shape="rect" coords="'.$v_left.','.$v_top.','.$v_right.','.$v_btn.'" '.$str_link.' title="'.$area_title.'" '.$str_target.' />'. PHP_EOL;
             
             if($v_right < 1000)
                 $c_left = $c_left + $size_area;
