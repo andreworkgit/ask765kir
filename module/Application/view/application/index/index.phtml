@@ -37,9 +37,11 @@
 		        complete: function()
 		        {
 		        	$("#loadp").hide();
+		        	$("#photo_space").attr('src','<?php echo $this->serverUrl($this->url('home', array('action' => 'photoSpace'))); ?>');
 		        	<?php $sessionUser = $this->UserIdentity('Login');  if(!$sessionUser): ?>
 						$('.maphome').maphilight();
 					<?php endif; ?>
+					
 		        }
 		   });
   
@@ -47,7 +49,7 @@
 	</script>
 
     
-      <img src="<?php echo $this->serverUrl($this->url('home', array('action' => 'photoSpace'))); ?>" class="maphome"  usemap="#planetmap" id="photo_space"  />
+      <img src="" class="maphome"  usemap="#planetmap" id="photo_space"  />
       
       <map name="planetmap" id="pm1">
         <?php echo $list_areas; ?> 
