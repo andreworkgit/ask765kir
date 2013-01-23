@@ -259,7 +259,7 @@ class AreaController extends AbstractActionController {
              
             if ($form->isValid()) {
                 
-                $size = new Size(array('min'=>5120,'max'=>512000)); //minimum bytes filesize
+                $size = new Size(array('min'=>100,'max'=>512000)); //minimum bytes filesize
                 $extension = new Extension(array("extension" => array("jpg")));
                 
                 $adapter = new \Zend\File\Transfer\Adapter\Http(); 
