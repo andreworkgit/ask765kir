@@ -31,6 +31,10 @@ a:focus, .link:hover {text-decoration: none;}
     font-size:14px;
 }
 
+.campotxtstep{
+	width: 500px;
+}
+
 select.campotxt{
     height: 28px;
 }

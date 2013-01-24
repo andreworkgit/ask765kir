@@ -15,10 +15,10 @@
 
 
 /*formulario grande*/
-.decorator_big {float:left;	width:270px; padding:0 20px 0 0; margin:20px 0 0 0;}
+.decorator_big {float:left;	width:100%; padding:0 20px 0 0; margin:20px 0 0 0;}
 .decorator_100 {float:left;	width:100%; padding:0 20px 0 0; margin:20px 0 0 0;}
 .decorator_big label {padding:0; font-weight:bold;}
-.decorator_big input {width:100%; padding:5px;}
+/*.decorator_big input {width:100%; padding:5px;}*/
 .decorator_big input[type=radio] {width:100%; padding:5px; vertical-align: bottom;}
 .decorator_big select {width:105%; padding:6px; margin:3px 0 0 0; background: url(../images/bg-campotxt.png) repeat-x scroll left top #FFFFFF; border: 1px solid #B6C7CB; border-radius:3px; -moz-border-radius:3px; -webkit-border-radius:3px; }
 .decorator_big br {display:none;}

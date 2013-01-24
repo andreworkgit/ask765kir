@@ -8,6 +8,8 @@ use Zend\View\Model\ViewModel;
 use Zend\Validator\File\Size;
 use Zend\Validator\File\Extension;
 
+use Zend\Session\Container;
+
 class AreaController extends AbstractActionController {
     
     /**
@@ -97,6 +99,8 @@ class AreaController extends AbstractActionController {
 		$repository = $this->getEm()->getRepository("Application\Entity\Areas");
 		$obj_records = $repository->findByArea($ar_coord_g[0],$ar_coord_g[1],$ar_coord_g[2],$ar_coord_g[3]);
 
+		$sessionFields 	= new Container('fields');
+		
         if(!empty($obj_records))
         {
         	$records = $obj_records->getArrayCopy();
@@ -105,6 +109,13 @@ class AreaController extends AbstractActionController {
 				return $this->redirect()->toRoute("area-edit",array('area'=>$area,'action'=>'step2'));
 				exit;
 			}
+			
+			if(empty($records['titulo']) && empty($records['url'])){
+				
+				$records['titulo'] 	= $sessionFields->offsetGet('titulo');
+				$records['url']		= $sessionFields->offsetGet('url');
+			}
+			
         	$form->setData($records);
 		}
 		
@@ -112,8 +123,11 @@ class AreaController extends AbstractActionController {
     	$url_base = sprintf('%s://%s', $uri->getScheme(), $uri->getHost());
 		
         if ($request->isPost()) {
-            $form->setData($request->getPost());
+        	$form->setData($request->getPost());
             if ($form->isValid()) {
+            		
+				$sessionFields->offsetSet('titulo',$request->getPost()->titulo);
+				$sessionFields->offsetSet('url',$request->getPost()->url);
             	
 				if(!empty($ar_coord))
 				{

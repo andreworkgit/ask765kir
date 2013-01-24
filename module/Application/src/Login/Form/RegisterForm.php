@@ -29,7 +29,7 @@ class RegisterForm extends Form
             'name' => 'email',
             'attributes' => array(
                 'type'  => 'text',
-                'class' => 'campotxt',
+                'class' => 'campotxt campotxtstep',
                 'size' => '30'
             ),
             'options' => array(
