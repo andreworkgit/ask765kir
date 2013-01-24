@@ -10,12 +10,18 @@
       if(tipo == "over"){
         //$('#'.id_coord).mouseout();
         //$('.maphome').css('background-image', 'url("<?php echo $this->serverUrl($this->url('home', array('action' => 'photoSpace','tipo'=>2))); ?>")');
-        $('#photo_space').attr('src','<?php echo $this->serverUrl($this->url('home', array('action' => 'photoSpace','tipo'=>2))); ?>'); 
+        //$('#photo_space').attr('src','<?php echo $this->serverUrl($this->url('home', array('action' => 'photoSpace','tipo'=>2))); ?>'); 
+      	$('#photo_space').hide();
+      	$('#photo_space2').show();
       }
       if(tipo == "out"){
+        
+        $('#photo_space').show();
+      	$('#photo_space2').hide();
+      
         //$('#'.id_coord).mouseover();
         //$('.maphome').css('background-image', 'url("<?php echo $this->serverUrl($this->url('home', array('action' => 'photoSpace'))); ?>")');  
-      	$('#photo_space').attr('src','<?php echo $this->serverUrl($this->url('home', array('action' => 'photoSpace'))); ?>');
+      	//$('#photo_space').attr('src','<?php echo $this->serverUrl($this->url('home', array('action' => 'photoSpace'))); ?>');
       }
     }
     
@@ -25,6 +31,8 @@
 	  <script type="text/javascript">
 		$(document).ready(function() {
 			$("#loadp").show();
+			$('#photo_space2').hide();
+			
 		    $.ajax({
 		     	type: "GET",
 		        cache: true,
@@ -37,9 +45,10 @@
 		        complete: function()
 		        {
 		        	$("#loadp").hide();
-		        	$("#photo_space").attr('src','<?php echo $this->serverUrl($this->url('home', array('action' => 'photoSpace'))); ?>');
 		        	<?php $sessionUser = $this->UserIdentity('Login');  if(!$sessionUser): ?>
 						$('.maphome').maphilight();
+					<?php else: ?>
+								$('#photo_space2').hide();	
 					<?php endif; ?>
 					
 		        }
@@ -48,8 +57,8 @@
 		});	
 	</script>
 
-    
-      <img src="" class="maphome"  usemap="#planetmap" id="photo_space"  />
+	  <img src="<?php echo $this->serverUrl($this->url('home', array('action' => 'photoSpace','tipo'=>2))); ?>" class="" usemap="#planetmap"  id="photo_space2"  />    
+      <img src="<?php echo $this->serverUrl($this->url('home', array('action' => 'photoSpace'))); ?>" class="maphome"  usemap="#planetmap" id="photo_space"  />
       
       <map name="planetmap" id="pm1">
         <?php echo $list_areas; ?> 
