@@ -56,7 +56,7 @@
 			        $onmouseout = "modo_area('out','id".$area_seq."',this)";
 				}else{
 					$url_area = $this->array_records_all[$area_seq]['url'];
-	                $area_title = $this->array_records_all[$area_seq]['titulo']."\n".$url_area;
+	                $area_title = (empty($url_area) && empty($this->array_records_all[$area_seq]['titulo'])) ? 'Área Registrada' : $this->array_records_all[$area_seq]['titulo']."\n".$url_area;
 	                $onmouseover = '';
 	                $onmouseout = '';
 				}
@@ -65,7 +65,10 @@
                 $onmouseout = '';
             }
 			
-			if($url_area !== "http://" && !empty($url_area)){
+			if(!empty($url_area) && !empty($url_area)){
+				if(strpos($url_area, "http://") === false && empty($onmouseover) && !$sessionUser){
+					$url_area = "http://".$url_area;
+				}
 				$str_link = "href='$url_area'";
 				if(!$sessionUser)
 					$str_target = "target='_blank'";
