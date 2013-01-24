@@ -13,11 +13,13 @@
         //$('#photo_space').attr('src','<?php echo $this->serverUrl($this->url('home', array('action' => 'photoSpace','tipo'=>2))); ?>'); 
       	$('#photo_space').hide();
       	$('#photo_space2').show();
+      	$('#photo_space2').addClass('maphome');
       }
       if(tipo == "out"){
         
         $('#photo_space').show();
       	$('#photo_space2').hide();
+      	$('#photo_space2').removeClass('maphome');
       
         //$('#'.id_coord).mouseover();
         //$('.maphome').css('background-image', 'url("<?php echo $this->serverUrl($this->url('home', array('action' => 'photoSpace'))); ?>")');  
@@ -45,10 +47,9 @@
 		        complete: function()
 		        {
 		        	$("#loadp").hide();
-		        	<?php $sessionUser = $this->UserIdentity('Login');  if(!$sessionUser): ?>
-						$('.maphome').maphilight();
+		        	$('.maphome').maphilight();
+		        	<?php $sessionUser = $this->UserIdentity('Login');  if(!$sessionUser): ?>	
 					<?php else: ?>
-								$('#photo_space2').hide();	
 					<?php endif; ?>
 					
 		        }
