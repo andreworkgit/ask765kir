@@ -61,7 +61,7 @@ class CreditoController extends AbstractActionController {
 			$id_user 		= $obj_result->items->item->id;
 			$valor_credito 	= (float)$obj_result->grossAmount;	
 			$cod_status 	= $obj_result->status;
-			if($cod_status == 1)
+			if($cod_status == 3)
 			{
 				$repository = $this->getEm()->getRepository("Application\Entity\Users");
 				$obj_records = $repository->findById($id_user);
