@@ -53,7 +53,7 @@ class RegisterForm extends Form
         $captcha = new Captcha('captcha');
         $captcha->setCaptcha($captchaImage);
         $captcha->setLabel('Please verify you are human');
-
+		var_dump($captchaImage);
         //add captcha element...
         $this->add($captcha);
         
