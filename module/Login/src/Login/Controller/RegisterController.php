@@ -120,7 +120,7 @@ class RegisterController extends AbstractActionController {
                 $response->setContent($imagegetcontent);
 
                 if (file_exists($image) == true) {
-                    //unlink($image);
+                    @unlink($image);
                 }
             }
 
