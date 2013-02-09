@@ -22,16 +22,16 @@ abstract class AbstractService {
     protected $entity;
     protected $emailRenderer;
     
-    protected $mail_username='urelby2@gmail.com';
-    protected $mail_password='a331b331';
+    protected $mail_username='outmarcas@gmail.com';
+    protected $mail_password='xoutandre';
     
-    protected $mail_form_email = 'urelby2@gmail.com';
-    protected $mail_form_name = 'Nome da Empresa';
+    protected $mail_form_email = 'anunciomosaico@gmail.com';
+    protected $mail_form_name = 'Anúncio Mosaico';
     
     protected $mail_to_email = 'andrework@gmail.com';
     protected $mail_to_name = '';
     
-    protected $mail_subject = '1� Etapa do cadastro realizada com sucesso';
+    protected $mail_subject = '1° Etapa do cadastro realizada com sucesso';
     protected $mail_template = 'login/register/confirmation-email';
     
     public function __construct(EntityManager $em) {
