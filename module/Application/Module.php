@@ -136,7 +136,9 @@ class Module {
                 },
                 
                 'service_register_form' => function ($service) {
-                    $baseUrl = $service->get('request')->getbaseUrl();
+                	//echo $baseUrl = $service->get('request')->getbaseUrl();
+					$baseUrl = "http://".$_SERVER['HTTP_HOST'];
+					
                     $form = new \Login\Form\RegisterForm($baseUrl);
                     $emailInput = $form->getInputFilter()->get('email');
                     
