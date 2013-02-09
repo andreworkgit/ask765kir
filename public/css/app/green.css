@@ -743,6 +743,9 @@ color: #FFF;
 .nav_links li:last-child:after {
   content: "";
 }
+
+
+
 .nav_links li a,.nav_links li span {
   display: inline-block;
   padding: 10px 10px;
@@ -750,7 +753,7 @@ color: #FFF;
 }
 .nav_links li a:hover, .nav_links li a:focus {
   text-decoration: none;
-  background-color: #CCC;
+  background-color: #FFF;
   color:#333;
 }
 .nav_menu_login {
