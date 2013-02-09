@@ -22,10 +22,10 @@ abstract class AbstractService {
     protected $entity;
     protected $emailRenderer;
     
-    protected $mail_username='report.af@gmail.com';
-    protected $mail_password='raf123abc';
+    protected $mail_username='outmarcas@gmail.com';
+    protected $mail_password='xoutandre';
     
-    protected $mail_form_email = 'report.af@gmail.com';
+    protected $mail_form_email = 'outmarcas@gmail.com';
     protected $mail_form_name = 'Anúncio Mosaico';
     
     protected $mail_to_email = 'andrework@gmail.com';
