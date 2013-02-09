@@ -70,7 +70,16 @@
       }
     
       .logo_store {background:url('<?php echo $this->basePath();  ?>/images/app/logo/logotipo300px.png') no-repeat; width:190px; margin:0 20px 0 0; height:90px; display:block; float:left; text-indent:-9999px}
-
+		#banner728{
+			background:url('<?php echo $this->basePath();  ?>/images/app/logo/banner728x90.png') no-repeat;
+			width: 728px;
+			height: 90px;
+			float:left;
+		}
+		.fontbanner728{
+			font-size: 24px;
+			color: #537e87;
+		}
     </style>
    
     <script type="text/javascript">
@@ -87,9 +96,11 @@
 
 </head>
 <body>
+ 
   <div class="bg_store" style=" background-attachment: fixed;">
        
-         
+      <div id="loadp" style="width: 100%;height: 40px;position: relative;top:0px;left:0px;background-color: #fff;color:#bbb;text-align: center;border: 1px solid #bbb;display: none;"><table align="center"><tr><td><img src="/images/app/loading2.gif" align="absmiddle" /></td><td>Um momento processando áreas...</td></tr></table></div>
+    
     <div id="content_full">
     <input type="hidden" id="site_permalink" value=""/>  
 
@@ -99,8 +110,16 @@
     <div class="header">
         <div class="center">
             <a href="/" class="logo_store" title="">Logo da Empresa</a>
-            <?php $sessionUser = $this->UserIdentity('Login');  if(!$sessionUser): ?>
-            <img src="/images/app/logo/banner728x90.png"   border="0"/>
+            <?php $sessionUser = $this->UserIdentity('Login');  if(!$sessionUser): 
+            	  $sessionGanhe = $this->SessionSelection('ganhe');
+            	
+            	?>
+            	<a href="<?php echo $this->url('ganhe'); ?>">
+            	<div id="banner728" >
+            		<div style='position: relative;top:18px;left:269px;width: 150px;' class="fontbanner728"><?php echo $sessionGanhe->qtd_livres; ?></div>
+            		<div style='position: relative;top:-6px;left:493px;width: 150px;' class="fontbanner728"><?php echo $sessionGanhe->valor_atual; ?></div>
+            	</div>
+            	</a>
             <?php endif; ?>
             <!-- City Selection -->
       <!-- City Selection -->
@@ -589,6 +608,8 @@
                   <li><a href="<?php echo $this->url('faq'); ?>" class="rounded" title="FAQ">FAQ</a></li>
 
                   <li><a href="<?php echo $this->url('home'); ?>" class="rounded" title="Como Funciona?">Como Funciona?</a></li>
+                  
+                  <li><a href="<?php echo $this->url('ganhe'); ?>" class="rounded" title="Ganhar Produtos">Ganhar Produtos</a></li>
                 
             </ul>
            
@@ -625,8 +646,7 @@
     </div>
     <!--END LINKS FOOTER-->
 </div>
-	<div id="loadp" style="width: 100%;height: 33px;position: absolute;top:100px;left:0;background-color: #fff;color:#bbb;text-align: left;border: 1px solid #bbb;display: none;"><img src="/images/app/loading2.gif" /></div>
-
+	
 </body>
 </html>
 

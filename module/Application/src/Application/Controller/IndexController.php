@@ -39,9 +39,25 @@ class IndexController extends AbstractActionController {
           $categoriaService = $this->getServiceLocator()->get("Livraria\Model\CategoriaService");
           $categorias = $categoriaService->fetchAll();
          */
+         
+       	 
+        
         
         $repository = $this->getEm()->getRepository("Application\Entity\Areas");
         $array_records = $repository->fetchPairs();
+		$qtd_comprados = $repository->countAll();
+       	
+		$session = new Container('ganhe');
+		$session->offsetSet('qtd_compradas', $qtd_comprados);
+		$session->offsetSet('qtd_limite', 650);
+		$qtd_limite = $session->offsetGet('qtd_limite');
+		$qtd_livre = $qtd_limite- $qtd_comprados;
+		$session->offsetSet('qtd_livres', $qtd_livre);
+		$valor = ($qtd_livre*3);
+		$valor_atual = "R$ ".number_format($valor, 2, ',', '.');
+		$session->offsetSet('valor_atual', $valor_atual);
+		
+         
 
         return new ViewModel(array('dados' => $records,'array_records_all' => $array_records));
     }

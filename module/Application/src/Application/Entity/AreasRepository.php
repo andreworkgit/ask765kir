@@ -25,6 +25,12 @@ class AreasRepository extends EntityRepository {
         return $array;
     }
 	
+	public function countAll(){
+		
+		$entities = $this->findAll();
+		return count($entities);
+	}
+	
 	public function findByUser($userId)
 	{ 
 		$records = $this->findBy(array('id_user'=>$userId));

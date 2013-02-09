@@ -83,6 +83,17 @@ return array(
                     )
                 )
             ),
+            'ganhe' => array(
+                'type' => 'literal',
+                'options' => array(
+                    'route' => '/ganhe',
+                    'defaults' => array(
+                      'controller' => 'Application\Controller\Ganhe',
+                        'action'  => 'index'
+                        
+                    )
+                )
+            ),
             'quem-somos' => array(
                 'type' => 'literal',
                 'options' => array(
@@ -319,6 +330,7 @@ return array(
             'Application\Controller\Carrinho'    => 'Application\Controller\CarrinhoController',
             'Application\Controller\FaleConosco' => 'Application\Controller\FaleConoscoController',
             'Application\Controller\Afiliados' 	 => 'Application\Controller\AfiliadosController',
+            'Application\Controller\Ganhe' 	 	 => 'Application\Controller\GanheController',
             'Application\Controller\QuemSomos' 	 => 'Application\Controller\QuemSomosController',
             'Application\Controller\Faq' 	 	 => 'Application\Controller\FaqController',
             'Application\Controller\Area'        => 'Application\Controller\AreaController',
