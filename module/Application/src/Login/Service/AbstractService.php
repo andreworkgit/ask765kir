@@ -89,7 +89,7 @@ abstract class AbstractService {
         ) );
         
         $mail = new Mail\Message();
-        $mail->setFrom($this->mail_form_email, $this->mail_form_name);
+        $mail->setFrom($this->mail_form_email, utf8_decode($this->mail_form_name));
         
         $emailTo = !empty($records['email']) ? $records['email'] : $this->mail_to_email;
         $emailNameTo = !empty($records['nome']) ? $records['nome'] : $this->mail_to_name;
