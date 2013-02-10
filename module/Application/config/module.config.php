@@ -321,6 +321,17 @@ return array(
                 ),
             ),
             
+			'listuserall' => array(
+              'type' => 'segment',
+                'options' => array(
+                    'route' => '/listuserall',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Credito',
+                        'action'     => 'listuserall',
+                    ),
+                ),
+            ),
+            
             
         ),    
     ),

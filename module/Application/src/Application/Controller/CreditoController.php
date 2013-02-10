@@ -98,6 +98,23 @@ class CreditoController extends AbstractActionController {
 		exit;	
 	}
 	
+	public function listuserallAction(){
+		
+		$repository = $this->getEm()->getRepository("Application\Entity\Users");
+        $objRecordUser = $repository->findAllUser();
+					
+		
+		echo "<pre>";
+		foreach ($objRecordUser as $key => $value) {
+			echo "Nome: ".$value->nome."<br> Email: ".$value->email."<br> ID:".$value->id."<br><br>";
+		}
+		//var_dump($recordsBaseUser);
+		
+		echo "</pre>";
+		exit();
+		
+	}
+	
     public function paypalAction() {
 		
         $request = $this->getRequest();

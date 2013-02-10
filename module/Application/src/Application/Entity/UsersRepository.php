@@ -31,6 +31,11 @@ class UsersRepository extends EntityRepository {
     return $records_users;
   }
   
+  public function findAllUser(){
+  	$entities = $this->findAll();
+	return $entities;
+  }
+  
   
   
 /*
