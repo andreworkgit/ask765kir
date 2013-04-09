@@ -7,6 +7,7 @@ return array(
         //'Login',
         'DoctrineModule',
         'DoctrineORMModule',
+        'ReverseOAuth2',
         //'Livraria',
         
     ),

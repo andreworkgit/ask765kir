@@ -4,7 +4,12 @@
         
         <span class="adver">
                         
-<?php            
+<?php  
+
+ var_dump($token,$info,$url); 
+
+ echo "<a href=".$url.">login google</a>";
+
  $form = $this->form;
  $form->setAttribute('action', $this->url('home/action', array('action' => 'faleconosco')));
  $form->prepare();

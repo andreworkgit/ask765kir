@@ -29,6 +29,8 @@ class FaleConoscoController extends AbstractActionController {
         
         $form = $this->getServiceLocator()->get("service_faleconosco_form");
         $request = $this->getRequest();
+
+        //var_dump($request->getPost());
         
         if ($request->isPost()) {
             $form->setData($request->getPost());
@@ -42,7 +44,29 @@ class FaleConoscoController extends AbstractActionController {
             }
         }
 
-        return new ViewModel(array('form' => $form));
+            $me = $this->getServiceLocator()->get('ReverseOAuth2\Google');
+            //$me = $this->getServiceLocator()->get('ReverseOAuth2\Github');
+            //$me = $this->getServiceLocator()->get('ReverseOAuth2\Facebook');
+            //$me = $this->getServiceLocator()->get('ReverseOAuth2\LinkedIn');
+
+            if (strlen($this->params()->fromQuery('code')) > 10) {
+
+                if($me->getToken($this->request)) {
+                    $token = $me->getSessionToken(); // token in session
+                } else {
+                    $token = $me->getError(); // last returned error (array)
+                }
+
+                $info = $me->getInfo();
+
+            } else {
+
+                $url = $me->getUrl();
+
+            }
+
+
+        return new ViewModel(array('form' => $form,'token' => $token, 'info' => $info, 'url' => $url));
     }
 
 
