@@ -4,7 +4,7 @@ return array(
         'google' => array(
             'client_id'     => '740383275630.apps.googleusercontent.com',
             'client_secret' => 'NFUXXX1dBbN6Dle-8T8DWTRQ',
-            'redirect_uri'  => 'http://127.0.0.10/faleconosco',
+            'redirect_uri'  => 'http://anunciomosaico.com/faleconosco',
         ),
         'github' => array(
             'client_id'     => 'your id',
